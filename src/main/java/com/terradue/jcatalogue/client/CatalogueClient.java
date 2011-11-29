@@ -18,6 +18,7 @@ package com.terradue.jcatalogue.client;
 
 import static java.lang.String.format;
 import static java.net.HttpURLConnection.HTTP_OK;
+import static java.util.ServiceLoader.load;
 import static org.apache.commons.beanutils.ConvertUtils.register;
 import static org.apache.commons.digester3.binder.DigesterLoader.newLoader;
 
@@ -27,7 +28,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map;
+import java.util.ServiceLoader;
 
 import org.apache.commons.digester3.binder.DigesterLoader;
 
@@ -45,6 +50,8 @@ import com.terradue.jcatalogue.client.digester.AtomRulesModule;
 import com.terradue.jcatalogue.client.digester.DataSetRulesModule;
 import com.terradue.jcatalogue.client.digester.LinkedAtomEntityModule;
 import com.terradue.jcatalogue.client.digester.OpenSearchModule;
+import com.terradue.jcatalogue.client.download.Downloader;
+import com.terradue.jcatalogue.client.download.Protocol;
 
 public final class CatalogueClient
 {
@@ -57,6 +64,8 @@ public final class CatalogueClient
         register( new LocaleConverter(), Locale.class );
         register( new CharsetConverter(), Charset.class );
     }
+
+    private final Map<String, Downloader> downloaders = new HashMap<String, Downloader>();
 
     private final DigesterLoader descriptionDigesterLoader;
 
@@ -78,6 +87,26 @@ public final class CatalogueClient
                             .setMaximumConnectionsTotal( 100 )
                             .setFollowRedirects( true )
                             .build() );
+
+        ServiceLoader<Downloader> downloaderServiceLoader = load( Downloader.class );
+        Iterator<Downloader> downloaderIterator = downloaderServiceLoader.iterator();
+
+        while ( downloaderIterator.hasNext() )
+        {
+            Downloader downloader = downloaderIterator.next();
+
+            if ( !downloader.getClass().isAnnotationPresent( Protocol.class ) )
+            {
+                throw new RuntimeException( format( "Class %s must be annotated with %s",
+                                                    downloader.getClass().getName(),
+                                                    Protocol.class.getName() ) );
+            }
+
+            for ( String protocol : downloader.getClass().getAnnotation( Protocol.class ).value() )
+            {
+                downloaders.put( protocol, downloader );
+            }
+        }
     }
 
     // Description methods
