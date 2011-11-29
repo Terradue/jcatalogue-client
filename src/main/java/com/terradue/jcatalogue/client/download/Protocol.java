@@ -28,6 +28,6 @@ import java.lang.annotation.Target;
 public @interface Protocol
 {
 
-    String value();
+    String[] value();
 
 }
