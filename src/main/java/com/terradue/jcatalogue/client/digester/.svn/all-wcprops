@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/terradue/!svn/ver/17069/products/jcatalogue-client/trunk/src/main/java/com/terradue/jcatalogue/client/digester
+END
+OpenSearchModule.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/terradue/!svn/ver/17078/products/jcatalogue-client/trunk/src/main/java/com/terradue/jcatalogue/client/digester/OpenSearchModule.java
+END
+OpenSearchUrlCreationFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/terradue/!svn/ver/17070/products/jcatalogue-client/trunk/src/main/java/com/terradue/jcatalogue/client/digester/OpenSearchUrlCreationFactory.java
+END
+DataSetRulesModule.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/terradue/!svn/ver/17173/products/jcatalogue-client/trunk/src/main/java/com/terradue/jcatalogue/client/digester/DataSetRulesModule.java
+END
+LinkedAtomEntityModule.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/terradue/!svn/ver/17153/products/jcatalogue-client/trunk/src/main/java/com/terradue/jcatalogue/client/digester/LinkedAtomEntityModule.java
+END
+AtomRulesModule.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/terradue/!svn/ver/17153/products/jcatalogue-client/trunk/src/main/java/com/terradue/jcatalogue/client/digester/AtomRulesModule.java
+END
