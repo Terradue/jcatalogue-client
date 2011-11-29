@@ -16,10 +16,16 @@
   <description>TODO - fill me</description>
 
   <scm>
-    <connection>scm:svn:https://engine.terradue.com/svn/terradue/products/jcatalogue-client/trunk</connection>
-    <developerConnection>scm:svn:https://engine.terradue.com/svn/terradue/products/jcatalogue-client/trunk</developerConnection>
-    <url>https://engine.terradue.com/svn/terradue/products/jcatalogue-client/trunk</url>
+    <connection>scm:git:ssh://github.com/Terradue/jcatalogue-client.git</connection>
+    <developerConnection>scm:git:git+ssh://git@github.com/Terradue/jcatalogue-client.git</developerConnection>
+    <url>https://github.com/Terradue/jcatalogue-client</url>
   </scm>
+  <distributionManagement>
+    <site>
+      <id>github</id>
+      <url>gitsite:git@github.com/Terradue/jcatalogue-client.git</url>
+    </site>
+  </distributionManagement>
 
   <properties>
     <javac.src.version>1.6</javac.src.version>
