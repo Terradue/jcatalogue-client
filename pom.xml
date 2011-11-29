@@ -4,8 +4,8 @@
 
   <parent>
     <groupId>com.terradue</groupId>
-    <artifactId>java-parent</artifactId>
-    <version>2</version>
+    <artifactId>oss-java-parent</artifactId>
+    <version>1</version>
   </parent>
 
   <artifactId>jcatalogue-client</artifactId>
