@@ -245,7 +245,6 @@ public final class CatalogueClient
         }
         catch ( Exception e )
         {
-            // should not happen, blocked before of this execution
             throw new RuntimeException( format( "Impossible to download file %s under directory %s",
                                                   fileUrl, targetDir ),
                                           e );
