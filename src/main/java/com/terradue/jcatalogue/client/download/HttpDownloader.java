@@ -68,8 +68,7 @@ public final class HttpDownloader
             // TODO verify, but that should not happen
         }
 
-        RequestBuilder requestBuilder =
-            new RequestBuilder( GET ).setUrl( fileUri.toString() ).setFollowRedirects( true );
+        RequestBuilder requestBuilder = new RequestBuilder( GET ).setUrl( fileUri.toString() );
 
         if ( realms.containsKey( fileUri.getHost() ) )
         {
