@@ -18,7 +18,6 @@ package com.terradue.jcatalogue.client;
 
 import static java.lang.String.format;
 import static java.net.HttpURLConnection.HTTP_OK;
-import static java.util.ServiceLoader.load;
 import static org.apache.commons.beanutils.ConvertUtils.register;
 import static org.apache.commons.digester3.binder.DigesterLoader.newLoader;
 
@@ -29,10 +28,8 @@ import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
-import java.util.ServiceLoader;
 
 import org.apache.commons.digester3.binder.DigesterLoader;
 
@@ -87,26 +84,40 @@ public final class CatalogueClient
                             .setMaximumConnectionsTotal( 100 )
                             .setFollowRedirects( true )
                             .build() );
+    }
 
-        ServiceLoader<Downloader> downloaderServiceLoader = load( Downloader.class );
-        Iterator<Downloader> downloaderIterator = downloaderServiceLoader.iterator();
-
-        while ( downloaderIterator.hasNext() )
+    public void registerDownloader( Downloader downloader )
+    {
+        if ( downloader == null )
         {
-            Downloader downloader = downloaderIterator.next();
-
-            if ( !downloader.getClass().isAnnotationPresent( Protocol.class ) )
-            {
-                throw new RuntimeException( format( "Class %s must be annotated with %s",
-                                                    downloader.getClass().getName(),
-                                                    Protocol.class.getName() ) );
-            }
-
-            for ( String protocol : downloader.getClass().getAnnotation( Protocol.class ).value() )
-            {
-                downloaders.put( protocol, downloader );
-            }
+            throw new IllegalArgumentException( "Input downloader must not be null." );
         }
+
+        if ( !downloader.getClass().isAnnotationPresent( Protocol.class ) )
+        {
+            throw new RuntimeException( format( "Class %s must be annotated with %s",
+                                                downloader.getClass().getName(),
+                                                Protocol.class.getName() ) );
+        }
+
+        for ( String protocol : downloader.getClass().getAnnotation( Protocol.class ).value() )
+        {
+            registerDownloader( protocol, downloader );
+        }
+    }
+
+    public void registerDownloader( String protocol, Downloader downloader )
+    {
+        if ( protocol == null )
+        {
+            throw new IllegalArgumentException( "Input protocol must not be null." );
+        }
+        if ( downloader == null )
+        {
+            throw new IllegalArgumentException( "Input downloader must not be null." );
+        }
+
+        downloaders.put( protocol, downloader );
     }
 
     // Description methods
