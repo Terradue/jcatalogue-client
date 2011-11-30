@@ -35,6 +35,7 @@ import org.apache.commons.digester3.binder.DigesterLoader;
 import com.ning.http.client.AsyncCompletionHandler;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
+import com.ning.http.client.RequestBuilder;
 import com.ning.http.client.Response;
 import com.ning.http.client.resumable.ResumableIOExceptionFilter;
 import com.terradue.jcatalogue.client.converters.AtomDateConverter;
@@ -197,11 +198,18 @@ public final class CatalogueClient
             throw new IllegalArgumentException( "Input URI must be not null" );
         }
 
+        RequestBuilder requestBuilder = new RequestBuilder( "GET" ).setUrl( uri.toString() );
+
+        for ( Parameter parameter : parameters )
+        {
+            requestBuilder.addParameter( parameter.getName(), parameter.getValue() );
+        }
+
         CE description;
 
         try
         {
-            description = httpClient.prepareGet( uri.toString() ).execute( new AsyncCompletionHandler<CE>()
+            description = httpClient.executeRequest( requestBuilder.build(), new AsyncCompletionHandler<CE>()
             {
 
                 @Override
