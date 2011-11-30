@@ -74,9 +74,10 @@ public final class CatalogueClient
 
     public CatalogueClient()
     {
-        descriptionDigesterLoader = newLoader( new OpenSearchModule() );
-        catalogueDigesterLoader = newLoader( new AtomRulesModule( Catalogue.class ), new LinkedAtomEntityModule() );
-        serieDigesterLoader = newLoader( new AtomRulesModule( Serie.class ), new DataSetRulesModule() );
+        descriptionDigesterLoader = newLoader( new OpenSearchModule() ).setNamespaceAware( true );
+        catalogueDigesterLoader = newLoader( new AtomRulesModule( Catalogue.class ), new LinkedAtomEntityModule() )
+            .setNamespaceAware( true );
+        serieDigesterLoader = newLoader( new AtomRulesModule( Serie.class ), new DataSetRulesModule() ).setNamespaceAware( true );
         httpClient = new AsyncHttpClient(new AsyncHttpClientConfig.Builder()
                             .setAllowPoolingConnection( true )
                             .addIOExceptionFilter( new ResumableIOExceptionFilter() )

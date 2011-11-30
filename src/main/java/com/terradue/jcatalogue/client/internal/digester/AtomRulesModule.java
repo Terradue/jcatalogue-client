@@ -16,18 +16,22 @@ package com.terradue.jcatalogue.client.internal.digester;
  *    limitations under the License.
  */
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import static com.terradue.jcatalogue.client.internal.digester.Namespaces.ATOM;
+import static com.terradue.jcatalogue.client.internal.digester.Namespaces.OPEN_SEARCH;
 
-import org.apache.commons.digester3.binder.AbstractRulesModule;
+import org.apache.commons.digester3.binder.AbstractNamespaceURIBasedRulesModule;
 
-@Data
-@EqualsAndHashCode( callSuper = false )
 public final class AtomRulesModule
-    extends AbstractRulesModule
+    extends AbstractNamespaceURIBasedRulesModule
 {
 
     private final Class<?> mappedEntity;
+
+    public AtomRulesModule( Class<?> mappedEntity )
+    {
+        super( ATOM );
+        this.mappedEntity = mappedEntity;
+    }
 
     @Override
     protected void configure()
@@ -37,9 +41,9 @@ public final class AtomRulesModule
         forPattern( "feed/subtitle" ).setBeanProperty();
         forPattern( "feed/updated" ).setBeanProperty();
         forPattern( "feed/id" ).setBeanProperty();
-        forPattern( "feed/os:totalResults" ).setBeanProperty().withName( "totalResults" );
-        forPattern( "feed/os:startIndex" ).setBeanProperty().withName( "startIndex" );
-        forPattern( "feed/os:itemsPerPage" ).setBeanProperty().withName( "itemsPerPage" );
+        forPattern( "feed/totalResults" ).withNamespaceURI( OPEN_SEARCH ).setBeanProperty().withName( "totalResults" );
+        forPattern( "feed/startIndex" ).withNamespaceURI( OPEN_SEARCH ).setBeanProperty().withName( "startIndex" );
+        forPattern( "feed/itemsPerPage" ).withNamespaceURI( OPEN_SEARCH ).setBeanProperty().withName( "itemsPerPage" );
 
         forPattern( "feed/link" ).callMethod( "addLink" )
                                      .withParamTypes( String.class, String.class, String.class )

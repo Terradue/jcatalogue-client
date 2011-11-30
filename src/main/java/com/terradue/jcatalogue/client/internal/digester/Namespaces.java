@@ -1,4 +1,4 @@
-package com.terradue.jcatalogue.client;
+package com.terradue.jcatalogue.client.internal.digester;
 
 /*
  *    Copyright 2011 Terradue srl
@@ -32,5 +32,7 @@ interface Namespaces
     public static final String OPEN_SEARCH = "http://a9.com/-/spec/opensearch/1.1/";
 
     public static final String RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+
+    public static final String GML = "http://www.opengis.net/gml";
 
 }

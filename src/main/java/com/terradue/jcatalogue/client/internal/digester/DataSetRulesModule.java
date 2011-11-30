@@ -16,13 +16,21 @@ package com.terradue.jcatalogue.client.internal.digester;
  *    limitations under the License.
  */
 
-import org.apache.commons.digester3.binder.AbstractRulesModule;
+import static com.terradue.jcatalogue.client.internal.digester.Namespaces.ATOM;
+import static com.terradue.jcatalogue.client.internal.digester.Namespaces.GML;
+
+import org.apache.commons.digester3.binder.AbstractNamespaceURIBasedRulesModule;
 
 import com.terradue.jcatalogue.client.DataSet;
 
 public final class DataSetRulesModule
-    extends AbstractRulesModule
+    extends AbstractNamespaceURIBasedRulesModule
 {
+
+    public DataSetRulesModule()
+    {
+        super( ATOM );
+    }
 
     @Override
     protected void configure()
@@ -35,9 +43,11 @@ public final class DataSetRulesModule
         forPattern( "feed/entry/updated" ).setBeanProperty();
         forPattern( "feed/entry/id" ).setBeanProperty();
 
-        forPattern( "feed/entry/gml:validTime/gml:TimePeriod/gml:beginPosition" )
+        forPattern( "feed/entry/validTime/TimePeriod/beginPosition" )
+            .withNamespaceURI( GML )
             .setBeanProperty().withName( "beginPosition" );
-        forPattern( "feed/entry/gml:validTime/gml:TimePeriod/gml:beginPosition" )
+        forPattern( "feed/entry/validTime/TimePeriod/beginPosition" )
+            .withNamespaceURI( GML )
             .setBeanProperty().withName( "endPosition" );
 
         forPattern( "feed/entry/link" ).callMethod( "addLink" )

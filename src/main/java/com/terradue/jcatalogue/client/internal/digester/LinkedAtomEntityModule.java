@@ -16,11 +16,18 @@ package com.terradue.jcatalogue.client.internal.digester;
  *    limitations under the License.
  */
 
-import org.apache.commons.digester3.binder.AbstractRulesModule;
+import static com.terradue.jcatalogue.client.internal.digester.Namespaces.ATOM;
+
+import org.apache.commons.digester3.binder.AbstractNamespaceURIBasedRulesModule;
 
 public final class LinkedAtomEntityModule
-    extends AbstractRulesModule
+    extends AbstractNamespaceURIBasedRulesModule
 {
+
+    public LinkedAtomEntityModule()
+    {
+        super( ATOM );
+    }
 
     @Override
     protected void configure()

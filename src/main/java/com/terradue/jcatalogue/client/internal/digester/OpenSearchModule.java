@@ -16,13 +16,18 @@ package com.terradue.jcatalogue.client.internal.digester;
  *    limitations under the License.
  */
 
-import org.apache.commons.digester3.binder.AbstractRulesModule;
+import org.apache.commons.digester3.binder.AbstractNamespaceURIBasedRulesModule;
 
 import com.terradue.jcatalogue.client.CatalogueDescription;
 
 public final class OpenSearchModule
-    extends AbstractRulesModule
+    extends AbstractNamespaceURIBasedRulesModule
 {
+
+    public OpenSearchModule()
+    {
+        super( "http://a9.com/-/spec/opensearch/1.1/" );
+    }
 
     @Override
     protected void configure()
