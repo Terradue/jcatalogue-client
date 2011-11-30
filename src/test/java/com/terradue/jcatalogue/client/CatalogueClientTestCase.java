@@ -16,10 +16,10 @@ package com.terradue.jcatalogue.client;
  *    limitations under the License.
  */
 
-import static org.junit.Assert.fail;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.util.Iterator;
@@ -28,17 +28,33 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.ning.http.client.Realm;
+import com.ning.http.client.Realm.AuthScheme;
 import com.terradue.jcatalogue.client.download.DownloadHandler;
+import com.terradue.jcatalogue.client.download.HttpDownloader;
 
 public final class CatalogueClientTestCase
 {
 
     private CatalogueClient client;
 
+    private String username = "";
+
+    private String password = "";
+
     @Before
     public void setUp()
     {
         client = new CatalogueClient();
+
+        HttpDownloader httpDownloader = client.lookupDownloader( "http" );
+        httpDownloader.registerRealm( "eo-virtual-archive4.esa.int",
+                                      new Realm.RealmBuilder()
+                                            .setPrincipal( username )
+                                            .setPassword( password )
+                                            .setUsePreemptiveAuth( true )
+                                            .setScheme( AuthScheme.BASIC )
+                                        .build() );
     }
 
     @After
