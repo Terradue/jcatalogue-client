@@ -23,6 +23,8 @@ public interface DownloadHandler
 
     void onError( Throwable t );
 
+    void onError( String message );
+
     void onSuccess( File file );
 
 }
