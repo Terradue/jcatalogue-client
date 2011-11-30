@@ -1,4 +1,4 @@
-package com.terradue.jcatalogue.client.converters;
+package com.terradue.jcatalogue.client.internal.converters;
 
 /*
  *    Copyright 2011 Terradue srl

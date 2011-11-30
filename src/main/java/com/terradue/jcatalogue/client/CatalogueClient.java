@@ -40,16 +40,16 @@ import com.ning.http.client.AsyncHttpClientConfig;
 import com.ning.http.client.RequestBuilder;
 import com.ning.http.client.Response;
 import com.ning.http.client.resumable.ResumableIOExceptionFilter;
-import com.terradue.jcatalogue.client.converters.AtomDateConverter;
-import com.terradue.jcatalogue.client.converters.CharsetConverter;
-import com.terradue.jcatalogue.client.converters.LocaleConverter;
-import com.terradue.jcatalogue.client.digester.AtomRulesModule;
-import com.terradue.jcatalogue.client.digester.DataSetRulesModule;
-import com.terradue.jcatalogue.client.digester.LinkedAtomEntityModule;
-import com.terradue.jcatalogue.client.digester.OpenSearchModule;
 import com.terradue.jcatalogue.client.download.Downloader;
 import com.terradue.jcatalogue.client.download.HttpDownloader;
 import com.terradue.jcatalogue.client.download.Protocol;
+import com.terradue.jcatalogue.client.internal.converters.AtomDateConverter;
+import com.terradue.jcatalogue.client.internal.converters.CharsetConverter;
+import com.terradue.jcatalogue.client.internal.converters.LocaleConverter;
+import com.terradue.jcatalogue.client.internal.digester.AtomRulesModule;
+import com.terradue.jcatalogue.client.internal.digester.DataSetRulesModule;
+import com.terradue.jcatalogue.client.internal.digester.LinkedAtomEntityModule;
+import com.terradue.jcatalogue.client.internal.digester.OpenSearchModule;
 
 public final class CatalogueClient
 {

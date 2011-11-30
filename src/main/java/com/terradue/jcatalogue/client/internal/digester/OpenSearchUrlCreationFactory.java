@@ -1,4 +1,4 @@
-package com.terradue.jcatalogue.client.digester;
+package com.terradue.jcatalogue.client.internal.digester;
 
 /*
  *    Copyright 2011 Terradue srl
@@ -16,16 +16,23 @@ package com.terradue.jcatalogue.client.digester;
  *    limitations under the License.
  */
 
-import org.apache.commons.digester3.binder.AbstractRulesModule;
+import org.apache.commons.digester3.AbstractObjectCreationFactory;
+import org.xml.sax.Attributes;
 
-public final class LinkedAtomEntityModule
-    extends AbstractRulesModule
+import com.terradue.jcatalogue.client.OpenSearchUrl;
+
+final class OpenSearchUrlCreationFactory
+    extends AbstractObjectCreationFactory<OpenSearchUrl>
 {
 
     @Override
-    protected void configure()
+    public OpenSearchUrl createObject( Attributes attributes )
+        throws Exception
     {
-        forPattern( "feed/entry/id" ).callMethod( "addEntityUrl" ).usingElementBodyAsArgument();
+        String type = attributes.getValue( "type" );
+        String template = attributes.getValue( "template" );
+
+        return new OpenSearchUrl( type, template );
     }
 
 }

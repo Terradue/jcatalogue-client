@@ -1,4 +1,4 @@
-package com.terradue.jcatalogue.client.digester;
+package com.terradue.jcatalogue.client.internal.digester;
 
 /*
  *    Copyright 2011 Terradue srl
