@@ -22,7 +22,6 @@ import static org.apache.commons.beanutils.ConvertUtils.register;
 import static org.apache.commons.digester3.binder.DigesterLoader.newLoader;
 
 import java.io.File;
-import java.io.RandomAccessFile;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
@@ -37,8 +36,6 @@ import com.ning.http.client.AsyncCompletionHandler;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
 import com.ning.http.client.Response;
-import com.ning.http.client.extra.ResumableRandomAccessFileListener;
-import com.ning.http.client.resumable.ResumableAsyncHandler;
 import com.ning.http.client.resumable.ResumableIOExceptionFilter;
 import com.terradue.jcatalogue.client.converters.AtomDateConverter;
 import com.terradue.jcatalogue.client.converters.CharsetConverter;
@@ -52,8 +49,6 @@ import com.terradue.jcatalogue.client.download.Protocol;
 
 public final class CatalogueClient
 {
-
-    private static final String RW = "rw";
 
     static
     {
@@ -223,34 +218,20 @@ public final class CatalogueClient
             }
         }
 
-        String fileName = fileUrl.substring( fileUrl.lastIndexOf( '/' ) + 1 );
+        String protocol = fileUrl.substring( 0, fileUrl.indexOf( ':' ) );
 
-        RuntimeException error = null;
+        Downloader downloader = downloaders.get( protocol );
 
-        ResumableAsyncHandler<Response> resumableHandler = new ResumableAsyncHandler<Response>();
         try
         {
-            resumableHandler.setResumableListener( new ResumableRandomAccessFileListener( new RandomAccessFile( fileName,
-                                                                                                                RW ) ) );
-            Response response = httpClient.prepareGet( fileUrl ).execute( resumableHandler ).get();
-
-            if ( HTTP_OK != response.getStatusCode() )
-            {
-                error = new RuntimeException( format( "Impossible to download file %s, server replied %s",
-                                                      fileUrl, response.getStatusText() ) );
-            }
+            downloader.download( targetDir, fileUrl );
         }
         catch ( Exception e )
         {
             // should not happen, blocked before of this execution
-            error = new RuntimeException( format( "Impossible to download file %s under directory %s",
+            throw new RuntimeException( format( "Impossible to download file %s under directory %s",
                                                   fileUrl, targetDir ),
                                           e );
-        }
-
-        if ( error != null )
-        {
-            throw error;
         }
     }
 
