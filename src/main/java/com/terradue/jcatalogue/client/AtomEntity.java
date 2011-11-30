@@ -18,6 +18,7 @@ package com.terradue.jcatalogue.client;
 
 import static com.terradue.jcatalogue.client.MimeTypes.ATOM_XML;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -62,7 +63,7 @@ abstract class AtomEntity
     private String nextResultsUri;
 
     @Getter( AccessLevel.PACKAGE )
-    private String enclosure;
+    private URI enclosure;
 
     public void addLink( String rel, String type, String href )
     {
@@ -72,7 +73,7 @@ abstract class AtomEntity
         }
         else if ( ENCLOSURE.equals( rel ) )
         {
-            enclosure = href;
+            enclosure = URI.create( href );
         }
     }
 
