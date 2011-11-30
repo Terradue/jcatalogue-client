@@ -37,9 +37,9 @@ public final class AtomRulesModule
         forPattern( "feed/subtitle" ).setBeanProperty();
         forPattern( "feed/updated" ).setBeanProperty();
         forPattern( "feed/id" ).setBeanProperty();
-        forPattern( "feed/totalResults" ).setBeanProperty();
-        forPattern( "feed/startIndex" ).setBeanProperty();
-        forPattern( "feed/itemsPerPage" ).setBeanProperty();
+        forPattern( "feed/os:totalResults" ).setBeanProperty().withName( "totalResults" );
+        forPattern( "feed/os:startIndex" ).setBeanProperty().withName( "startIndex" );
+        forPattern( "feed/os:itemsPerPage" ).setBeanProperty().withName( "itemsPerPage" );
 
         forPattern( "feed/link" ).callMethod( "addLink" )
                                      .withParamTypes( String.class, String.class, String.class )
