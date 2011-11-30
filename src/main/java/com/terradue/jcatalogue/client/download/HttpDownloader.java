@@ -5,12 +5,16 @@ import static java.net.HttpURLConnection.HTTP_OK;
 
 import java.io.File;
 import java.io.RandomAccessFile;
+import java.util.HashMap;
+import java.util.Map;
 
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 
 import com.ning.http.client.AsyncHttpClient;
+import com.ning.http.client.Realm;
+import com.ning.http.client.RequestBuilder;
 import com.ning.http.client.Response;
 import com.ning.http.client.extra.ResumableRandomAccessFileListener;
 import com.ning.http.client.resumable.ResumableAsyncHandler;
@@ -23,8 +27,26 @@ public final class HttpDownloader
 
     private static final String RW = "rw";
 
+    private static final String GET = "GET";
+
     @Getter( AccessLevel.NONE )
     private final AsyncHttpClient httpClient;
+
+    private final Map<String, Realm> realms = new HashMap<String, Realm>();
+
+    public void registerRealm( String host, Realm realm )
+    {
+        if ( host == null )
+        {
+            throw new IllegalArgumentException( "Input host must be not null" );
+        }
+        if ( realm == null )
+        {
+            throw new IllegalArgumentException( "Input realm must be not null" );
+        }
+
+        realms.put( host, realm );
+    }
 
     @Override
     public void download( File targetDir, String fileUrl )
@@ -35,7 +57,10 @@ public final class HttpDownloader
         ResumableAsyncHandler<Response> resumableHandler = new ResumableAsyncHandler<Response>();
         resumableHandler.setResumableListener( new ResumableRandomAccessFileListener( new RandomAccessFile( fileName,
                                                                                                             RW ) ) );
-        Response response = httpClient.prepareGet( fileUrl ).execute( resumableHandler ).get();
+
+        RequestBuilder requestBuilder = new RequestBuilder( GET ).setFollowRedirects( true );
+
+        Response response = httpClient.executeRequest( requestBuilder.build(), resumableHandler ).get();
 
         if ( HTTP_OK != response.getStatusCode() )
         {
