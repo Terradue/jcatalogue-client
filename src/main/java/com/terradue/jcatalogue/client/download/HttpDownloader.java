@@ -17,7 +17,7 @@ import com.ning.http.client.resumable.ResumableAsyncHandler;
 
 @Data
 @Protocol({ "http", "https" })
-final class HttpDownloader
+public final class HttpDownloader
     implements Downloader
 {
 
