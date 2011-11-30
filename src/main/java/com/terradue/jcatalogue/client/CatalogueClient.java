@@ -115,6 +115,23 @@ public final class CatalogueClient
         downloaders.put( protocol, downloader );
     }
 
+    public <D extends Downloader> D lookupDownloader( String protocol )
+    {
+        if ( protocol == null )
+        {
+            throw new IllegalArgumentException( "Input protocol must be not null" );
+        }
+
+        if ( !downloaders.containsKey( protocol ) )
+        {
+            return null;
+        }
+
+        @SuppressWarnings( "unchecked" ) // would throw classcast exception anyway
+        D downloader = (D) downloaders.get( protocol );
+        return downloader;
+    }
+
     // Description methods
 
     public CatalogueDescription discover( String uri, Parameter... parameters )
@@ -220,7 +237,7 @@ public final class CatalogueClient
 
         String protocol = fileUrl.substring( 0, fileUrl.indexOf( ':' ) );
 
-        Downloader downloader = downloaders.get( protocol );
+        Downloader downloader = lookupDownloader( protocol );
 
         try
         {
