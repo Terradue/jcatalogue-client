@@ -1,6 +1,7 @@
 package com.terradue.jcatalogue.client.download;
 
 import java.io.File;
+import java.net.URI;
 
 /*
  *    Copyright 2011 Terradue srl
@@ -21,7 +22,7 @@ import java.io.File;
 public interface Downloader
 {
 
-    void download( File targetDir, String fileUrl )
+    void download( File targetDir, URI fileUri )
         throws Exception;
 
 }

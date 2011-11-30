@@ -5,6 +5,7 @@ import static java.net.HttpURLConnection.HTTP_OK;
 
 import java.io.File;
 import java.io.RandomAccessFile;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,10 +50,10 @@ public final class HttpDownloader
     }
 
     @Override
-    public void download( File targetDir, String fileUrl )
+    public void download( File targetDir, URI fileUri )
         throws Exception
     {
-        String fileName = fileUrl.substring( fileUrl.lastIndexOf( '/' ) + 1 );
+        String fileName = fileUri.getPath().substring( fileUri.getPath().lastIndexOf( '/' ) + 1 );
 
         ResumableAsyncHandler<Response> resumableHandler = new ResumableAsyncHandler<Response>();
         resumableHandler.setResumableListener( new ResumableRandomAccessFileListener( new RandomAccessFile( fileName,
@@ -65,7 +66,7 @@ public final class HttpDownloader
         if ( HTTP_OK != response.getStatusCode() )
         {
             throw new Exception( format( "Impossible to download file %s, server replied %s",
-                                         fileUrl, response.getStatusText() ) );
+                                         fileUri, response.getStatusText() ) );
         }
     }
 

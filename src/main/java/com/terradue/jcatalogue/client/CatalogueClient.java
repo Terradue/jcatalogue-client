@@ -235,7 +235,7 @@ public final class CatalogueClient
         return description;
     }
 
-    void downloadFile( File targetDir, String fileUrl )
+    void downloadFile( File targetDir, URI fileUri )
     {
         if ( !targetDir.exists() )
         {
@@ -246,18 +246,16 @@ public final class CatalogueClient
             }
         }
 
-        String protocol = fileUrl.substring( 0, fileUrl.indexOf( ':' ) );
-
-        Downloader downloader = lookupDownloader( protocol );
+        Downloader downloader = lookupDownloader( fileUri.getScheme() );
 
         try
         {
-            downloader.download( targetDir, fileUrl );
+            downloader.download( targetDir, fileUri );
         }
         catch ( Exception e )
         {
             throw new RuntimeException( format( "Impossible to download file %s under directory %s",
-                                                  fileUrl, targetDir ),
+                                                  fileUri, targetDir ),
                                           e );
         }
     }
