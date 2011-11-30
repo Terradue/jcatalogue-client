@@ -40,6 +40,7 @@ import com.ning.http.client.AsyncHttpClientConfig;
 import com.ning.http.client.RequestBuilder;
 import com.ning.http.client.Response;
 import com.ning.http.client.resumable.ResumableIOExceptionFilter;
+import com.terradue.jcatalogue.client.download.DownloadHandler;
 import com.terradue.jcatalogue.client.download.Downloader;
 import com.terradue.jcatalogue.client.download.HttpDownloader;
 import com.terradue.jcatalogue.client.download.Protocol;
@@ -237,7 +238,7 @@ public final class CatalogueClient
         return description;
     }
 
-    void downloadFile( File targetDir, List<URI> fileUris )
+    void downloadFile( File targetDir, List<URI> fileUris, final DownloadHandler handler )
     {
         if ( !targetDir.exists() )
         {
@@ -248,10 +249,10 @@ public final class CatalogueClient
             }
         }
 
-        boolean downloaded = false;
+        CallbackDownloadHandler callback = new CallbackDownloadHandler( handler );
         Iterator<URI> fileUrisIterator = fileUris.iterator();
 
-        while ( !downloaded )
+        while ( !callback.isDownloaded() )
         {
             if ( !fileUrisIterator.hasNext() )
             {
@@ -262,15 +263,7 @@ public final class CatalogueClient
 
             Downloader downloader = lookupDownloader( fileUri.getScheme() );
 
-            try
-            {
-                downloader.download( targetDir, fileUri );
-                downloaded = true;
-            }
-            catch ( Exception e )
-            {
-                downloaded = false;
-            }
+            downloader.download( targetDir, fileUri, callback );
         }
     }
 

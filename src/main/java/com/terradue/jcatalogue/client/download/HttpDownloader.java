@@ -4,6 +4,7 @@ import static java.lang.String.format;
 import static java.net.HttpURLConnection.HTTP_OK;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
 import java.net.URI;
 import java.util.HashMap;
@@ -50,28 +51,47 @@ public final class HttpDownloader
     }
 
     @Override
-    public void download( File targetDir, URI fileUri )
-        throws Exception
+    public void download( File targetDir, URI fileUri, DownloadHandler handler )
     {
         String fileName = fileUri.getPath().substring( fileUri.getPath().lastIndexOf( '/' ) + 1 );
 
-        ResumableAsyncHandler<Response> resumableHandler = new ResumableAsyncHandler<Response>();
-        resumableHandler.setResumableListener( new ResumableRandomAccessFileListener( new RandomAccessFile( fileName,
-                                                                                                            RW ) ) );
+        File targetFile = new File( targetDir, fileName );
 
-        RequestBuilder requestBuilder = new RequestBuilder( GET ).setFollowRedirects( true );
+        ResumableAsyncHandler<Response> resumableHandler = new ResumableAsyncHandler<Response>();
+        try
+        {
+            resumableHandler.setResumableListener( new ResumableRandomAccessFileListener( new RandomAccessFile( targetFile,
+                                                                                                                RW ) ) );
+        }
+        catch ( FileNotFoundException e )
+        {
+            // TODO verify, but that should not happen
+        }
+
+        RequestBuilder requestBuilder =
+            new RequestBuilder( GET ).setUrl( fileUri.toString() ).setFollowRedirects( true );
 
         if ( realms.containsKey( fileUri.getHost() ) )
         {
             requestBuilder.setRealm( realms.get( fileUri.getHost() ) );
         }
 
-        Response response = httpClient.executeRequest( requestBuilder.build(), resumableHandler ).get();
-
-        if ( HTTP_OK != response.getStatusCode() )
+        Response response;
+        try
         {
-            throw new Exception( format( "Impossible to download file %s, server replied %s",
-                                         fileUri, response.getStatusText() ) );
+            response = httpClient.executeRequest( requestBuilder.build(), resumableHandler ).get();
+
+            if ( HTTP_OK != response.getStatusCode() )
+            {
+                handler.onError( format( "Impossible to download file %s, server replied %s",
+                                         fileUri, response.getStatusText() ) ) ;
+            }
+
+            handler.onSuccess( targetFile );
+        }
+        catch ( Exception e )
+        {
+            handler.onError( e );
         }
     }
 

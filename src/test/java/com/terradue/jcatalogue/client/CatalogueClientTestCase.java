@@ -16,6 +16,7 @@ package com.terradue.jcatalogue.client;
  *    limitations under the License.
  */
 
+import static org.junit.Assert.fail;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -25,8 +26,9 @@ import java.util.Iterator;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+
+import com.terradue.jcatalogue.client.download.DownloadHandler;
 
 public final class CatalogueClientTestCase
 {
@@ -74,7 +76,6 @@ public final class CatalogueClientTestCase
     }
 
     @Test
-    @Ignore
     public void traverseCatalogue()
     {
         // get the catalogue
@@ -104,7 +105,28 @@ public final class CatalogueClientTestCase
 
         // dowload the DataSet
 
-        dataSet.download( new File( "/tmp" ) );
+        dataSet.download( new File( "/tmp" ), new DownloadHandler()
+        {
+
+            @Override
+            public void onSuccess( File file )
+            {
+                assertTrue( file.exists() );
+            }
+
+            @Override
+            public void onError( String message )
+            {
+                fail( message );
+            }
+
+            @Override
+            public void onError( Throwable t )
+            {
+                fail( t.getMessage() );
+            }
+
+        } );
     }
 
 }

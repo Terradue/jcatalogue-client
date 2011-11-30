@@ -21,15 +21,17 @@ import java.io.File;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import com.terradue.jcatalogue.client.download.DownloadHandler;
+
 @ToString
 @EqualsAndHashCode( callSuper = true )
 public final class DataSet
     extends AtomEntity
 {
 
-    public void download( File targetDir )
+    public void download( File targetDir, DownloadHandler handler )
     {
-        getCatalogueClient().downloadFile( targetDir, getEnclosures() );
+        getCatalogueClient().downloadFile( targetDir, getEnclosures(), handler );
     }
 
 }
