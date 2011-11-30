@@ -29,7 +29,7 @@ public final class DataSet
 
     public void download( File targetDir )
     {
-        getCatalogueClient().downloadFile( targetDir, getEnclosure() );
+        getCatalogueClient().downloadFile( targetDir, getEnclosures() );
     }
 
 }

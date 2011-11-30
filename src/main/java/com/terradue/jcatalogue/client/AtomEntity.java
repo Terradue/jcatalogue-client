@@ -63,7 +63,7 @@ abstract class AtomEntity
     private String nextResultsUri;
 
     @Getter( AccessLevel.PACKAGE )
-    private URI enclosure;
+    private final List<URI> enclosures = new ArrayList<URI>();
 
     public void addLink( String rel, String type, String href )
     {
@@ -73,7 +73,7 @@ abstract class AtomEntity
         }
         else if ( ENCLOSURE.equals( rel ) )
         {
-            enclosure = URI.create( href );
+            enclosures.add( URI.create( href ) );
         }
     }
 

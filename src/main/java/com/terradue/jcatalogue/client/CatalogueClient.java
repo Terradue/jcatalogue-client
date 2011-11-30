@@ -27,6 +27,8 @@ import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -235,7 +237,7 @@ public final class CatalogueClient
         return description;
     }
 
-    void downloadFile( File targetDir, URI fileUri )
+    void downloadFile( File targetDir, List<URI> fileUris )
     {
         if ( !targetDir.exists() )
         {
@@ -246,17 +248,29 @@ public final class CatalogueClient
             }
         }
 
-        Downloader downloader = lookupDownloader( fileUri.getScheme() );
+        boolean downloaded = false;
+        Iterator<URI> fileUrisIterator = fileUris.iterator();
 
-        try
+        while ( !downloaded )
         {
-            downloader.download( targetDir, fileUri );
-        }
-        catch ( Exception e )
-        {
-            throw new RuntimeException( format( "Impossible to download file %s under directory %s",
-                                                  fileUri, targetDir ),
-                                          e );
+            if ( !fileUrisIterator.hasNext() )
+            {
+                throw new RuntimeException( "Download not possible, none of the submitted URIs succeeded" );
+            }
+
+            URI fileUri = fileUrisIterator.next();
+
+            Downloader downloader = lookupDownloader( fileUri.getScheme() );
+
+            try
+            {
+                downloader.download( targetDir, fileUri );
+                downloaded = true;
+            }
+            catch ( Exception e )
+            {
+                downloaded = false;
+            }
         }
     }
 
