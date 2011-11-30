@@ -61,6 +61,11 @@ public final class HttpDownloader
 
         RequestBuilder requestBuilder = new RequestBuilder( GET ).setFollowRedirects( true );
 
+        if ( realms.containsKey( fileUri.getHost() ) )
+        {
+            requestBuilder.setRealm( realms.get( fileUri.getHost() ) );
+        }
+
         Response response = httpClient.executeRequest( requestBuilder.build(), resumableHandler ).get();
 
         if ( HTTP_OK != response.getStatusCode() )
