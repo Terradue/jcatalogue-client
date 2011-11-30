@@ -17,17 +17,22 @@ package com.terradue.jcatalogue.client;
  */
 
 import java.io.File;
+import java.util.Date;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 import com.terradue.jcatalogue.client.download.DownloadHandler;
 
-@ToString
+@Data
 @EqualsAndHashCode( callSuper = true )
 public final class DataSet
     extends AtomEntity
 {
+
+    private Date beginPosition;
+
+    private Date endPosition;
 
     public void download( File targetDir, DownloadHandler handler )
     {

@@ -35,6 +35,11 @@ public final class DataSetRulesModule
         forPattern( "feed/entry/updated" ).setBeanProperty();
         forPattern( "feed/entry/id" ).setBeanProperty();
 
+        forPattern( "feed/entry/gml:validTime/gml:TimePeriod/gml:beginPosition" )
+            .setBeanProperty().withName( "beginPosition" );
+        forPattern( "feed/entry/gml:validTime/gml:TimePeriod/gml:beginPosition" )
+            .setBeanProperty().withName( "endPosition" );
+
         forPattern( "feed/entry/link" ).callMethod( "addLink" )
                                              .withParamTypes( String.class, String.class, String.class )
                                              .then()
