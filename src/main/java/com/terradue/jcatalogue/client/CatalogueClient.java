@@ -45,6 +45,7 @@ import com.terradue.jcatalogue.client.digester.DataSetRulesModule;
 import com.terradue.jcatalogue.client.digester.LinkedAtomEntityModule;
 import com.terradue.jcatalogue.client.digester.OpenSearchModule;
 import com.terradue.jcatalogue.client.download.Downloader;
+import com.terradue.jcatalogue.client.download.HttpDownloader;
 import com.terradue.jcatalogue.client.download.Protocol;
 
 public final class CatalogueClient
@@ -79,6 +80,8 @@ public final class CatalogueClient
                             .setMaximumConnectionsTotal( 100 )
                             .setFollowRedirects( true )
                             .build() );
+
+        registerDownloader( new HttpDownloader( httpClient ) );
     }
 
     public void registerDownloader( Downloader downloader )
