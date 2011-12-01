@@ -142,6 +142,25 @@ CatalogueDescription catalogueDescription = client.discover( "http://eo-virtual-
 
         <p>and optionally can pass <code>Parameter</code>s instances.</p>
       </subsection>
+
+      <subsection name="Accessing to the DataSets">
+        <p><code>DataSet</code> instances can be accessed from a <code>Serie</code> instance:</p>
+
+        <source>for ( DataSet dataset : serie )
+{
+    // put your code here
+}</source>
+
+        <p><code>DataSet</code> instances allow access (via getters) to meta informations such as:</p>
+        <ul>
+          <li>title;</li>
+          <li>subtitle;</li>
+          <li>updated;</li>
+          <li>begin position;</li>
+          <li>end position;</li>
+          <li>geo location.</li>
+        </ul>
+      </subsection>
     </section>
   </body>
 
