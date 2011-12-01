@@ -22,7 +22,6 @@ import static org.apache.commons.beanutils.ConvertUtils.lookup;
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.Converter;
 
-import com.terradue.jcatalogue.client.geo.Box;
 import com.terradue.jcatalogue.client.geo.Line;
 import com.terradue.jcatalogue.client.geo.Point;
 import com.terradue.jcatalogue.client.geo.Polygon;
@@ -72,16 +71,7 @@ public final class GeoConverter
                 points[i / EVEN_VERIFIER] = new Point( latitude, longitude );
             }
 
-            if ( Box.class == type )
-            {
-                if ( points.length != EVEN_VERIFIER )
-                {
-                    throw new ConversionException( format( "Impossible to marshall to %s, requires % points (found %s)",
-                                                           Box.class.getName(), EVEN_VERIFIER, points.length ) );
-                }
-                return new Box( points[0], points[1] );
-            }
-            else if ( Line.class == type )
+            if ( Line.class == type )
             {
                 return new Line( points );
             }

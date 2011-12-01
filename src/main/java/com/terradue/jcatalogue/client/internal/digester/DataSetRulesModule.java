@@ -22,6 +22,10 @@ import static com.terradue.jcatalogue.client.internal.digester.Namespaces.GML;
 import org.apache.commons.digester3.binder.AbstractNamespaceURIBasedRulesModule;
 
 import com.terradue.jcatalogue.client.DataSet;
+import com.terradue.jcatalogue.client.geo.Box;
+import com.terradue.jcatalogue.client.geo.Line;
+import com.terradue.jcatalogue.client.geo.Point;
+import com.terradue.jcatalogue.client.geo.Polygon;
 
 public final class DataSetRulesModule
     extends AbstractNamespaceURIBasedRulesModule
@@ -49,6 +53,25 @@ public final class DataSetRulesModule
         forPattern( "feed/entry/validTime/TimePeriod/beginPosition" )
             .withNamespaceURI( GML )
             .setBeanProperty().withName( "endPosition" );
+
+        forPattern( "feed/entry/where/Envelope" )
+            .withNamespaceURI( GML )
+            .createObject().ofType( Box.class );
+        forPattern( "feed/entry/where/Envelope/lowerCorner" )
+            .withNamespaceURI( GML )
+            .setBeanProperty().withName( "lowerCorner" );
+        forPattern( "feed/entry/where/Envelope/upperCorner" )
+            .withNamespaceURI( GML )
+            .setBeanProperty().withName( "upperCorner" );
+        forPattern( "feed/entry/where/LineString/posList" )
+            .withNamespaceURI( GML )
+            .addRuleCreatedBy( new SetGeoDataLocationRule.Factory( Line.class ) );
+        forPattern( "feed/entry/where/Polygon/exterior/LinearRing/posList" )
+            .withNamespaceURI( GML )
+            .addRuleCreatedBy( new SetGeoDataLocationRule.Factory( Polygon.class ) );
+        forPattern( "feed/entry/where/Point/pos" )
+            .withNamespaceURI( GML )
+            .addRuleCreatedBy( new SetGeoDataLocationRule.Factory( Point.class ) );
 
         forPattern( "feed/entry/link" ).callMethod( "addLink" )
                                              .withParamTypes( String.class, String.class, String.class )

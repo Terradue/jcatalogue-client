@@ -25,8 +25,8 @@ public final class Box
     extends GeoLocation
 {
 
-    private final Point lowerCorner;
+    private Point lowerCorner;
 
-    private final Point upperCorner;
+    private Point upperCorner;
 
 }

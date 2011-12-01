@@ -45,7 +45,6 @@ import com.terradue.jcatalogue.client.download.DownloadHandler;
 import com.terradue.jcatalogue.client.download.Downloader;
 import com.terradue.jcatalogue.client.download.HttpDownloader;
 import com.terradue.jcatalogue.client.download.Protocol;
-import com.terradue.jcatalogue.client.geo.Box;
 import com.terradue.jcatalogue.client.geo.Line;
 import com.terradue.jcatalogue.client.geo.Point;
 import com.terradue.jcatalogue.client.geo.Polygon;
@@ -68,7 +67,6 @@ public final class CatalogueClient
         register( new CharsetConverter(), Charset.class );
 
         Converter geoConverter = new GeoConverter();
-        register( geoConverter, Box.class );
         register( geoConverter, Line.class );
         register( geoConverter, Point.class );
         register( geoConverter, Polygon.class );
