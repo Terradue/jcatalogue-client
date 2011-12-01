@@ -26,6 +26,7 @@ import java.util.Iterator;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.ning.http.client.Realm;
@@ -92,6 +93,7 @@ public final class CatalogueClientTestCase
     }
 
     @Test
+    @Ignore
     public void traverseCatalogue()
     {
         // get the catalogue
