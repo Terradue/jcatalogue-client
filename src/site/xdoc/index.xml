@@ -162,6 +162,24 @@ CatalogueDescription catalogueDescription = client.discover( "http://eo-virtual-
         </ul>
       </subsection>
     </section>
+
+    <section name="Related GeoData">
+      <p><code>DataSet</code> geo location can be of various formats:</p>
+      <ul>
+        <li>box;</li>
+        <li>line;</li>
+        <li>point;</li>
+        <li>polygon.</li>
+      </ul>
+      <p>Classes that represent this format are contained in the subpackage
+      <code>com.terradue.jcatalogue.client.geo</code>:</p>
+      <ul>
+        <li>Box;</li>
+        <li>Line;</li>
+        <li>Point;</li>
+        <li>Polygon.</li>
+      </ul>
+    </section>
   </body>
 
 </document>
