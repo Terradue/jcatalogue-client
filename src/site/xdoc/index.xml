@@ -180,6 +180,55 @@ CatalogueDescription catalogueDescription = client.discover( "http://eo-virtual-
         <li>Polygon.</li>
       </ul>
     </section>
+
+    <section name="Downloading DataSets">
+      <p>DataSets download can be invoked directly in the <code>DataSet</code> instance:</p>
+
+      <source>import com.terradue.jcatalogue.client.download.*;
+
+dataSet.download( new File( "/tmp" ), new DownloadHandler()
+{
+
+    @Override
+    public void onSuccess( File file )
+    {
+        check( file.exists() );
+        extractAndProcess( file );
+    }
+
+    @Override
+    public void onWarning( String message )
+    {
+        System.out.printf( "[WARNING] %s%n",  message );
+    }
+
+    @Override
+    public void onError( String message )
+    {
+        log( message );
+    }
+
+    @Override
+    public void onError( Throwable t )
+    {
+        log( t );
+    }
+
+    @Override
+    public void onFatal( String message )
+    {
+        fail( message );
+    }
+
+} );</source>
+
+      <p>the first argument of the <code>download</code> method is the target directory where users intend download
+      the dataset, the secondi argument is an handler useful to implement callbacks on errors and success.</p>
+
+      <subsection name="Downloaders">
+        <p>The download process happens trying all the <code></code></p>
+      </subsection>
+    </section>
   </body>
 
 </document>
