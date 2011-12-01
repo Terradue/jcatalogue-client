@@ -66,6 +66,11 @@ public final class CatalogueDescription
         typeUrlTemplates.put( url.getType(), url );
     }
 
+    public Iterable<OpenSearchUrl> getOpenSearchUrls()
+    {
+        return typeUrlTemplates.values();
+    }
+
     @Override
     void setCatalogueClient( CatalogueClient catalogueClient )
     {
@@ -84,11 +89,6 @@ public final class CatalogueDescription
         }
 
         return typeUrlTemplates.get( ATOM_XML ).invoke( parameters );
-    }
-
-    public Iterable<OpenSearchUrl> getOpenSearchUrls()
-    {
-        return typeUrlTemplates.values();
     }
 
 }
