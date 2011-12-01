@@ -24,8 +24,10 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 @Data
 @EqualsAndHashCode( callSuper = true )
@@ -33,6 +35,7 @@ public final class CatalogueDescription
     extends CatalogueEntity
 {
 
+    @Getter( AccessLevel.NONE )
     private final Map<String, OpenSearchUrl> typeUrlTemplates = new HashMap<String, OpenSearchUrl>();
 
     private String shortName;
