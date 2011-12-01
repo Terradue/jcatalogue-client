@@ -44,9 +44,11 @@ import com.terradue.jcatalogue.client.download.DownloadHandler;
 import com.terradue.jcatalogue.client.download.Downloader;
 import com.terradue.jcatalogue.client.download.HttpDownloader;
 import com.terradue.jcatalogue.client.download.Protocol;
+import com.terradue.jcatalogue.client.geo.Point;
 import com.terradue.jcatalogue.client.internal.converters.AtomDateConverter;
 import com.terradue.jcatalogue.client.internal.converters.CharsetConverter;
 import com.terradue.jcatalogue.client.internal.converters.LocaleConverter;
+import com.terradue.jcatalogue.client.internal.converters.PointConverter;
 import com.terradue.jcatalogue.client.internal.digester.AtomRulesModule;
 import com.terradue.jcatalogue.client.internal.digester.DataSetRulesModule;
 import com.terradue.jcatalogue.client.internal.digester.LinkedAtomEntityModule;
@@ -60,6 +62,7 @@ public final class CatalogueClient
         register( new AtomDateConverter(), Date.class );
         register( new LocaleConverter(), Locale.class );
         register( new CharsetConverter(), Charset.class );
+        register( new PointConverter(), Point.class );
     }
 
     private final Map<String, Downloader> downloaders = new HashMap<String, Downloader>();
