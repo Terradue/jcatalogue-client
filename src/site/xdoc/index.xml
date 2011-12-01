@@ -40,6 +40,7 @@ CatalogueDescription catalogueDescription = client.discover( "http://eo-virtual-
       <subsection name="The OpenSearch meta data">
         <p>Once obtained a <code>CatalogueDescription</code> instance, users can now access (via getters) to search
         metadata, such as:</p>
+
         <ul>
           <li>short name;</li>
           <li>long name;</li>
@@ -51,9 +52,62 @@ CatalogueDescription catalogueDescription = client.discover( "http://eo-virtual-
           <li>syndication right;</li>
           <li>adult content flag;</li>
           <li>language;</li>
-          <li>inputEncoding;</li>
-          <li>outputEncoding.</li>
+          <li>input encoding;</li>
+          <li>output encoding.</li>
         </ul>
+
+        <p>The next step is accessing to the OpenSearch URL templates, which describe the how to query the server to
+        obtain a <code>Catalogue</code> instance:</p>
+
+        <source>for ( OpenSearchUrl url : catalogueDescription.getOpenSearchUrls() )
+{
+    System.out.printf( "%s) %s%n", url.getType(), url.getBaseUrl() );
+
+    for ( OpenSearchParameter parameter : url.getParameters() )
+    {
+        System.out.printf( "    Key: %s, parameter: %s, mandatory: %s%n",
+                           parameter.getKey(), parameter.getType(), parameter.isMandatory() );
+    }
+}</source>
+
+        <p><span class="label notice">Notice</span>: the <b>standard</b> Atom protocol
+        (<code>application/xml+atom</code>) is supported by default by the client.</p>
+      </subsection>
+
+      <subsection name="Accessing to the Catalogue">
+        <p>From a <code>CatalogueDescription</code> is very easy accessing to a <code>Catalogue</code>:</p>
+
+        <source>Catalogue catalogue = catalogueDescription.getCatalogue();</source>
+
+        <p><code>Catalogue</code> instances allow access (via getters) to meta informations such as:</p>
+        <ul>
+          <li>title;</li>
+          <li>subtitle;</li>
+          <li>content;</li>
+          <li>published;</li>
+          <li>updated;</li>
+          <li>id;</li>
+          <li>total results;</li>
+          <li>start index;</li>
+          <li>items per page.</li>
+        </ul>
+
+        <p>Users that need  accurate filter, have to pass parameters to perform:</p>
+
+        <source>Catalogue catalogue = catalogueDescription.getCatalogue( new Parameter( "startPage", "2" ), ... );</source>
+
+        <p>where parameters are defined in the section above.</p>
+
+        <p>Simple pagination feature is offered in the <code>Catalogue</code> class:</p>
+
+        <source>while ( catalogue.hasMoreResults() )
+{
+    Catalogue next = catalogue.getNextResults();
+}</source>
+      </subsection>
+
+      <subsection name="Accessing to the Series">
+        <p><code>Series</code> can be accessed from a <code>Catalogue</code> instance</p>
       </subsection>
     </section>
   </body>
