@@ -100,9 +100,9 @@ public final class OpenSearchUrl
 
         for ( OpenSearchParameter searchParameter : this.parameters )
         {
-            if ( searchParameter.isMandatory() && !parametersName.contains( searchParameter.getValue() ) )
+            if ( searchParameter.isMandatory() && !parametersName.contains( searchParameter.getKey() ) )
             {
-                throw new IllegalArgumentException( format( "Mandatory parameter %s not found!", searchParameter.getValue() ) );
+                throw new IllegalArgumentException( format( "Mandatory parameter %s not found!", searchParameter.getKey() ) );
             }
         }
 
