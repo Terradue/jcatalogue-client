@@ -107,7 +107,40 @@ CatalogueDescription catalogueDescription = client.discover( "http://eo-virtual-
       </subsection>
 
       <subsection name="Accessing to the Series">
-        <p><code>Series</code> can be accessed from a <code>Catalogue</code> instance</p>
+        <p><code>Series</code> can be accessed from a <code>Catalogue</code> instance:</p>
+
+        <source>for ( Serie serie : catalogue )
+{
+    // put your code here
+}</source>
+
+        <p><code>Serie</code> instances allow access (via getters) to meta informations such as:</p>
+        <ul>
+          <li>title;</li>
+          <li>subtitle;</li>
+          <li>content;</li>
+          <li>published;</li>
+          <li>updated;</li>
+          <li>id;</li>
+          <li>total results;</li>
+          <li>start index;</li>
+          <li>items per page.</li>
+        </ul>
+
+        <p>Simple pagination feature is offered in the <code>Serie</code> class:</p>
+
+        <source>while ( serie.hasMoreResults() )
+{
+    Serie next = serie.getNextResults();
+}</source>
+
+        <p>If series URLs are already known, users can access to <code>Serie</code> instances directly from the
+        <code>CatalogueClient</code>:</p>
+
+        <source>Serie serie =
+    client.getSerie( "http://catalog.gpod.terradue.int/catalogue/gpod/ASA_WSM_1P/ASA_WSM_1PNPDE20111103_193813_000001713108_00171_50616_5757.N1/xml" )</source>
+
+        <p>and optionally can pass <code>Parameter</code>s instances.</p>
       </subsection>
     </section>
   </body>
