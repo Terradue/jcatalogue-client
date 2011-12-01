@@ -23,6 +23,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import com.terradue.jcatalogue.client.download.DownloadHandler;
+import com.terradue.jcatalogue.client.geo.GeoLocation;
 
 @Data
 @EqualsAndHashCode( callSuper = true )
@@ -33,6 +34,8 @@ public final class DataSet
     private Date beginPosition;
 
     private Date endPosition;
+
+    private GeoLocation geoLocation;
 
     public void download( File targetDir, DownloadHandler handler )
     {
