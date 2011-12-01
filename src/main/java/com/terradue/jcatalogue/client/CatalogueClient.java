@@ -274,7 +274,15 @@ public final class CatalogueClient
 
             Downloader downloader = lookupDownloader( fileUri.getScheme() );
 
-            downloader.download( targetDir, fileUri, callback );
+            if ( downloader != null )
+            {
+                downloader.download( targetDir, fileUri, callback );
+            }
+            else
+            {
+                callback.onWarning( format( "'%s' protocol is not supported, impossible to download %s",
+                                            fileUri.getScheme(), fileUri ) );
+            }
         }
     }
 

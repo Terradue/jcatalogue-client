@@ -103,6 +103,11 @@ public final class CatalogueClientTestCase
 
         // series
 
+        for ( Serie serie : catalogue )
+        {
+
+        }
+
         Iterator<Serie> seriesIterator = catalogue.iterator();
 
         assertTrue( seriesIterator.hasNext() );
@@ -136,6 +141,12 @@ public final class CatalogueClientTestCase
             public void onError( String message )
             {
                 fail( message );
+            }
+
+            @Override
+            public void onWarning( String message )
+            {
+                System.out.printf( "[WARNING] %s%n",  message );
             }
 
             @Override

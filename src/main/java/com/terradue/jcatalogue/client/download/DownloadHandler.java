@@ -25,6 +25,8 @@ public interface DownloadHandler
 
     void onError( String message );
 
+    void onWarning( String message );
+
     void onSuccess( File file );
 
 }

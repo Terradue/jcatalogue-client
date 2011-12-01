@@ -30,6 +30,12 @@ final class CallbackDownloadHandler
     }
 
     @Override
+    public void onWarning( String message )
+    {
+        adapted.onWarning( message );
+    }
+
+    @Override
     public void onSuccess( File file )
     {
         downloaded = true;
