@@ -150,6 +150,12 @@ public final class CatalogueClientTestCase
             }
 
             @Override
+            public void onFatal( String message )
+            {
+                fail( message );
+            }
+
+            @Override
             public void onError( Throwable t )
             {
                 fail( t.getMessage() );

@@ -267,7 +267,8 @@ public final class CatalogueClient
         {
             if ( !fileUrisIterator.hasNext() )
             {
-                throw new RuntimeException( "Download not possible, none of the submitted URIs succeeded" );
+                callback.onFatal( "Download not possible, none of the submitted URIs succeeded" );
+                return;
             }
 
             URI fileUri = fileUrisIterator.next();

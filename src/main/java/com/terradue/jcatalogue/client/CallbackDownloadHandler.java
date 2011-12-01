@@ -36,6 +36,12 @@ final class CallbackDownloadHandler
     }
 
     @Override
+    public void onFatal( String message )
+    {
+        adapted.onFatal( message );
+    }
+
+    @Override
     public void onSuccess( File file )
     {
         downloaded = true;
