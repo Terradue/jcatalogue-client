@@ -1,11 +1,5 @@
 package com.terradue.jcatalogue.client.download;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
 /*
  *    Copyright 2011 Terradue srl
  *
@@ -21,6 +15,12 @@ import java.lang.annotation.Target;
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 @Documented
 @Retention( RetentionPolicy.RUNTIME )
