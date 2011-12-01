@@ -16,22 +16,15 @@ package com.terradue.jcatalogue.client.geo;
  *    limitations under the License.
  */
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+@Data
 @EqualsAndHashCode( callSuper = true )
 public final class Polygon
     extends GeoLocation
 {
 
     private final Point[] points;
-
-    public Polygon( Point[] points )
-    {
-        if ( !points[0].equals( points[points.length - 1] ) )
-        {
-            throw new IllegalArgumentException( "Input points don't descrive a valid Polygon, first and last Points are not equals" );
-        }
-        this.points = points;
-    }
 
 }

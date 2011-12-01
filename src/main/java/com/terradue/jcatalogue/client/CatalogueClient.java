@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.apache.commons.beanutils.Converter;
 import org.apache.commons.digester3.binder.DigesterLoader;
 
 import com.ning.http.client.AsyncCompletionHandler;
@@ -44,11 +45,14 @@ import com.terradue.jcatalogue.client.download.DownloadHandler;
 import com.terradue.jcatalogue.client.download.Downloader;
 import com.terradue.jcatalogue.client.download.HttpDownloader;
 import com.terradue.jcatalogue.client.download.Protocol;
+import com.terradue.jcatalogue.client.geo.Box;
+import com.terradue.jcatalogue.client.geo.Line;
 import com.terradue.jcatalogue.client.geo.Point;
+import com.terradue.jcatalogue.client.geo.Polygon;
 import com.terradue.jcatalogue.client.internal.converters.AtomDateConverter;
 import com.terradue.jcatalogue.client.internal.converters.CharsetConverter;
+import com.terradue.jcatalogue.client.internal.converters.GeoConverter;
 import com.terradue.jcatalogue.client.internal.converters.LocaleConverter;
-import com.terradue.jcatalogue.client.internal.converters.PointConverter;
 import com.terradue.jcatalogue.client.internal.digester.AtomRulesModule;
 import com.terradue.jcatalogue.client.internal.digester.DataSetRulesModule;
 import com.terradue.jcatalogue.client.internal.digester.LinkedAtomEntityModule;
@@ -62,7 +66,12 @@ public final class CatalogueClient
         register( new AtomDateConverter(), Date.class );
         register( new LocaleConverter(), Locale.class );
         register( new CharsetConverter(), Charset.class );
-        register( new PointConverter(), Point.class );
+
+        Converter geoConverter = new GeoConverter();
+        register( geoConverter, Box.class );
+        register( geoConverter, Line.class );
+        register( geoConverter, Point.class );
+        register( geoConverter, Polygon.class );
     }
 
     private final Map<String, Downloader> downloaders = new HashMap<String, Downloader>();
