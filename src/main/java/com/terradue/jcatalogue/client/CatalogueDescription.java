@@ -17,7 +17,6 @@ package com.terradue.jcatalogue.client;
  */
 
 import static com.terradue.jcatalogue.client.MimeTypes.ATOM_XML;
-import static java.lang.String.format;
 
 import java.nio.charset.Charset;
 import java.util.HashMap;
@@ -81,7 +80,7 @@ public final class CatalogueDescription
     {
         if ( !typeUrlTemplates.containsKey( ATOM_XML ) )
         {
-            throw new IllegalStateException( format( "", ATOM_XML ) );
+            throw new IllegalStateException( "Direct URL invocation supports application/atom+xml only" );
         }
 
         return typeUrlTemplates.get( ATOM_XML ).invoke( parameters );
