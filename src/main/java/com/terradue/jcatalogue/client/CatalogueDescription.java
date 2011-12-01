@@ -86,4 +86,9 @@ public final class CatalogueDescription
         return typeUrlTemplates.get( ATOM_XML ).invoke( parameters );
     }
 
+    public Iterable<OpenSearchUrl> getOpenSearchUrls()
+    {
+        return typeUrlTemplates.values();
+    }
+
 }
