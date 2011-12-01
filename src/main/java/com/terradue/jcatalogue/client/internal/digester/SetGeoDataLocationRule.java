@@ -20,6 +20,7 @@ import static org.apache.commons.beanutils.ConvertUtils.convert;
 import lombok.RequiredArgsConstructor;
 
 import org.apache.commons.digester3.Rule;
+import org.apache.commons.digester3.binder.RuleProvider;
 
 import com.terradue.jcatalogue.client.DataSet;
 import com.terradue.jcatalogue.client.geo.GeoLocation;
@@ -40,6 +41,21 @@ final class SetGeoDataLocationRule
         DataSet dataSet = getDigester().peek();
 
         dataSet.setGeoLocation( geoLocation );
+    }
+
+    @RequiredArgsConstructor
+    public static final class Factory
+        implements RuleProvider<SetGeoDataLocationRule>
+    {
+
+        private final Class<? extends GeoLocation> targetType;
+
+        @Override
+        public SetGeoDataLocationRule get()
+        {
+            return new SetGeoDataLocationRule( targetType );
+        }
+
     }
 
 }
