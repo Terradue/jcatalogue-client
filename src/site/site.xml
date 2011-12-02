@@ -25,10 +25,13 @@
   </skin>
 
   <body>
-    <links>
-      <item name="Terradue" href="http://www.terradue.com/" />
-    </links>
+    <menu name="User guide" href="index.html" />
+
     <menu ref="reports" inherit="bottom" />
+
+    <menu name="Links">
+      <item name="Terradue" href="http://www.terradue.com/" />
+    </menu>
   </body>
 </project>
 

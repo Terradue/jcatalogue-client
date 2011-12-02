@@ -226,7 +226,41 @@ dataSet.download( new File( "/tmp" ), new DownloadHandler()
       the dataset, the secondi argument is an handler useful to implement callbacks on errors and success.</p>
 
       <subsection name="Downloaders">
-        <p>The download process happens trying all the <code></code></p>
+        <p><code>DataSet</code> instances allow downloading the associated media file, that is usually enlisted
+        in the <code>enclosure</code> URL type.</p>
+
+        <p>Each <code>DataSet</code> could have more that one <code>enclosure</code> URL, so the client will iterate
+        over them until it can download the media file - or URLs are exhausted</p>
+
+        <p>By default, the client provides support for <code>http(s)</code> only, downloaders for different protocols
+        need to be provided.</p>
+
+        <p>It is possible to plug <code>Downloader</code>s by two way:</p>
+
+        <ul>
+          <li><i>explicit</i>: by associating the <code>Downloader</code> instance to a related protocol:
+            <source>client.registerDownloader( "ftp", new MyFtpDownloader() );</source>
+          </li>
+          <li><i>implicit</i>: by annotating the <code>Downloader</code> class with
+          <code>@com.terradue.jcatalogue.client.download.Protocol</code> annotation, where specified the protocol(s)
+
+          <source>@Protocol({ "ftp", "sftp" })
+public final class MyFtpDownloader
+    implements Downloader
+{
+
+    @Override
+    public void download( File targetDir, URI fileUri, DownloadHandler handler )
+    {
+        // your implementation here
+    }
+
+}</source>
+
+          then registering the instance (omitting the protocols):
+
+          <source>client.registerDownloader( new MyFtpDownloader() );</source></li>
+        </ul>
       </subsection>
     </section>
   </body>
