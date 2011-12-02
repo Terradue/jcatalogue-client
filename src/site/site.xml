@@ -25,7 +25,10 @@
   </skin>
 
   <body>
-    <menu name="User guide" href="index.html" />
+    <menu name="User guide">
+      <item name="5 minutes tutorial" href="index.html" />
+      <item name="Installation" href="installation.html" />
+    </menu>
 
     <menu ref="reports" inherit="bottom" />
 
