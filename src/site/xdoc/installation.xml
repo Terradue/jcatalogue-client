@@ -42,8 +42,8 @@
       <subsection name="Manual installation">
         <p>Download the JCatalogue Client
         <a href="https://github.com/downloads/Terradue/jcatalogue-client/jcatalogue-client-0.1.tar.gz">tarball</a>,
-        extract it, and put all the <code>jar</code> libraries in the classpath contained in the <code>/lib</code>
-        directories.</p>
+        extract it, and put all the <code>jar</code> libraries,  contained in the <code>/lib</code> directory,
+        in you application classpath.</p>
       </subsection>
     </section>
   </body>
