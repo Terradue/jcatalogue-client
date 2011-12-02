@@ -60,4 +60,31 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.2.1</version>
+        <executions>
+          <execution>
+            <id>assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <attach>false</attach>
+          <appendAssemblyId>false</appendAssemblyId>
+          <tarLongFileMode>gnu</tarLongFileMode>
+          <descriptors>
+            <descriptor>${basedir}/src/main/assembly/bin.xml</descriptor>
+          </descriptors>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
