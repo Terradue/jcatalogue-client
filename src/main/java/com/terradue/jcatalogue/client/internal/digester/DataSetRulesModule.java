@@ -44,6 +44,7 @@ public final class DataSetRulesModule
                                   .setNext( "addDataSet" );
         forPattern( "feed/entry/title" ).setBeanProperty();
         forPattern( "feed/entry/subtitle" ).setBeanProperty();
+        forPattern( "feed/entry/published" ).setBeanProperty();
         forPattern( "feed/entry/updated" ).setBeanProperty();
         forPattern( "feed/entry/id" ).setBeanProperty();
 

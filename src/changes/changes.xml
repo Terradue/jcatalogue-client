@@ -25,6 +25,9 @@
       <action dev="simonetripodi" type="add">
         added CatalogueClient#getDataSet() methods to access to a single DataSet
       </action>
+      <action dev="simonetripodi" type="fix">
+        added missing published attribute in DataSet list
+      </action>
     </release>
 
     <release version="0.1" date="2011-12-03" description="First release." />
