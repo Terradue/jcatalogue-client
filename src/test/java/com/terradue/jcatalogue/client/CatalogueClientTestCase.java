@@ -103,11 +103,6 @@ public final class CatalogueClientTestCase
 
         // series
 
-        for ( Serie serie : catalogue )
-        {
-
-        }
-
         Iterator<Serie> seriesIterator = catalogue.iterator();
 
         assertTrue( seriesIterator.hasNext() );
