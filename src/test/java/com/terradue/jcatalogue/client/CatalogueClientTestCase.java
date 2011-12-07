@@ -168,8 +168,6 @@ public final class CatalogueClientTestCase
     {
         DataSet dataSet = client.getDataSet( "http://10.11.12.248/catalogue/gpod/ERS2_WILMA/AMI_WILM__0P_19950718T144654_19950718T144710_KS_01267.E2/atom" );
 
-        System.out.println( dataSet );
-
         assertNotNull( dataSet );
     }
 
