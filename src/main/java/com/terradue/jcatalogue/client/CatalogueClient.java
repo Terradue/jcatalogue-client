@@ -56,6 +56,7 @@ import com.terradue.jcatalogue.client.internal.digester.AtomRulesModule;
 import com.terradue.jcatalogue.client.internal.digester.DataSetRulesModule;
 import com.terradue.jcatalogue.client.internal.digester.LinkedAtomEntityModule;
 import com.terradue.jcatalogue.client.internal.digester.OpenSearchModule;
+import com.terradue.jcatalogue.client.internal.digester.SingleDataSetRulesModule;
 
 public final class CatalogueClient
 {
@@ -80,6 +81,8 @@ public final class CatalogueClient
 
     private final DigesterLoader serieDigesterLoader;
 
+    private final DigesterLoader singleDataSetDigesterLoader;
+
     private final AsyncHttpClient httpClient;
 
     public CatalogueClient()
@@ -88,6 +91,7 @@ public final class CatalogueClient
         catalogueDigesterLoader = newLoader( new AtomRulesModule( Catalogue.class ), new LinkedAtomEntityModule() )
             .setNamespaceAware( true );
         serieDigesterLoader = newLoader( new AtomRulesModule( Serie.class ), new DataSetRulesModule() ).setNamespaceAware( true );
+        singleDataSetDigesterLoader = newLoader( new SingleDataSetRulesModule() ).setNamespaceAware( true );
         httpClient = new AsyncHttpClient(new AsyncHttpClientConfig.Builder()
                             .setAllowPoolingConnection( true )
                             .addIOExceptionFilter( new ResumableIOExceptionFilter() )
@@ -184,6 +188,24 @@ public final class CatalogueClient
     public Serie getSerie( URI uri, Parameter... parameters )
     {
         return invoke( serieDigesterLoader, uri, parameters );
+    }
+
+    // DataSet methods
+
+    /**
+     * @since 0.2
+     */
+    public DataSet getDataSet( String uri, Parameter... parameters )
+    {
+        return invoke( singleDataSetDigesterLoader, uri, parameters );
+    }
+
+    /**
+     * @since 0.2
+     */
+    public DataSet getDataSet( URI uri, Parameter... parameters )
+    {
+        return invoke( singleDataSetDigesterLoader, uri, parameters );
     }
 
     // generic internal methods

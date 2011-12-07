@@ -21,7 +21,12 @@
     <title>JCatalogue Client Changes</title>
   </properties>
   <body>
-    <release version="0.1-SNAPSHOT" date="201?-??-??" description="First release.">
+    <release version="0.2" date="2011-12-07" description="Maintenance release.">
+      <action dev="simonetripodi" type="add">
+        added CatalogueClient#getDataSet() methods to access to a single DataSet
+      </action>
     </release>
+
+    <release version="0.1" date="2011-12-03" description="First release." />
   </body>
 </document>
