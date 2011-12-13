@@ -21,6 +21,15 @@
     <title>JCatalogue Client Changes</title>
   </properties>
   <body>
+    <release version="0.3" date="2011-12-13" description="Maintenance release.">
+      <action dev="simonetripodi" type="fix">
+        fixed HTTP GET parameters invocation
+      </action>
+      <action dev="simonetripodi" type="add">
+        added logging stuff
+      </action>
+    </release>
+
     <release version="0.2" date="2011-12-07" description="Maintenance release.">
       <action dev="simonetripodi" type="add">
         added CatalogueClient#getDataSet() methods to access to a single DataSet
