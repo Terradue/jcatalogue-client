@@ -171,4 +171,18 @@ public final class CatalogueClientTestCase
         assertNotNull( dataSet );
     }
 
+    /**
+     * @since 0.3
+     */
+    @Test
+    public void testQueryParameters()
+        throws Exception
+    {
+        Serie serie = client.getSerie( "http://10.11.12.248/catalogue/gpod/ER2_TIM_AX/atom",
+                                       new Parameter( "startDate", "1995-07-18T14:46:54.000" ),
+                                       new Parameter( "stopDate", "1995-07-18T14:46:54.000" ) );
+
+        assertTrue( serie.getTotalResults() > 0 );
+    }
+
 }

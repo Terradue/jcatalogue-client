@@ -238,7 +238,7 @@ public final class CatalogueClient
 
         for ( Parameter parameter : parameters )
         {
-            requestBuilder.addParameter( parameter.getName(), parameter.getValue() );
+            requestBuilder.addQueryParameter( parameter.getName(), parameter.getValue() );
         }
 
         CE description;
