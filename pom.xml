@@ -14,6 +14,7 @@
 
   <name>JCatalogue Client</name>
   <description>TODO - fill me</description>
+  <url>http://terradue.github.com/jcatalogue-client/</url>
 
   <scm>
     <connection>scm:git:ssh://github.com/Terradue/jcatalogue-client.git</connection>
