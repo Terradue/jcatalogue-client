@@ -1,0 +1,1090 @@
+<api>
+<package name="com.terradue.jcatalogue.client"
+>
+<class name="Catalogue"
+ extends="com.terradue.jcatalogue.client.AtomEntity"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="java.lang.Iterable">
+</implements>
+<constructor name="Catalogue"
+ type="com.terradue.jcatalogue.client.Catalogue"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="addEntityUrl"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="serieUrl" type="java.lang.String">
+</parameter>
+</method>
+<method name="addLink"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="rel" type="java.lang.String">
+</parameter>
+<parameter name="type" type="java.lang.String">
+</parameter>
+<parameter name="href" type="java.lang.String">
+</parameter>
+</method>
+<method name="getNextResults"
+ return="com.terradue.jcatalogue.client.Catalogue"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="hasMoreResults"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="iterator"
+ return="java.util.Iterator&lt;com.terradue.jcatalogue.client.Serie&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="CatalogueClient"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="CatalogueClient"
+ type="com.terradue.jcatalogue.client.CatalogueClient"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="discover"
+ return="com.terradue.jcatalogue.client.CatalogueDescription"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="uri" type="java.lang.String">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="discover"
+ return="com.terradue.jcatalogue.client.CatalogueDescription"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="uri" type="java.net.URI">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="getCatalogue"
+ return="com.terradue.jcatalogue.client.Catalogue"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="uri" type="java.lang.String">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="getCatalogue"
+ return="com.terradue.jcatalogue.client.Catalogue"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="uri" type="java.net.URI">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="getDataSet"
+ return="com.terradue.jcatalogue.client.DataSet"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="uri" type="java.lang.String">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="getDataSet"
+ return="com.terradue.jcatalogue.client.DataSet"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="uri" type="java.net.URI">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="getSerie"
+ return="com.terradue.jcatalogue.client.Serie"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="uri" type="java.lang.String">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="getSerie"
+ return="com.terradue.jcatalogue.client.Serie"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="uri" type="java.net.URI">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="lookupDownloader"
+ return="D"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="protocol" type="java.lang.String">
+</parameter>
+</method>
+<method name="registerDownloader"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="downloader" type="com.terradue.jcatalogue.client.download.Downloader">
+</parameter>
+</method>
+<method name="registerDownloader"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="protocol" type="java.lang.String">
+</parameter>
+<parameter name="downloader" type="com.terradue.jcatalogue.client.download.Downloader">
+</parameter>
+</method>
+</class>
+<class name="CatalogueDescription"
+ extends="com.terradue.jcatalogue.client.CatalogueEntity"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="CatalogueDescription"
+ type="com.terradue.jcatalogue.client.CatalogueDescription"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="addOpenSearchUrl"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="url" type="com.terradue.jcatalogue.client.OpenSearchUrl">
+</parameter>
+</method>
+<method name="getCatalogue"
+ return="com.terradue.jcatalogue.client.Catalogue"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="getOpenSearchUrls"
+ return="java.lang.Iterable&lt;com.terradue.jcatalogue.client.OpenSearchUrl&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="CatalogueEntity"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="CatalogueEntity"
+ type="com.terradue.jcatalogue.client.CatalogueEntity"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
+<class name="DataSet"
+ extends="com.terradue.jcatalogue.client.AtomEntity"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="DataSet"
+ type="com.terradue.jcatalogue.client.DataSet"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="addEntityUrl"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="serieUrl" type="java.lang.String">
+</parameter>
+</method>
+<method name="addLink"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="rel" type="java.lang.String">
+</parameter>
+<parameter name="type" type="java.lang.String">
+</parameter>
+<parameter name="href" type="java.lang.String">
+</parameter>
+</method>
+<method name="download"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="targetDir" type="java.io.File">
+</parameter>
+<parameter name="handler" type="com.terradue.jcatalogue.client.download.DownloadHandler">
+</parameter>
+</method>
+<method name="hasMoreResults"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="OpenSearchUrl"
+ extends="com.terradue.jcatalogue.client.CatalogueEntity"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="OpenSearchUrl"
+ type="com.terradue.jcatalogue.client.OpenSearchUrl"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="type" type="java.lang.String">
+</parameter>
+<parameter name="template" type="java.lang.String">
+</parameter>
+</constructor>
+<method name="invoke"
+ return="com.terradue.jcatalogue.client.Catalogue"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+</class>
+<class name="Parameter"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Parameter"
+ type="com.terradue.jcatalogue.client.Parameter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
+<class name="Serie"
+ extends="com.terradue.jcatalogue.client.AtomEntity"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="java.lang.Iterable">
+</implements>
+<constructor name="Serie"
+ type="com.terradue.jcatalogue.client.Serie"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="addDataSet"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="dataSet" type="com.terradue.jcatalogue.client.DataSet">
+</parameter>
+</method>
+<method name="addEntityUrl"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="serieUrl" type="java.lang.String">
+</parameter>
+</method>
+<method name="addLink"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="rel" type="java.lang.String">
+</parameter>
+<parameter name="type" type="java.lang.String">
+</parameter>
+<parameter name="href" type="java.lang.String">
+</parameter>
+</method>
+<method name="getNextResults"
+ return="com.terradue.jcatalogue.client.Serie"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="hasMoreResults"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="iterator"
+ return="java.util.Iterator&lt;com.terradue.jcatalogue.client.DataSet&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+</package>
+<package name="com.terradue.jcatalogue.client.download"
+>
+<interface name="DownloadHandler"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="onError"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+</method>
+<method name="onError"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="t" type="java.lang.Throwable">
+</parameter>
+</method>
+<method name="onFatal"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+</method>
+<method name="onSuccess"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="file" type="java.io.File">
+</parameter>
+</method>
+<method name="onWarning"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+</method>
+</interface>
+<interface name="Downloader"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="download"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="targetDir" type="java.io.File">
+</parameter>
+<parameter name="fileUri" type="java.net.URI">
+</parameter>
+<parameter name="handler" type="com.terradue.jcatalogue.client.download.DownloadHandler">
+</parameter>
+</method>
+</interface>
+<class name="HttpDownloader"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.terradue.jcatalogue.client.download.Downloader">
+</implements>
+<constructor name="HttpDownloader"
+ type="com.terradue.jcatalogue.client.download.HttpDownloader"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="download"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="targetDir" type="java.io.File">
+</parameter>
+<parameter name="fileUri" type="java.net.URI">
+</parameter>
+<parameter name="handler" type="com.terradue.jcatalogue.client.download.DownloadHandler">
+</parameter>
+</method>
+<method name="registerRealm"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="host" type="java.lang.String">
+</parameter>
+<parameter name="realm" type="com.ning.http.client.Realm">
+</parameter>
+</method>
+</class>
+<class name="Protocol"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="java.lang.annotation.Annotation">
+</implements>
+</class>
+</package>
+<package name="com.terradue.jcatalogue.client.geo"
+>
+<class name="Box"
+ extends="com.terradue.jcatalogue.client.geo.GeoLocation"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Box"
+ type="com.terradue.jcatalogue.client.geo.Box"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
+<class name="GeoLocation"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="GeoLocation"
+ type="com.terradue.jcatalogue.client.geo.GeoLocation"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
+<class name="Line"
+ extends="com.terradue.jcatalogue.client.geo.GeoLocation"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Line"
+ type="com.terradue.jcatalogue.client.geo.Line"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
+<class name="Point"
+ extends="com.terradue.jcatalogue.client.geo.GeoLocation"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Point"
+ type="com.terradue.jcatalogue.client.geo.Point"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
+<class name="Polygon"
+ extends="com.terradue.jcatalogue.client.geo.GeoLocation"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Polygon"
+ type="com.terradue.jcatalogue.client.geo.Polygon"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
+</package>
+<package name="com.terradue.jcatalogue.client.internal.converters"
+>
+<class name="AtomDateConverter"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.commons.beanutils.Converter">
+</implements>
+<constructor name="AtomDateConverter"
+ type="com.terradue.jcatalogue.client.internal.converters.AtomDateConverter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="convert"
+ return="java.lang.Object"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="type" type="java.lang.Class">
+</parameter>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+</method>
+</class>
+<class name="CharsetConverter"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.commons.beanutils.Converter">
+</implements>
+<constructor name="CharsetConverter"
+ type="com.terradue.jcatalogue.client.internal.converters.CharsetConverter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="convert"
+ return="java.lang.Object"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="type" type="java.lang.Class">
+</parameter>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+</method>
+</class>
+<class name="GeoConverter"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.commons.beanutils.Converter">
+</implements>
+<constructor name="GeoConverter"
+ type="com.terradue.jcatalogue.client.internal.converters.GeoConverter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="convert"
+ return="java.lang.Object"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="type" type="java.lang.Class">
+</parameter>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+</method>
+</class>
+<class name="LocaleConverter"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.commons.beanutils.Converter">
+</implements>
+<constructor name="LocaleConverter"
+ type="com.terradue.jcatalogue.client.internal.converters.LocaleConverter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="convert"
+ return="java.lang.Object"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="type" type="java.lang.Class">
+</parameter>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+</method>
+</class>
+</package>
+<package name="com.terradue.jcatalogue.client.internal.digester"
+>
+<class name="AtomRulesModule"
+ extends="org.apache.commons.digester3.binder.AbstractNamespaceURIBasedRulesModule"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="AtomRulesModule"
+ type="com.terradue.jcatalogue.client.internal.digester.AtomRulesModule"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="mappedEntity" type="java.lang.Class&lt;?&gt;">
+</parameter>
+</constructor>
+<method name="configure"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</method>
+</class>
+<class name="DataSetRulesModule"
+ extends="org.apache.commons.digester3.binder.AbstractNamespaceURIBasedRulesModule"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="DataSetRulesModule"
+ type="com.terradue.jcatalogue.client.internal.digester.DataSetRulesModule"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="configure"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</method>
+</class>
+<class name="LinkedAtomEntityModule"
+ extends="org.apache.commons.digester3.binder.AbstractNamespaceURIBasedRulesModule"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="LinkedAtomEntityModule"
+ type="com.terradue.jcatalogue.client.internal.digester.LinkedAtomEntityModule"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="configure"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</method>
+</class>
+<class name="OpenSearchModule"
+ extends="org.apache.commons.digester3.binder.AbstractNamespaceURIBasedRulesModule"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="OpenSearchModule"
+ type="com.terradue.jcatalogue.client.internal.digester.OpenSearchModule"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="configure"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</method>
+</class>
+<class name="SingleDataSetRulesModule"
+ extends="org.apache.commons.digester3.binder.AbstractNamespaceURIBasedRulesModule"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SingleDataSetRulesModule"
+ type="com.terradue.jcatalogue.client.internal.digester.SingleDataSetRulesModule"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="configure"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</method>
+</class>
+</package>
+</api>

@@ -1,0 +1,6 @@
+com.terradue.jcatalogue.client
+com.terradue.jcatalogue.client.download
+com.terradue.jcatalogue.client.geo
+com.terradue.jcatalogue.client.internal.converters
+com.terradue.jcatalogue.client.internal.digester
+
