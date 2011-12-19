@@ -25,6 +25,7 @@ import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -34,6 +35,8 @@ import java.util.Map;
 
 import org.apache.commons.beanutils.Converter;
 import org.apache.commons.digester3.binder.DigesterLoader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.ning.http.client.AsyncCompletionHandler;
 import com.ning.http.client.AsyncHttpClient;
@@ -74,6 +77,8 @@ public final class CatalogueClient
     }
 
     private final Map<String, Downloader> downloaders = new HashMap<String, Downloader>();
+
+    private final Logger logger = LoggerFactory.getLogger( getClass() );
 
     private final DigesterLoader descriptionDigesterLoader;
 
@@ -227,11 +232,16 @@ public final class CatalogueClient
         }
     }
 
-    <CE extends CatalogueEntity> CE invoke( final DigesterLoader digesterLoader, URI uri, Parameter...parameters )
+    <CE extends CatalogueEntity> CE invoke( final DigesterLoader digesterLoader, final URI uri, Parameter...parameters )
     {
         if ( uri == null )
         {
             throw new IllegalArgumentException( "Input URI must be not null" );
+        }
+
+        if ( logger.isDebugEnabled() )
+        {
+            logger.debug( "Invoking Catalogue URI '{}' with parameters: ", uri, Arrays.toString( parameters ) );
         }
 
         RequestBuilder requestBuilder = new RequestBuilder( "GET" ).setUrl( uri.toString() );
@@ -254,7 +264,8 @@ public final class CatalogueClient
                 {
                     if ( HTTP_OK != response.getStatusCode() )
                     {
-                        throw new IllegalStateException( format( "Impossible to query the catalog, server replied %s",
+                        throw new IllegalStateException( format( "Impossible to query the catalog %s, server replied %s",
+                                                                 uri,
                                                                  response.getStatusText() ) );
                     }
                     return digesterLoader.newDigester().parse( response.getResponseBodyAsStream() );
@@ -275,10 +286,19 @@ public final class CatalogueClient
     {
         if ( !targetDir.exists() )
         {
+            if ( logger.isInfoEnabled() )
+            {
+                logger.info( "Directory {} does not exist, creating it...", targetDir );
+            }
+
             if ( !targetDir.mkdirs() )
             {
                 throw new RuntimeException( format( "Impossible to create '%s' directory, please make sure you have enough permissions",
                                                     targetDir ) );
+            }
+            else if ( logger.isInfoEnabled() )
+            {
+                logger.info( "Directory {} created.", targetDir );
             }
         }
 
