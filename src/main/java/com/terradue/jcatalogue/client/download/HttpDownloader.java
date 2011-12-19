@@ -93,7 +93,7 @@ public final class HttpDownloader
             if ( HTTP_OK != response.getStatusCode() )
             {
                 handler.onError( format( "Impossible to download %s from %s, server replied %s",
-                                         targetFile, fileUri, response.getStatusText() ) ) ;
+                                         targetFile.getName(), fileUri, response.getStatusText() ) ) ;
                 targetFile.delete();
             }
             else
