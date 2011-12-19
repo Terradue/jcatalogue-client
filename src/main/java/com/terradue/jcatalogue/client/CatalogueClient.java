@@ -289,7 +289,7 @@ public final class CatalogueClient
         {
             if ( !fileUrisIterator.hasNext() )
             {
-                callback.onFatal( "Download not possible, none of the submitted URIs succeeded" );
+                callback.onFatal( "DataSet media file download not possible, none of the submitted URIs succeeded" );
                 return;
             }
 
