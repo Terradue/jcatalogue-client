@@ -84,9 +84,12 @@ public final class HttpDownloader
             {
                 handler.onError( format( "Impossible to download file %s, server replied %s",
                                          fileUri, response.getStatusText() ) ) ;
+                targetFile.delete();
             }
-
-            handler.onSuccess( targetFile );
+            else
+            {
+                handler.onSuccess( targetFile );
+            }
         }
         catch ( Exception e )
         {
