@@ -25,7 +25,7 @@ import lombok.ToString;
 
 @ToString
 @EqualsAndHashCode( callSuper = true )
-public class Serie
+public class Series
     extends AtomEntity
     implements Iterable<DataSet>
 {
@@ -43,7 +43,7 @@ public class Serie
         return dataSets.iterator();
     }
 
-    public Serie getNextResults()
+    public Series getNextResults()
     {
         if ( !hasMoreResults() )
         {

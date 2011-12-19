@@ -103,11 +103,11 @@ public final class CatalogueClientTestCase
 
         // series
 
-        Iterator<Serie> seriesIterator = catalogue.iterator();
+        Iterator<Series> seriesIterator = catalogue.iterator();
 
         assertTrue( seriesIterator.hasNext() );
 
-        Serie serie = seriesIterator.next();
+        Series serie = seriesIterator.next();
 
         assertNotNull( serie );
 
@@ -178,7 +178,7 @@ public final class CatalogueClientTestCase
     public void testQueryParameters()
         throws Exception
     {
-        Serie serie = client.getSerie( "http://10.11.12.248/catalogue/gpod/ER2_TIM_AX/atom",
+        Series serie = client.getSerie( "http://10.11.12.248/catalogue/gpod/ER2_TIM_AX/atom",
                                        new Parameter( "startDate", "1995-07-18T14:46:54.000" ),
                                        new Parameter( "stopDate", "1995-07-18T14:46:54.000" ) );
 

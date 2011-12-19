@@ -25,11 +25,11 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode( callSuper = true )
 public final class Catalogue
     extends AtomEntity
-    implements Iterable<Serie>
+    implements Iterable<Series>
 {
 
     @Override
-    public Iterator<Serie> iterator()
+    public Iterator<Series> iterator()
     {
         return new LazyLoadSerieIterator( getCatalogueClient(), getEnitiesUrls().iterator() );
     }

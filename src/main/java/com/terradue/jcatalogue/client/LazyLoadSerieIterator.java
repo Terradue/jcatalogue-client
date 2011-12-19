@@ -22,7 +22,7 @@ import lombok.Data;
 
 @Data
 final class LazyLoadSerieIterator
-    implements Iterator<Serie>
+    implements Iterator<Series>
 {
 
     private final CatalogueClient catalogueClient;
@@ -36,7 +36,7 @@ final class LazyLoadSerieIterator
     }
 
     @Override
-    public Serie next()
+    public Series next()
     {
         String nextUrl = serieUrlsIterator.next();
         return catalogueClient.getSerie( nextUrl );

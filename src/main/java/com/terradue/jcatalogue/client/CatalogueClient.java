@@ -95,7 +95,7 @@ public final class CatalogueClient
         descriptionDigesterLoader = newLoader( new OpenSearchModule() ).setNamespaceAware( true );
         catalogueDigesterLoader = newLoader( new AtomRulesModule( Catalogue.class ), new LinkedAtomEntityModule() )
             .setNamespaceAware( true );
-        serieDigesterLoader = newLoader( new AtomRulesModule( Serie.class ), new DataSetRulesModule() ).setNamespaceAware( true );
+        serieDigesterLoader = newLoader( new AtomRulesModule( Series.class ), new DataSetRulesModule() ).setNamespaceAware( true );
         singleDataSetDigesterLoader = newLoader( new SingleDataSetRulesModule() ).setNamespaceAware( true );
         httpClient = new AsyncHttpClient(new AsyncHttpClientConfig.Builder()
                             .setAllowPoolingConnection( true )
@@ -185,12 +185,12 @@ public final class CatalogueClient
 
     // Serie methods
 
-    public Serie getSerie( String uri, Parameter... parameters )
+    public Series getSerie( String uri, Parameter... parameters )
     {
         return invoke( serieDigesterLoader, uri, parameters );
     }
 
-    public Serie getSerie( URI uri, Parameter... parameters )
+    public Series getSerie( URI uri, Parameter... parameters )
     {
         return invoke( serieDigesterLoader, uri, parameters );
     }

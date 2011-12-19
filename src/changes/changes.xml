@@ -21,6 +21,18 @@
     <title>JCatalogue Client Changes</title>
   </properties>
   <body>
+    <release version="0.4" date="2011-12-19" description="Maintenance release.">
+      <action dev="simonetripodi" type="fix">
+        download handler never failed
+      </action>
+      <action dev="simonetripodi" type="updated">
+        wrong Serie name class replace with Series class
+      </action>
+      <action dev="simonetripodi" type="add">
+        more logging stuff
+      </action>
+    </release>
+
     <release version="0.3" date="2011-12-13" description="Maintenance release.">
       <action dev="simonetripodi" type="fix">
         fixed HTTP GET parameters invocation
