@@ -72,7 +72,7 @@
 >
 </method>
 <method name="iterator"
- return="java.util.Iterator&lt;com.terradue.jcatalogue.client.Serie&gt;"
+ return="java.util.Iterator&lt;com.terradue.jcatalogue.client.Series&gt;"
  abstract="false"
  native="false"
  synchronized="false"
@@ -190,7 +190,7 @@
 </parameter>
 </method>
 <method name="getSerie"
- return="com.terradue.jcatalogue.client.Serie"
+ return="com.terradue.jcatalogue.client.Series"
  abstract="false"
  native="false"
  synchronized="false"
@@ -205,7 +205,7 @@
 </parameter>
 </method>
 <method name="getSerie"
- return="com.terradue.jcatalogue.client.Serie"
+ return="com.terradue.jcatalogue.client.Series"
  abstract="false"
  native="false"
  synchronized="false"
@@ -456,7 +456,7 @@
 >
 </constructor>
 </class>
-<class name="Serie"
+<class name="Series"
  extends="com.terradue.jcatalogue.client.AtomEntity"
  abstract="false"
  static="false"
@@ -466,8 +466,8 @@
 >
 <implements name="java.lang.Iterable">
 </implements>
-<constructor name="Serie"
- type="com.terradue.jcatalogue.client.Serie"
+<constructor name="Series"
+ type="com.terradue.jcatalogue.client.Series"
  static="false"
  final="false"
  deprecated="not deprecated"
@@ -518,7 +518,7 @@
 </parameter>
 </method>
 <method name="getNextResults"
- return="com.terradue.jcatalogue.client.Serie"
+ return="com.terradue.jcatalogue.client.Series"
  abstract="false"
  native="false"
  synchronized="false"

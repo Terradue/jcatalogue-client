@@ -7,7 +7,7 @@ var DATA = [
       { id:5, label:"com.terradue.jcatalogue.client.DataSet", link:"com/terradue/jcatalogue/client/DataSet.html", type:"class" },
       { id:6, label:"com.terradue.jcatalogue.client.OpenSearchUrl", link:"com/terradue/jcatalogue/client/OpenSearchUrl.html", type:"class" },
       { id:7, label:"com.terradue.jcatalogue.client.Parameter", link:"com/terradue/jcatalogue/client/Parameter.html", type:"class" },
-      { id:8, label:"com.terradue.jcatalogue.client.Serie", link:"com/terradue/jcatalogue/client/Serie.html", type:"class" },
+      { id:8, label:"com.terradue.jcatalogue.client.Series", link:"com/terradue/jcatalogue/client/Series.html", type:"class" },
       { id:9, label:"com.terradue.jcatalogue.client.download", link:"com/terradue/jcatalogue/client/download/package-summary.html", type:"package" },
       { id:10, label:"com.terradue.jcatalogue.client.download.DownloadHandler", link:"com/terradue/jcatalogue/client/download/DownloadHandler.html", type:"class" },
       { id:11, label:"com.terradue.jcatalogue.client.download.Downloader", link:"com/terradue/jcatalogue/client/download/Downloader.html", type:"class" },

@@ -113,11 +113,11 @@
 <a class="jxr_linenumber" name="103" href="#103">103</a> 
 <a class="jxr_linenumber" name="104" href="#104">104</a>         <em class="jxr_comment">// series</em>
 <a class="jxr_linenumber" name="105" href="#105">105</a> 
-<a class="jxr_linenumber" name="106" href="#106">106</a>         Iterator&lt;Serie&gt; seriesIterator = catalogue.iterator();
+<a class="jxr_linenumber" name="106" href="#106">106</a>         Iterator&lt;Series&gt; seriesIterator = catalogue.iterator();
 <a class="jxr_linenumber" name="107" href="#107">107</a> 
 <a class="jxr_linenumber" name="108" href="#108">108</a>         assertTrue( seriesIterator.hasNext() );
 <a class="jxr_linenumber" name="109" href="#109">109</a> 
-<a class="jxr_linenumber" name="110" href="#110">110</a>         Serie serie = seriesIterator.next();
+<a class="jxr_linenumber" name="110" href="#110">110</a>         Series serie = seriesIterator.next();
 <a class="jxr_linenumber" name="111" href="#111">111</a> 
 <a class="jxr_linenumber" name="112" href="#112">112</a>         assertNotNull( serie );
 <a class="jxr_linenumber" name="113" href="#113">113</a> 
@@ -188,7 +188,7 @@
 <a class="jxr_linenumber" name="178" href="#178">178</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testQueryParameters()
 <a class="jxr_linenumber" name="179" href="#179">179</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="180" href="#180">180</a>     {
-<a class="jxr_linenumber" name="181" href="#181">181</a>         Serie serie = client.getSerie( <span class="jxr_string">"http://10.11.12.248/catalogue/gpod/ER2_TIM_AX/atom"</span>,
+<a class="jxr_linenumber" name="181" href="#181">181</a>         Series serie = client.getSerie( <span class="jxr_string">"http://10.11.12.248/catalogue/gpod/ER2_TIM_AX/atom"</span>,
 <a class="jxr_linenumber" name="182" href="#182">182</a>                                        <strong class="jxr_keyword">new</strong> Parameter( <span class="jxr_string">"startDate"</span>, <span class="jxr_string">"1995-07-18T14:46:54.000"</span> ),
 <a class="jxr_linenumber" name="183" href="#183">183</a>                                        <strong class="jxr_keyword">new</strong> Parameter( <span class="jxr_string">"stopDate"</span>, <span class="jxr_string">"1995-07-18T14:46:54.000"</span> ) );
 <a class="jxr_linenumber" name="184" href="#184">184</a> 

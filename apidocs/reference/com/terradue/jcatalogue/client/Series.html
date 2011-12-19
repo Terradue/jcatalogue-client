@@ -55,7 +55,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
 <title>
 
-  CatalogueClient
+  Series
 
 
 | JCatalogue Client
@@ -162,13 +162,13 @@
     <li><h2>Classes</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/Catalogue.html">Catalogue</a></li>
-          <li class="selected api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html">CatalogueClient</a></li>
+          <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html">CatalogueClient</a></li>
           <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/CatalogueDescription.html">CatalogueDescription</a></li>
           <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/CatalogueEntity.html">CatalogueEntity</a></li>
           <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/DataSet.html">DataSet</a></li>
           <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/OpenSearchUrl.html">OpenSearchUrl</a></li>
           <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter</a></li>
-          <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/Series.html">Series</a></li>
+          <li class="selected api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/Series.html">Series</a></li>
       </ul>
     </li>
               
@@ -211,6 +211,18 @@
 <div id="api-info-block">
 
 
+
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
 
   
    
@@ -263,20 +275,29 @@ Summary:
 <div id="jd-header">
     public
      
-    final 
+     
     
     class
-<h1>CatalogueClient</h1>
+<h1>Series</h1>
 
 
 
-  
-    extends Object<br/>
   
   
   
 
   
+    extends <a href="../../../../com/terradue/jcatalogue/client/CatalogueEntity.html">CatalogueEntity</a><br/>
+  
+  
+  
+
+  
+  
+      implements 
+      
+        Iterable&lt;T&gt; 
+      
   
   
 
@@ -291,7 +312,7 @@ Summary:
 
     <tr>
          	
-        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
@@ -299,7 +320,17 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
          	
-        <td colspan="1" class="jd-inheritance-class-cell">com.terradue.jcatalogue.client.CatalogueClient</td>
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../com/terradue/jcatalogue/client/CatalogueEntity.html">com.terradue.jcatalogue.client.CatalogueEntity</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">com.terradue.jcatalogue.client.Series</td>
     </tr>
     
 
@@ -378,7 +409,7 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#CatalogueClient()">CatalogueClient</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/Series.html#Series()">Series</a></span>()</nobr>
         
   </td></tr>
 
@@ -404,10 +435,10 @@ Summary:
             
             
             
-            <a href="../../../../com/terradue/jcatalogue/client/CatalogueDescription.html">CatalogueDescription</a></nobr>
+            void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#discover(java.lang.String, com.terradue.jcatalogue.client.Parameter...)">discover</a></span>(String uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</nobr>
+        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/Series.html#addDataSet(com.terradue.jcatalogue.client.DataSet)">addDataSet</a></span>(<a href="../../../../com/terradue/jcatalogue/client/DataSet.html">DataSet</a> dataSet)</nobr>
         
   </td></tr>
 
@@ -417,141 +448,13 @@ Summary:
         <td class="jd-typecol"><nobr>
             
             
-            
-            
-            
-            <a href="../../../../com/terradue/jcatalogue/client/CatalogueDescription.html">CatalogueDescription</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#discover(java.net.URI, com.terradue.jcatalogue.client.Parameter...)">discover</a></span>(URI uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../com/terradue/jcatalogue/client/Catalogue.html">Catalogue</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#getCatalogue(java.lang.String, com.terradue.jcatalogue.client.Parameter...)">getCatalogue</a></span>(String uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../com/terradue/jcatalogue/client/Catalogue.html">Catalogue</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#getCatalogue(java.net.URI, com.terradue.jcatalogue.client.Parameter...)">getCatalogue</a></span>(URI uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../com/terradue/jcatalogue/client/DataSet.html">DataSet</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#getDataSet(java.lang.String, com.terradue.jcatalogue.client.Parameter...)">getDataSet</a></span>(String uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../com/terradue/jcatalogue/client/DataSet.html">DataSet</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#getDataSet(java.net.URI, com.terradue.jcatalogue.client.Parameter...)">getDataSet</a></span>(URI uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../com/terradue/jcatalogue/client/Series.html">Series</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#getSerie(java.lang.String, com.terradue.jcatalogue.client.Parameter...)">getSerie</a></span>(String uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../com/terradue/jcatalogue/client/Series.html">Series</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#getSerie(java.net.URI, com.terradue.jcatalogue.client.Parameter...)">getSerie</a></span>(URI uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            &lt;D&nbsp;extends&nbsp;<a href="../../../../com/terradue/jcatalogue/client/download/Downloader.html">Downloader</a>&gt;
-            D</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#lookupDownloader(java.lang.String)">lookupDownloader</a></span>(String protocol)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
+            final
             
             
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#registerDownloader(com.terradue.jcatalogue.client.download.Downloader)">registerDownloader</a></span>(<a href="../../../../com/terradue/jcatalogue/client/download/Downloader.html">Downloader</a> downloader)</nobr>
+        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/Series.html#addEntityUrl(java.lang.String)">addEntityUrl</a></span>(String serieUrl)</nobr>
         
   </td></tr>
 
@@ -567,7 +470,55 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#registerDownloader(java.lang.String, com.terradue.jcatalogue.client.download.Downloader)">registerDownloader</a></span>(String protocol, <a href="../../../../com/terradue/jcatalogue/client/download/Downloader.html">Downloader</a> downloader)</nobr>
+        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/Series.html#addLink(java.lang.String, java.lang.String, java.lang.String)">addLink</a></span>(String rel, String type, String href)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../com/terradue/jcatalogue/client/Series.html">Series</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/Series.html#getNextResults()">getNextResults</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/Series.html#hasMoreResults()">hasMoreResults</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Iterator&lt;<a href="../../../../com/terradue/jcatalogue/client/DataSet.html">DataSet</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/Series.html#iterator()">iterator</a></span>()</nobr>
         
   </td></tr>
 
@@ -585,6 +536,8 @@ Summary:
 <table id="inhmethods" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
 
 
 <tr class="api apilevel-" >
@@ -788,6 +741,48 @@ From class
 </td></tr>
 
 
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Iterable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Iterable-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  java.lang.Iterable
+
+<div id="inherited-methods-java.lang.Iterable">
+  <div id="inherited-methods-java.lang.Iterable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Iterable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Iterator&lt;T&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">iterator</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
 </table>
 
 
@@ -822,7 +817,7 @@ From class
 
 
 
-<A NAME="CatalogueClient()"></A>
+<A NAME="Series()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -834,7 +829,7 @@ From class
          
         
       </span>
-      <span class="sympad">CatalogueClient</span>
+      <span class="sympad">Series</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -868,286 +863,7 @@ From class
 
 
 
-<A NAME="discover(java.lang.String, com.terradue.jcatalogue.client.Parameter...)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../com/terradue/jcatalogue/client/CatalogueDescription.html">CatalogueDescription</a>
-      </span>
-      <span class="sympad">discover</span>
-      <span class="normal">(String uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="discover(java.net.URI, com.terradue.jcatalogue.client.Parameter...)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../com/terradue/jcatalogue/client/CatalogueDescription.html">CatalogueDescription</a>
-      </span>
-      <span class="sympad">discover</span>
-      <span class="normal">(URI uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getCatalogue(java.lang.String, com.terradue.jcatalogue.client.Parameter...)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../com/terradue/jcatalogue/client/Catalogue.html">Catalogue</a>
-      </span>
-      <span class="sympad">getCatalogue</span>
-      <span class="normal">(String uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getCatalogue(java.net.URI, com.terradue.jcatalogue.client.Parameter...)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../com/terradue/jcatalogue/client/Catalogue.html">Catalogue</a>
-      </span>
-      <span class="sympad">getCatalogue</span>
-      <span class="normal">(URI uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getDataSet(java.lang.String, com.terradue.jcatalogue.client.Parameter...)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../com/terradue/jcatalogue/client/DataSet.html">DataSet</a>
-      </span>
-      <span class="sympad">getDataSet</span>
-      <span class="normal">(String uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getDataSet(java.net.URI, com.terradue.jcatalogue.client.Parameter...)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../com/terradue/jcatalogue/client/DataSet.html">DataSet</a>
-      </span>
-      <span class="sympad">getDataSet</span>
-      <span class="normal">(URI uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getSerie(java.lang.String, com.terradue.jcatalogue.client.Parameter...)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../com/terradue/jcatalogue/client/Series.html">Series</a>
-      </span>
-      <span class="sympad">getSerie</span>
-      <span class="normal">(String uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getSerie(java.net.URI, com.terradue.jcatalogue.client.Parameter...)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../com/terradue/jcatalogue/client/Series.html">Series</a>
-      </span>
-      <span class="sympad">getSerie</span>
-      <span class="normal">(URI uri, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="lookupDownloader(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        D
-      </span>
-      <span class="sympad">lookupDownloader</span>
-      <span class="normal">(String protocol)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="registerDownloader(com.terradue.jcatalogue.client.download.Downloader)"></A>
+<A NAME="addDataSet(com.terradue.jcatalogue.client.DataSet)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1159,8 +875,8 @@ From class
          
         void
       </span>
-      <span class="sympad">registerDownloader</span>
-      <span class="normal">(<a href="../../../../com/terradue/jcatalogue/client/download/Downloader.html">Downloader</a> downloader)</span>
+      <span class="sympad">addDataSet</span>
+      <span class="normal">(<a href="../../../../com/terradue/jcatalogue/client/DataSet.html">DataSet</a> dataSet)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1178,7 +894,38 @@ From class
 </div>
 
 
-<A NAME="registerDownloader(java.lang.String, com.terradue.jcatalogue.client.download.Downloader)"></A>
+<A NAME="addEntityUrl(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+        final 
+         
+         
+        void
+      </span>
+      <span class="sympad">addEntityUrl</span>
+      <span class="normal">(String serieUrl)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="addLink(java.lang.String, java.lang.String, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1190,8 +937,101 @@ From class
          
         void
       </span>
-      <span class="sympad">registerDownloader</span>
-      <span class="normal">(String protocol, <a href="../../../../com/terradue/jcatalogue/client/download/Downloader.html">Downloader</a> downloader)</span>
+      <span class="sympad">addLink</span>
+      <span class="normal">(String rel, String type, String href)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getNextResults()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../com/terradue/jcatalogue/client/Series.html">Series</a>
+      </span>
+      <span class="sympad">getNextResults</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="hasMoreResults()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+        final 
+         
+         
+        boolean
+      </span>
+      <span class="sympad">hasMoreResults</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="iterator()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Iterator&lt;<a href="../../../../com/terradue/jcatalogue/client/DataSet.html">DataSet</a>&gt;
+      </span>
+      <span class="sympad">iterator</span>
+      <span class="normal">()</span>
     </h4>
       <div class="api-level">
         <div>
