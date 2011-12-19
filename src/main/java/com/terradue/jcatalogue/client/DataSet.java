@@ -19,6 +19,9 @@ package com.terradue.jcatalogue.client;
 import java.io.File;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -31,6 +34,8 @@ public final class DataSet
     extends AtomEntity
 {
 
+    private static final Logger logger = LoggerFactory.getLogger( DataSet.class );
+
     private Date beginPosition;
 
     private Date endPosition;
@@ -39,6 +44,11 @@ public final class DataSet
 
     public void download( File targetDir, DownloadHandler handler )
     {
+        if ( logger.isInfoEnabled() )
+        {
+            logger.info( "Downloading DataSet {} media file...", getId() );
+        }
+
         getCatalogueClient().downloadFile( targetDir, getEnclosures(), handler );
     }
 
