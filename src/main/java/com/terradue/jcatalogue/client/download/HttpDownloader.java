@@ -10,6 +10,9 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
@@ -34,6 +37,8 @@ public final class HttpDownloader
     @Getter( AccessLevel.NONE )
     private final AsyncHttpClient httpClient;
 
+    private final Logger logger = LoggerFactory.getLogger( getClass() );
+
     private final Map<String, Realm> realms = new HashMap<String, Realm>();
 
     public void registerRealm( String host, Realm realm )
@@ -56,6 +61,11 @@ public final class HttpDownloader
         String fileName = fileUri.getPath().substring( fileUri.getPath().lastIndexOf( '/' ) + 1 );
 
         File targetFile = new File( targetDir, fileName );
+
+        if ( logger.isInfoEnabled() )
+        {
+            logger.info( "Downloading {} to {}...", fileUri, fileName );
+        }
 
         ResumableAsyncHandler<Response> resumableHandler = new ResumableAsyncHandler<Response>();
         try
@@ -82,8 +92,8 @@ public final class HttpDownloader
 
             if ( HTTP_OK != response.getStatusCode() )
             {
-                handler.onError( format( "Impossible to download file %s, server replied %s",
-                                         fileUri, response.getStatusText() ) ) ;
+                handler.onError( format( "Impossible to download %s from %s, server replied %s",
+                                         targetFile, fileUri, response.getStatusText() ) ) ;
                 targetFile.delete();
             }
             else
