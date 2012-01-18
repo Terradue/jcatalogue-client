@@ -64,7 +64,7 @@ public final class HttpDownloader
 
         if ( logger.isInfoEnabled() )
         {
-            logger.info( "Downloading {} to {}...", fileUri, fileName );
+            logger.info( "Downloading {} to {}...", fileUri, targetDir );
         }
 
         ResumableAsyncHandler<Response> resumableHandler = new ResumableAsyncHandler<Response>();
