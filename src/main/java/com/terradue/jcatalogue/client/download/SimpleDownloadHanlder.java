@@ -6,6 +6,7 @@ import static java.net.HttpURLConnection.HTTP_OK;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.List;
 
 import com.ning.http.client.AsyncHandler;
 import com.ning.http.client.HttpResponseBodyPart;
@@ -19,11 +20,17 @@ final class SimpleDownloadHanlder
     implements AsyncHandler<Void>
 {
 
+    private static final String CONTENT_LENGTH = "Content-Length";
+
     private final File targetFile;
 
     private final FileOutputStream output;
 
     private final DownloadHandler downloadHandler;
+
+    private int contentLength = -1;
+
+    private int current = 0;
 
     public SimpleDownloadHanlder( File targetFile, DownloadHandler downloadHandler )
         throws FileNotFoundException
@@ -44,6 +51,14 @@ final class SimpleDownloadHanlder
         throws Exception
     {
         bodyPart.writeTo( output );
+
+        // print the percentage progress on shell
+        if ( contentLength > 0 )
+        {
+            current += bodyPart.getBodyPartBytes().length;
+
+            System.out.print( ( ( 100 * current ) / contentLength ) + "%\r" );
+        }
 
         return STATE.CONTINUE;
     }
@@ -67,6 +82,13 @@ final class SimpleDownloadHanlder
     public STATE onHeadersReceived( HttpResponseHeaders headers )
         throws Exception
     {
+        List<String> contentLength = headers.getHeaders().get( CONTENT_LENGTH );
+
+        if ( !contentLength.isEmpty() )
+        {
+            this.contentLength = Integer.valueOf( contentLength.iterator().next() );
+        }
+
         return STATE.CONTINUE;
     }
 
@@ -74,6 +96,8 @@ final class SimpleDownloadHanlder
     public Void onCompleted()
         throws Exception
     {
+        System.out.println( "Done." );
+
         output.flush();
         output.close();
 
