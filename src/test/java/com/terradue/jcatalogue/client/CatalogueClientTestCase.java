@@ -163,6 +163,10 @@ public final class CatalogueClientTestCase
      * @since 0.2
      */
     @Test
+    @Ignore
+    /*
+     * THIS DATASET HAS BEN REMOVED!
+     */
     public void accessToDataSet()
         throws Exception
     {
