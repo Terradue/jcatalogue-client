@@ -6,11 +6,11 @@
     <link>http://terradue.github.com/jcatalogue-client/</link>
     <description>JCatalogue Client - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2011 Terradue s.r.l.</copyright>
+    <copyright>&#169;2011 - 2012 Terradue s.r.l.</copyright>
     <item>
-      <title>File: 34,
-             Errors: 94,
-             Warnings: 43,
+      <title>File: 35,
+             Errors: 93,
+             Warnings: 44,
              Infos: 0
       </title>
             <link>http://terradue.github.com/jcatalogue-client//checkstyle.html</link>
@@ -150,7 +150,7 @@
                   1
                 </td>
                 <td>
-                  6
+                  4
                 </td>
               </tr>
                           <tr>
@@ -361,6 +361,20 @@
                 </td>
                 <td>
                   3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.download.SimpleDownloadHanlder.java">com/terradue/jcatalogue/client/download/SimpleDownloadHanlder.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>
