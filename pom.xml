@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>jcatalogue-client</artifactId>
-  <version>0.5</version>
+  <version>0.6-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>JCatalogue Client</name>
