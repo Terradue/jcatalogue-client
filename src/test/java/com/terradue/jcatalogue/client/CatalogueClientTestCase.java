@@ -163,14 +163,10 @@ public final class CatalogueClientTestCase
      * @since 0.2
      */
     @Test
-    @Ignore
-    /*
-     * THIS DATASET HAS BEN REMOVED!
-     */
     public void accessToDataSet()
         throws Exception
     {
-        DataSet dataSet = client.getDataSet( "http://10.11.12.248/catalogue/gpod/ERS2_WILMA/AMI_WILM__0P_19950718T144654_19950718T144710_KS_01267.E2/atom" );
+        DataSet dataSet = client.getDataSet( "http://10.11.12.248/catalogue/gpod/ASA_GM__0P/ASA_GM__0PNPDK20101202_174508_000006653097_00084_45788_7504.N1/atom" );
 
         assertNotNull( dataSet );
     }
