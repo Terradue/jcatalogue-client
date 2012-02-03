@@ -21,12 +21,18 @@
     <title>JCatalogue Client Changes</title>
   </properties>
   <body>
+    <release version="0.6" date="2012-02-??" description="Maintenance release.">
+      <action dev="simonetripodi" type="fix">
+        DataSet.endDate always set with beginDate
+      </action>
+    </release>
+
     <release version="0.5" date="2012-01-18" description="Maintenance release.">
       <action dev="simonetripodi" type="remove">
         Removed the resumable download, not supported on main customers servers.
       </action>
     </release>
-  
+
     <release version="0.4" date="2011-12-19" description="Maintenance release.">
       <action dev="simonetripodi" type="fix">
         download handler never failed
