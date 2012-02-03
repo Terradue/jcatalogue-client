@@ -51,7 +51,7 @@ public final class DataSetRulesModule
         forPattern( "feed/entry/validTime/TimePeriod/beginPosition" )
             .withNamespaceURI( GML )
             .setBeanProperty().withName( "beginPosition" );
-        forPattern( "feed/entry/validTime/TimePeriod/beginPosition" )
+        forPattern( "feed/entry/validTime/TimePeriod/endPosition" )
             .withNamespaceURI( GML )
             .setBeanProperty().withName( "endPosition" );
 
