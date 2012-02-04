@@ -66,7 +66,7 @@ public final class HttpDownloader
 
         try
         {
-            httpClient.executeRequest( requestBuilder.build(), new SimpleDownloadHanlder( targetFile, handler ) ).get();
+            httpClient.executeRequest( requestBuilder.build(), new SimpleDownloadHandler( targetFile, handler ) ).get();
         }
         catch ( Exception e )
         {

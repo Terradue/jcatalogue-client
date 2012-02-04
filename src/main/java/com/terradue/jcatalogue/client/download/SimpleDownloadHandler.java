@@ -16,7 +16,7 @@ import com.ning.http.client.HttpResponseStatus;
 /**
  * @since 0.5
  */
-final class SimpleDownloadHanlder
+final class SimpleDownloadHandler
     implements AsyncHandler<Void>
 {
 
@@ -32,7 +32,7 @@ final class SimpleDownloadHanlder
 
     private int current = 0;
 
-    public SimpleDownloadHanlder( File targetFile, DownloadHandler downloadHandler )
+    public SimpleDownloadHandler( File targetFile, DownloadHandler downloadHandler )
         throws FileNotFoundException
     {
         this.targetFile = targetFile;
