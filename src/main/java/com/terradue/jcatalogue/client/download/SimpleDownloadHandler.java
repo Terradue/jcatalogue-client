@@ -22,6 +22,8 @@ final class SimpleDownloadHandler
 
     private static final String CONTENT_LENGTH = "Content-Length";
 
+    private static final int FILE_LENGTH = 1024;
+
     private final File targetFile;
 
     private final FileOutputStream output;
@@ -30,7 +32,7 @@ final class SimpleDownloadHandler
 
     private int contentLength = -1;
 
-    private int current = 0;
+    private int downloadCounter = 0;
 
     public SimpleDownloadHandler( File targetFile, DownloadHandler downloadHandler )
         throws FileNotFoundException
@@ -55,9 +57,12 @@ final class SimpleDownloadHandler
         // print the percentage progress on shell
         if ( contentLength > 0 )
         {
-            current += bodyPart.getBodyPartBytes().length;
+            downloadCounter += bodyPart.getBodyPartBytes().length;
 
-            System.out.print( ( ( 100 * current ) / contentLength ) + "%\r" );
+            int current = downloadCounter / FILE_LENGTH;
+
+            int currentPercentage = ( 100 * current ) / contentLength;
+            System.out.print( current + "/" + contentLength + "MB (" + currentPercentage + "%)\r" );
         }
 
         return STATE.CONTINUE;
@@ -86,7 +91,7 @@ final class SimpleDownloadHandler
 
         if ( !contentLength.isEmpty() )
         {
-            this.contentLength = Integer.valueOf( contentLength.iterator().next() );
+            this.contentLength = Integer.valueOf( contentLength.iterator().next() ).intValue() / FILE_LENGTH;
         }
 
         return STATE.CONTINUE;
