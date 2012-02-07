@@ -9,8 +9,8 @@
     <copyright>&#169;2011 - 2012 Terradue s.r.l.</copyright>
     <item>
       <title>File: 35,
-             Errors: 93,
-             Warnings: 44,
+             Errors: 186,
+             Warnings: 88,
              Infos: 0
       </title>
             <link>http://terradue.github.com/jcatalogue-client//checkstyle.html</link>
@@ -29,16 +29,30 @@
           <tbody>
                           <tr>
                 <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.download.SimpleDownloadHandler.java">com/terradue/jcatalogue/client/download/SimpleDownloadHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.digester.DataSetRulesModule.java">com/terradue/jcatalogue/client/internal/digester/DataSetRulesModule.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -52,7 +66,7 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
@@ -63,10 +77,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  3
+                  6
                 </td>
               </tr>
                           <tr>
@@ -80,7 +94,7 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
@@ -91,10 +105,10 @@
                   0
                 </td>
                 <td>
-                  3
+                  6
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -108,7 +122,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -122,7 +136,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -136,7 +150,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -147,10 +161,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  4
+                  8
                 </td>
               </tr>
                           <tr>
@@ -161,10 +175,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -178,7 +192,7 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
@@ -189,10 +203,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -203,10 +217,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -220,7 +234,7 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
@@ -231,10 +245,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -248,7 +262,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -259,10 +273,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
@@ -276,7 +290,7 @@
                   0
                 </td>
                 <td>
-                  10
+                  20
                 </td>
               </tr>
                           <tr>
@@ -290,7 +304,7 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
@@ -301,10 +315,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -315,10 +329,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -332,7 +346,7 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
@@ -343,10 +357,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  6
+                  12
                 </td>
               </tr>
                           <tr>
@@ -357,24 +371,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  3
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.download.SimpleDownloadHanlder.java">com/terradue/jcatalogue/client/download/SimpleDownloadHanlder.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-                <td>
-                  1
+                  6
                 </td>
               </tr>
                           <tr>
@@ -385,10 +385,10 @@
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -402,7 +402,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -416,7 +416,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -427,10 +427,10 @@
                   0
                 </td>
                 <td>
-                  3
+                  6
                 </td>
                 <td>
-                  3
+                  6
                 </td>
               </tr>
                           <tr>
@@ -441,10 +441,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -458,7 +458,7 @@
                   0
                 </td>
                 <td>
-                  3
+                  6
                 </td>
               </tr>
                           <tr>
@@ -472,7 +472,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -483,10 +483,10 @@
                   0
                 </td>
                 <td>
-                  16
+                  32
                 </td>
                 <td>
-                  6
+                  12
                 </td>
               </tr>
                           <tr>
@@ -497,10 +497,10 @@
                   0
                 </td>
                 <td>
-                  5
+                  10
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -511,10 +511,10 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
-                  11
+                  22
                 </td>
               </tr>
                       </tbody>
