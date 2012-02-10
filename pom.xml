@@ -60,6 +60,12 @@
     </dependency>
 
     <dependency>
+      <groupId>ca.juliusdavies</groupId>
+      <artifactId>not-yet-commons-ssl</artifactId>
+      <version>0.3.11</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>1.6.4</version>
