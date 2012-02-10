@@ -39,7 +39,7 @@ final class LazyLoadSerieIterator
     public Series next()
     {
         String nextUrl = serieUrlsIterator.next();
-        return catalogueClient.getSerie( nextUrl );
+        return catalogueClient.getSeries( nextUrl );
     }
 
     @Override

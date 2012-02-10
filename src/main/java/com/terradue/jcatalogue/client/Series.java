@@ -50,7 +50,7 @@ public class Series
             throw new IllegalStateException( "More results not available" );
         }
 
-        return getCatalogueClient().getSerie( getNextResultsUri() );
+        return getCatalogueClient().getSeries( getNextResultsUri() );
     }
 
     @Override

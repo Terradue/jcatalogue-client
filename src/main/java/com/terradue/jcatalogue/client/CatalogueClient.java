@@ -275,12 +275,12 @@ public final class CatalogueClient
 
     // Serie methods
 
-    public Series getSerie( String uri, Parameter... parameters )
+    public Series getSeries( String uri, Parameter... parameters )
     {
         return invoke( serieDigesterLoader, uri, parameters );
     }
 
-    public Series getSerie( URI uri, Parameter... parameters )
+    public Series getSeries( URI uri, Parameter... parameters )
     {
         return invoke( serieDigesterLoader, uri, parameters );
     }
