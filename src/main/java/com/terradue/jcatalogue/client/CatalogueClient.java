@@ -273,7 +273,7 @@ public final class CatalogueClient
         return invoke( catalogueDigesterLoader, uri, parameters );
     }
 
-    // Serie methods
+    // Series methods
 
     public Series getSeries( String uri, Parameter... parameters )
     {
