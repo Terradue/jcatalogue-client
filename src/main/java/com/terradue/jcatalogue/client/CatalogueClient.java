@@ -25,6 +25,7 @@ import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
+import java.security.KeyStore;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -33,8 +34,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+
 import org.apache.commons.beanutils.Converter;
 import org.apache.commons.digester3.binder.DigesterLoader;
+import org.apache.commons.ssl.KeyMaterial;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -92,20 +98,104 @@ public final class CatalogueClient
 
     public CatalogueClient()
     {
+        this( null );
+    }
+
+    /**
+     * @since 0.7
+     */
+    public CatalogueClient( File proxyCertificate )
+    {
+        this( proxyCertificate, proxyCertificate, "" );
+    }
+
+    /**
+     * @since 0.7
+     */
+    public CatalogueClient( File pemCertificate, File pemKey, String pemPassword )
+    {
         descriptionDigesterLoader = newLoader( new OpenSearchModule() ).setNamespaceAware( true );
         catalogueDigesterLoader = newLoader( new AtomRulesModule( Catalogue.class ), new LinkedAtomEntityModule() )
             .setNamespaceAware( true );
         serieDigesterLoader = newLoader( new AtomRulesModule( Series.class ), new DataSetRulesModule() ).setNamespaceAware( true );
         singleDataSetDigesterLoader = newLoader( new SingleDataSetRulesModule() ).setNamespaceAware( true );
-        httpClient = new AsyncHttpClient(new AsyncHttpClientConfig.Builder()
-                            .setAllowPoolingConnection( true )
-                            .addIOExceptionFilter( new ResumableIOExceptionFilter() )
-                            .setMaximumConnectionsPerHost( 10 )
-                            .setMaximumConnectionsTotal( 100 )
-                            .setFollowRedirects( true )
-                            .build() );
+
+        final AsyncHttpClientConfig.Builder ahcCfgBuilder = new AsyncHttpClientConfig.Builder()
+                                                            .setAllowPoolingConnection( true )
+                                                            .addIOExceptionFilter( new ResumableIOExceptionFilter() )
+                                                            .setMaximumConnectionsPerHost( 10 )
+                                                            .setMaximumConnectionsTotal( 100 )
+                                                            .setFollowRedirects( true );
+
+        if ( pemCertificate != null && pemKey != null && pemPassword != null )
+        {
+            checkFile( pemCertificate );
+            checkFile( pemKey );
+
+            final char[] password = pemPassword.toCharArray();
+
+            try
+            {
+                final KeyStore store = new KeyMaterial( pemCertificate, pemCertificate, password ).getKeyStore();
+                store.load( null, password );
+
+                // initialize key and trust managers -> default behavior
+                final KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance( "SunX509" );
+                // password for key and store have to be the same IIRC
+                keyManagerFactory.init( store, password );
+
+                // construct SSLContext and feed to AHC config
+                SSLContext context = SSLContext.getInstance( "TLS" );
+                context.init( keyManagerFactory.getKeyManagers(), new TrustManager[] { new DummyTrustManager() }, null );
+
+                ahcCfgBuilder.setSSLContext( context );
+            }
+            catch ( Exception e )
+            {
+                throw new IllegalStateException( "Impossible to initialize SSL key/certificates", e );
+            }
+        }
+        else if ( logger.isWarnEnabled() )
+        {
+            logger.warn( "SSL not supported - PEM certificate: {}, PEM key: {}, PEM password: {}",
+                         new Object[] {
+                            pemCertificate,
+                            pemKey,
+                            encrypt( pemPassword )
+                        } );
+        }
+
+        httpClient = new AsyncHttpClient( ahcCfgBuilder.build() );
 
         registerDownloader( new HttpDownloader( httpClient ) );
+    }
+
+    private static String encrypt( String pwd )
+    {
+        StringBuilder sBuilder = new StringBuilder();
+
+        if ( pwd != null )
+        {
+            for ( int i = 0; i < pwd.length(); i++ )
+            {
+                sBuilder.append( '*' );
+            }
+        }
+
+        return sBuilder.toString();
+    }
+
+    private static void checkFile( File file )
+    {
+        if ( !file.exists() )
+        {
+            throw new IllegalArgumentException( format( "File %s not found, please verify it exists", file ) );
+        }
+
+        if ( file.isDirectory() )
+        {
+            throw new IllegalArgumentException( format( "File %s must be not a directory", file ) );
+        }
     }
 
     public void registerDownloader( Downloader downloader )
