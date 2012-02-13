@@ -21,6 +21,15 @@
     <title>JCatalogue Client Changes</title>
   </properties>
   <body>
+    <release version="0.6" date="2012-02-??" description="New features release.">
+      <action dev="simonetripodi" type="fix">
+        Realm authentication accepted also for Catalogue access
+      </action>
+      <action dev="simonetripodi" type="update">
+        Added SSL certificates authentication support
+      </action>
+    </release>
+
     <release version="0.6" date="2012-02-??" description="Maintenance release.">
       <action dev="simonetripodi" type="fix">
         DataSet.endDate always set with beginDate

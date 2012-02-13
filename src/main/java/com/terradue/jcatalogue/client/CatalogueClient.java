@@ -47,6 +47,7 @@ import org.slf4j.LoggerFactory;
 import com.ning.http.client.AsyncCompletionHandler;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
+import com.ning.http.client.Realm;
 import com.ning.http.client.RequestBuilder;
 import com.ning.http.client.Response;
 import com.ning.http.client.resumable.ResumableIOExceptionFilter;
@@ -85,6 +86,11 @@ public final class CatalogueClient
     private final Map<String, Downloader> downloaders = new HashMap<String, Downloader>();
 
     private final Logger logger = LoggerFactory.getLogger( getClass() );
+
+    /**
+     * @since 0.7
+     */
+    private final Map<String, Realm> realms = new HashMap<String, Realm>();
 
     private final DigesterLoader descriptionDigesterLoader;
 
@@ -167,7 +173,7 @@ public final class CatalogueClient
 
         httpClient = new AsyncHttpClient( ahcCfgBuilder.build() );
 
-        registerDownloader( new HttpDownloader( httpClient ) );
+        registerDownloader( new HttpDownloader( httpClient, realms ) );
     }
 
     private static String encrypt( String pwd )
@@ -341,6 +347,11 @@ public final class CatalogueClient
             requestBuilder.addQueryParameter( parameter.getName(), parameter.getValue() );
         }
 
+        if ( realms.containsKey( uri.getHost() ) )
+        {
+            requestBuilder.setRealm( realms.get( uri.getHost() ) );
+        }
+
         CE description;
 
         try
@@ -418,6 +429,33 @@ public final class CatalogueClient
                                             fileUri.getScheme(), fileUri ) );
             }
         }
+    }
+
+    public void registerRealm( String host, String username, String password, boolean preemptive, HttpAuthScheme authScheme )
+    {
+        if ( host == null )
+        {
+            throw new IllegalArgumentException( "Input username must not be null." );
+        }
+        if ( username == null )
+        {
+            throw new IllegalArgumentException( "Input username must not be null." );
+        }
+        if ( password == null )
+        {
+            throw new IllegalArgumentException( "Input password must not be null." );
+        }
+        if ( authScheme == null )
+        {
+            throw new IllegalArgumentException( "Input authScheme must not be null." );
+        }
+
+        realms.put( host, new Realm.RealmBuilder()
+                                   .setPrincipal( username )
+                                   .setPassword( password )
+                                   .setUsePreemptiveAuth( preemptive )
+                                   .setScheme( authScheme.getAuthScheme() )
+                                   .build() );
     }
 
 }

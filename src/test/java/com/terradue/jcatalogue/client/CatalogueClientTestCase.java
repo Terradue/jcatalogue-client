@@ -29,10 +29,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.ning.http.client.Realm;
-import com.ning.http.client.Realm.AuthScheme;
 import com.terradue.jcatalogue.client.download.DownloadHandler;
-import com.terradue.jcatalogue.client.download.HttpDownloader;
 
 public final class CatalogueClientTestCase
 {
@@ -47,15 +44,7 @@ public final class CatalogueClientTestCase
     public void setUp()
     {
         client = new CatalogueClient();
-
-        HttpDownloader httpDownloader = client.lookupDownloader( "http" );
-        httpDownloader.registerRealm( "eo-virtual-archive4.esa.int",
-                                      new Realm.RealmBuilder()
-                                            .setPrincipal( username )
-                                            .setPassword( password )
-                                            .setUsePreemptiveAuth( true )
-                                            .setScheme( AuthScheme.BASIC )
-                                        .build() );
+        client.registerRealm( "eo-virtual-archive4.esa.int", username, password, true, HttpAuthScheme.BASIC );
     }
 
     @After
@@ -178,7 +167,7 @@ public final class CatalogueClientTestCase
     public void testQueryParameters()
         throws Exception
     {
-        Series serie = client.getSerie( "http://10.11.12.248/catalogue/gpod/ER2_TIM_AX/atom",
+        Series serie = client.getSeries( "http://10.11.12.248/catalogue/gpod/ER2_TIM_AX/atom",
                                        new Parameter( "startDate", "1995-07-18T14:46:54.000" ),
                                        new Parameter( "stopDate", "1995-07-18T14:46:54.000" ) );
 

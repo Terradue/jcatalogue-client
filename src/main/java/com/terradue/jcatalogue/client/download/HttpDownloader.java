@@ -2,7 +2,6 @@ package com.terradue.jcatalogue.client.download;
 
 import java.io.File;
 import java.net.URI;
-import java.util.HashMap;
 import java.util.Map;
 
 import lombok.AccessLevel;
@@ -24,25 +23,21 @@ public final class HttpDownloader
 
     private static final String GET = "GET";
 
+    private final Logger logger = LoggerFactory.getLogger( getClass() );
+
     @Getter( AccessLevel.NONE )
     private final AsyncHttpClient httpClient;
 
-    private final Logger logger = LoggerFactory.getLogger( getClass() );
+    @Getter( AccessLevel.NONE )
+    private final Map<String, Realm> realms;
 
-    private final Map<String, Realm> realms = new HashMap<String, Realm>();
-
+    /**
+     * @deprecated
+     */
+    @Deprecated
     public void registerRealm( String host, Realm realm )
     {
-        if ( host == null )
-        {
-            throw new IllegalArgumentException( "Input host must be not null" );
-        }
-        if ( realm == null )
-        {
-            throw new IllegalArgumentException( "Input realm must be not null" );
-        }
-
-        realms.put( host, realm );
+        throw new UnsupportedOperationException( "Since 0.7 this method is no longer supported" );
     }
 
     @Override
