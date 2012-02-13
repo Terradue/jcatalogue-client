@@ -21,7 +21,7 @@
     <title>JCatalogue Client Changes</title>
   </properties>
   <body>
-    <release version="0.6" date="2012-02-??" description="New features release.">
+    <release version="0.7" date="2012-02-13" description="New features release.">
       <action dev="simonetripodi" type="fix" due-to="Francesco Barchetta">
         Realm authentication accepted also for Catalogue access
       </action>
