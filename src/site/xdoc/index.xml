@@ -109,12 +109,12 @@ CatalogueDescription catalogueDescription = client.discover( "http://eo-virtual-
       <subsection name="Accessing to the Series">
         <p><code>Series</code> can be accessed from a <code>Catalogue</code> instance:</p>
 
-        <source>for ( Serie serie : catalogue )
+        <source>for ( Series series : catalogue )
 {
     // put your code here
 }</source>
 
-        <p><code>Serie</code> instances allow access (via getters) to meta informations such as:</p>
+        <p><code>Series</code> instances allow access (via getters) to meta informations such as:</p>
         <ul>
           <li>title;</li>
           <li>subtitle;</li>
@@ -134,18 +134,18 @@ CatalogueDescription catalogueDescription = client.discover( "http://eo-virtual-
     Serie next = serie.getNextResults();
 }</source>
 
-        <p>If series URLs are already known, users can access to <code>Serie</code> instances directly from the
+        <p>If series URLs are already known, users can access to <code>Series</code> instances directly from the
         <code>CatalogueClient</code>:</p>
 
-        <source>Serie serie = client.getSerie( "http://catalog.gpod.terradue.int/catalogue/gpod/ASA_WSM_1P/ASA_WSM_1PNPDE20111103_193813_000001713108_00171_50616_5757.N1/xml" )</source>
+        <source>Series series = client.getSerie( "http://catalog.gpod.terradue.int/catalogue/gpod/ASA_WSM_1P/ASA_WSM_1PNPDE20111103_193813_000001713108_00171_50616_5757.N1/xml" )</source>
 
         <p>and optionally can pass <code>Parameter</code>s instances.</p>
       </subsection>
 
       <subsection name="Accessing to the DataSets">
-        <p><code>DataSet</code> instances can be accessed from a <code>Serie</code> instance:</p>
+        <p><code>DataSet</code> instances can be accessed from a <code>Series</code> instance:</p>
 
-        <source>for ( DataSet dataset : serie )
+        <source>for ( DataSet dataset : series )
 {
     // put your code here
 }</source>
