@@ -18,6 +18,7 @@ package com.terradue.jcatalogue.client;
 
 import static java.lang.String.format;
 import static java.net.HttpURLConnection.HTTP_OK;
+import static java.util.Arrays.asList;
 import static org.apache.commons.beanutils.ConvertUtils.register;
 import static org.apache.commons.digester3.binder.DigesterLoader.newLoader;
 
@@ -26,6 +27,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.security.KeyStore;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -34,6 +36,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -92,6 +95,16 @@ public final class CatalogueClient
      */
     private final Map<String, Realm> realms = new HashMap<String, Realm>();
 
+    /**
+     * @since 0.7
+     */
+    private final List<KeyManager> keyManagers = new ArrayList<KeyManager>();
+
+    /**
+     * @since 0.7
+     */
+    private final TrustManager[] trustManagers = new TrustManager[] { new DummyTrustManager() };
+
     private final DigesterLoader descriptionDigesterLoader;
 
     private final DigesterLoader catalogueDigesterLoader;
@@ -104,91 +117,33 @@ public final class CatalogueClient
 
     public CatalogueClient()
     {
-        this( null );
-    }
-
-    /**
-     * @since 0.7
-     */
-    public CatalogueClient( File proxyCertificate )
-    {
-        this( proxyCertificate, proxyCertificate, "" );
-    }
-
-    /**
-     * @since 0.7
-     */
-    public CatalogueClient( File pemCertificate, File pemKey, String pemPassword )
-    {
         descriptionDigesterLoader = newLoader( new OpenSearchModule() ).setNamespaceAware( true );
         catalogueDigesterLoader = newLoader( new AtomRulesModule( Catalogue.class ), new LinkedAtomEntityModule() )
             .setNamespaceAware( true );
         serieDigesterLoader = newLoader( new AtomRulesModule( Series.class ), new DataSetRulesModule() ).setNamespaceAware( true );
         singleDataSetDigesterLoader = newLoader( new SingleDataSetRulesModule() ).setNamespaceAware( true );
 
-        final AsyncHttpClientConfig.Builder ahcCfgBuilder = new AsyncHttpClientConfig.Builder()
+        SSLContext context = null;
+        try
+        {
+            context = SSLContext.getInstance( "TLS" );
+            context.init( new KeyManager[] {}, trustManagers, null );
+        }
+        catch ( Exception e )
+        {
+            throw new IllegalStateException( "Impossible to initialize SSL context", e );
+        }
+
+        httpClient = new AsyncHttpClient( new AsyncHttpClientConfig.Builder()
                                                             .setAllowPoolingConnection( true )
                                                             .addIOExceptionFilter( new ResumableIOExceptionFilter() )
                                                             .setMaximumConnectionsPerHost( 10 )
                                                             .setMaximumConnectionsTotal( 100 )
-                                                            .setFollowRedirects( true );
-
-        if ( pemCertificate != null && pemKey != null && pemPassword != null )
-        {
-            checkFile( pemCertificate );
-            checkFile( pemKey );
-
-            final char[] password = pemPassword.toCharArray();
-
-            try
-            {
-                final KeyStore store = new KeyMaterial( pemCertificate, pemCertificate, password ).getKeyStore();
-                store.load( null, password );
-
-                // initialize key and trust managers -> default behavior
-                final KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance( "SunX509" );
-                // password for key and store have to be the same IIRC
-                keyManagerFactory.init( store, password );
-
-                // construct SSLContext and feed to AHC config
-                SSLContext context = SSLContext.getInstance( "TLS" );
-                context.init( keyManagerFactory.getKeyManagers(), new TrustManager[] { new DummyTrustManager() }, null );
-
-                ahcCfgBuilder.setSSLContext( context );
-            }
-            catch ( Exception e )
-            {
-                throw new IllegalStateException( "Impossible to initialize SSL key/certificates", e );
-            }
-        }
-        else if ( logger.isWarnEnabled() )
-        {
-            logger.warn( "SSL not supported - PEM certificate: {}, PEM key: {}, PEM password: {}",
-                         new Object[] {
-                            pemCertificate,
-                            pemKey,
-                            encrypt( pemPassword )
-                        } );
-        }
-
-        httpClient = new AsyncHttpClient( ahcCfgBuilder.build() );
+                                                            .setFollowRedirects( true )
+                                                            .setSSLContext( context )
+                                                            .build() );
 
         registerDownloader( new HttpDownloader( httpClient, realms ) );
-    }
-
-    private static String encrypt( String pwd )
-    {
-        StringBuilder sBuilder = new StringBuilder();
-
-        if ( pwd != null )
-        {
-            for ( int i = 0; i < pwd.length(); i++ )
-            {
-                sBuilder.append( '*' );
-            }
-        }
-
-        return sBuilder.toString();
     }
 
     private static void checkFile( File file )
@@ -456,6 +411,66 @@ public final class CatalogueClient
                                    .setUsePreemptiveAuth( preemptive )
                                    .setScheme( authScheme.getAuthScheme() )
                                    .build() );
+    }
+
+    public void registerSSLProxy( File proxyCertificate )
+    {
+        registerSSLCerificates( proxyCertificate, proxyCertificate, null );
+    }
+
+    public void registerSSLCerificates( File sslCertificate, File sslKey, String sslPassword )
+    {
+        checkFile( sslCertificate );
+        checkFile( sslKey );
+
+        if ( logger.isInfoEnabled() )
+        {
+            logger.info( "Registering SSL certificate {} and key {} with password {}",
+                         new Object[] { sslCertificate, sslKey, encrypt( sslPassword ) } );
+        }
+
+        if ( sslPassword == null )
+        {
+            sslPassword = "";
+        }
+
+        final char[] password = sslPassword.toCharArray();
+
+        try
+        {
+            final KeyStore store = new KeyMaterial( sslCertificate, sslKey, password ).getKeyStore();
+            store.load( null, password );
+
+            // initialize key and trust managers -> default behavior
+            final KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance( "SunX509" );
+            // password for key and store have to be the same IIRC
+            keyManagerFactory.init( store, password );
+
+            keyManagers.addAll( asList( keyManagerFactory.getKeyManagers() ) );
+
+            httpClient.getConfig().getSSLContext().init( keyManagers.toArray( new KeyManager[keyManagers.size()] ),
+                                                         trustManagers,
+                                                         null );
+        }
+        catch ( Exception e )
+        {
+            throw new IllegalStateException( "Impossible to initialize SSL certificate/key", e );
+        }
+    }
+
+    private static String encrypt( String pwd )
+    {
+        StringBuilder sBuilder = new StringBuilder();
+
+        if ( pwd != null )
+        {
+            for ( int i = 0; i < pwd.length(); i++ )
+            {
+                sBuilder.append( '*' );
+            }
+        }
+
+        return sBuilder.toString();
     }
 
 }
