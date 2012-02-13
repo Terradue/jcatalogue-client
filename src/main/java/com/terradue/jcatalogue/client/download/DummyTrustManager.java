@@ -20,7 +20,7 @@ final class DummyTrustManager
     public void checkServerTrusted( X509Certificate[] certificates, String authType )
         throws CertificateException
     {
-        // TODO do nothing
+        // do nothing
     }
 
     @Override
