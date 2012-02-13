@@ -189,7 +189,7 @@
 <parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
 </parameter>
 </method>
-<method name="getSerie"
+<method name="getSeries"
  return="com.terradue.jcatalogue.client.Series"
  abstract="false"
  native="false"
@@ -204,7 +204,7 @@
 <parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
 </parameter>
 </method>
-<method name="getSerie"
+<method name="getSeries"
  return="com.terradue.jcatalogue.client.Series"
  abstract="false"
  native="false"
@@ -258,6 +258,57 @@
 <parameter name="protocol" type="java.lang.String">
 </parameter>
 <parameter name="downloader" type="com.terradue.jcatalogue.client.download.Downloader">
+</parameter>
+</method>
+<method name="registerRealm"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="host" type="java.lang.String">
+</parameter>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<parameter name="password" type="java.lang.String">
+</parameter>
+<parameter name="preemptive" type="boolean">
+</parameter>
+<parameter name="authScheme" type="com.terradue.jcatalogue.client.HttpAuthScheme">
+</parameter>
+</method>
+<method name="registerSSLCerificates"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sslCertificate" type="java.io.File">
+</parameter>
+<parameter name="sslKey" type="java.io.File">
+</parameter>
+<parameter name="sslPassword" type="java.lang.String">
+</parameter>
+</method>
+<method name="registerSSLProxy"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="proxyCertificate" type="java.io.File">
 </parameter>
 </method>
 </class>
@@ -399,6 +450,50 @@
  native="false"
  synchronized="false"
  static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="HttpAuthScheme"
+ extends="java.lang.Enum"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getAuthScheme"
+ return="com.ning.http.client.Realm.AuthScheme"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="valueOf"
+ return="com.terradue.jcatalogue.client.HttpAuthScheme"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+</method>
+<method name="values"
+ return="com.terradue.jcatalogue.client.HttpAuthScheme[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
  final="true"
  deprecated="not deprecated"
  visibility="public"
@@ -694,7 +789,7 @@
  synchronized="false"
  static="false"
  final="false"
- deprecated="not deprecated"
+ deprecated="deprecated"
  visibility="public"
 >
 <parameter name="host" type="java.lang.String">

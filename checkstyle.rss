@@ -8,10 +8,10 @@
     <language>en-us</language>
     <copyright>&#169;2011 - 2012 Terradue s.r.l.</copyright>
     <item>
-      <title>File: 35,
-             Errors: 186,
-             Warnings: 88,
-             Infos: 0
+      <title>File: 38,
+             Errors: 194,
+             Warnings: 98,
+             Infos: 12
       </title>
             <link>http://terradue.github.com/jcatalogue-client//checkstyle.html</link>
       <description>
@@ -161,7 +161,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
                 <td>
                   8
@@ -184,6 +184,20 @@
                           <tr>
                 <td>
                   <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.AtomEntity.java">com/terradue/jcatalogue/client/AtomEntity.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.download.DummyTrustManager.java">com/terradue/jcatalogue/client/download/DummyTrustManager.java</a>
                 </td>
                 <td>
                   0
@@ -393,6 +407,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.DummyTrustManager.java">com/terradue/jcatalogue/client/DummyTrustManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.geo.Line.java">com/terradue/jcatalogue/client/geo/Line.java</a>
                 </td>
                 <td>
@@ -463,6 +491,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.HttpAuthScheme.java">com/terradue/jcatalogue/client/HttpAuthScheme.java</a>
+                </td>
+                <td>
+                  12
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.CatalogueEntity.java">com/terradue/jcatalogue/client/CatalogueEntity.java</a>
                 </td>
                 <td>
@@ -483,7 +525,7 @@
                   0
                 </td>
                 <td>
-                  32
+                  38
                 </td>
                 <td>
                   12
