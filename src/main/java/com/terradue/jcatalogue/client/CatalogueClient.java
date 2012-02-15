@@ -473,4 +473,12 @@ public final class CatalogueClient
         return sBuilder.toString();
     }
 
+    /**
+     * @since 0.8
+     */
+    public void shutDown()
+    {
+        httpClient.close();
+    }
+
 }
