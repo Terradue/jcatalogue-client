@@ -25,6 +25,9 @@
       <action dev="simonetripodi" type="update">
         Added CatalogueClient#shutDown() method.
       </action>
+      <action dev="simonetripodi" type="update">
+        DownloadHandler#onSuccess is deprecated.
+      </action>
     </release>
 
     <release version="0.7" date="2012-02-13" description="New features release.">
