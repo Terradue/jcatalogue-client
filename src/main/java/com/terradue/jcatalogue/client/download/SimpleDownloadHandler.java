@@ -106,7 +106,7 @@ final class SimpleDownloadHandler
         output.flush();
         output.close();
 
-        downloadHandler.onSuccess( targetFile );
+        downloadHandler.onCompleted( targetFile );
         return null;
     }
 

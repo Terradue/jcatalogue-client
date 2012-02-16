@@ -121,6 +121,11 @@ public final class CatalogueClientTestCase
                 assertTrue( file.exists() );
             }
 
+            public void onCompleted( File file )
+            {
+                assertTrue( file.exists() );
+            }
+
             @Override
             public void onError( String message )
             {

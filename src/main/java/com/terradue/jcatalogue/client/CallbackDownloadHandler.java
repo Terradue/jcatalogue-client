@@ -44,8 +44,14 @@ final class CallbackDownloadHandler
     @Override
     public void onSuccess( File file )
     {
+        onCompleted( file );
+    }
+
+    @Override
+    public void onCompleted( File file )
+    {
         downloaded = true;
-        adapted.onSuccess( file );
+        adapted.onCompleted( file );
     }
 
 }
