@@ -18,9 +18,7 @@ package com.terradue.jcatalogue.client;
 
 import static com.terradue.jcatalogue.client.utils.Assertions.checkArgument;
 import static com.terradue.jcatalogue.client.utils.Assertions.checkNotNull;
-import static com.terradue.jcatalogue.client.utils.Assertions.checkState;
 import static java.lang.String.format;
-import static java.net.HttpURLConnection.HTTP_OK;
 import static java.util.Arrays.asList;
 import static org.apache.commons.beanutils.ConvertUtils.register;
 import static org.apache.commons.digester3.binder.DigesterLoader.newLoader;
@@ -53,7 +51,6 @@ import org.slf4j.LoggerFactory;
 import com.ning.http.client.AsyncCompletionHandler;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
-import com.ning.http.client.HttpResponseHeaders;
 import com.ning.http.client.Realm;
 import com.ning.http.client.RequestBuilder;
 import com.ning.http.client.Response;
@@ -90,10 +87,6 @@ public final class CatalogueClient
         register( geoConverter, Point.class );
         register( geoConverter, Polygon.class );
     }
-
-    private static final String UM_SSO_COOKIE_SESSION_TIME = "untilbrowserclose";
-
-    private static final String UM_SSO_COOKIE_IDLE_TIME = "untilbrowserclose";
 
     private final Map<String, Downloader> downloaders = new HashMap<String, Downloader>();
 
@@ -154,6 +147,7 @@ public final class CatalogueClient
                                                             .setMaximumConnectionsPerHost( 10 )
                                                             .setMaximumConnectionsTotal( 100 )
                                                             .setFollowRedirects( true )
+                                                            .addResponseFilter( new StatusResponseFilter() )
                                                             .setSSLContext( context )
                                                             .build() );
 
@@ -298,26 +292,10 @@ public final class CatalogueClient
             description = httpClient.executeRequest( requestBuilder.build(), new AsyncCompletionHandler<CE>()
             {
 
-                public STATE onHeadersReceived( HttpResponseHeaders headers )
-                    throws Exception
-                {
-                    /* check if the requested URL is protected by UM-SSO authentication */
-                    String redirectUrlString = headers.getHeaders().getFirstValue( "Location" );
-                    if ( redirectUrlString != null && redirectUrlString.indexOf( "/idp/profile/Shibboleth/SSO?shire" ) != -1 )
-                    {
-                        URI redirectUrl = URI.create( redirectUrlString );
-                    }
-
-                    return STATE.CONTINUE;
-                };
-
                 @Override
                 public CE onCompleted( Response response )
                     throws Exception
                 {
-                    checkState( HTTP_OK == response.getStatusCode(),
-                                "Impossible to query the catalog %s, server replied %s", uri, response.getStatusText() );
-
                     return digesterLoader.newDigester().parse( response.getResponseBodyAsStream() );
                 }
 
