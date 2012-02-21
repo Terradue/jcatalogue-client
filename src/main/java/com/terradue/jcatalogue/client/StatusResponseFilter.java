@@ -35,13 +35,13 @@ final class StatusResponseFilter
     implements ResponseFilter
 {
 
-    private final BitSet bitSet = new BitSet();
+    private final BitSet admittedStatuses = new BitSet();
 
     public StatusResponseFilter()
     {
-        bitSet.set( HTTP_OK );
-        bitSet.set( HTTP_MOVED_PERM );
-        bitSet.set( HTTP_MOVED_TEMP );
+        admittedStatuses.set( HTTP_OK );
+        admittedStatuses.set( HTTP_MOVED_PERM );
+        admittedStatuses.set( HTTP_MOVED_TEMP );
     }
 
     @Override
@@ -51,7 +51,7 @@ final class StatusResponseFilter
     {
         HttpResponseStatus responseStatus = ctx.getResponseStatus();
 
-        checkState( bitSet.get( responseStatus.getStatusCode() ),
+        checkState( admittedStatuses.get( responseStatus.getStatusCode() ),
                     "Impossible to query the catalog %s, server replied %s",
                     ctx.getRequest().getRawUrl(), responseStatus.getStatusText() );
 
