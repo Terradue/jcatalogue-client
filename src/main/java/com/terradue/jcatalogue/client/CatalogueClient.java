@@ -16,6 +16,8 @@ package com.terradue.jcatalogue.client;
  *    limitations under the License.
  */
 
+import static com.terradue.jcatalogue.client.utils.Assertions.*;
+
 import static java.lang.String.format;
 import static java.net.HttpURLConnection.HTTP_OK;
 import static java.util.Arrays.asList;
@@ -70,6 +72,7 @@ import com.terradue.jcatalogue.client.internal.digester.DataSetRulesModule;
 import com.terradue.jcatalogue.client.internal.digester.LinkedAtomEntityModule;
 import com.terradue.jcatalogue.client.internal.digester.OpenSearchModule;
 import com.terradue.jcatalogue.client.internal.digester.SingleDataSetRulesModule;
+import com.terradue.jcatalogue.client.umsso.Credentials;
 
 public final class CatalogueClient
 {
@@ -104,6 +107,11 @@ public final class CatalogueClient
      * @since 0.7
      */
     private final TrustManager[] trustManagers = new TrustManager[] { new DummyTrustManager() };
+
+    /**
+     * @since 0.8
+     */
+    private final Map<String, Credentials> umSsoCredentials = new HashMap<String, Credentials>();
 
     private final DigesterLoader descriptionDigesterLoader;
 
@@ -471,6 +479,18 @@ public final class CatalogueClient
         }
 
         return sBuilder.toString();
+    }
+
+    /**
+     * @since 0.8
+     */
+    public void registerUmSsoCredentials( String host, String username, String password )
+    {
+        host = checkNotNull( host, "host cannot be null" );
+        username = checkNotNull( username, "username cannot be null" );
+        password = checkNotNull( password, "password cannot be null" );
+
+        umSsoCredentials.put( host, new Credentials( username, password ) );
     }
 
     /**
