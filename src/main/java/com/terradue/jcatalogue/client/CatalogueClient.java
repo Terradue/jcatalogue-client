@@ -358,6 +358,9 @@ public final class CatalogueClient
         }
     }
 
+    /**
+     * @since 0.7
+     */
     public void registerRealm( String host, String username, String password, boolean preemptive, HttpAuthScheme authScheme )
     {
         host = checkNotNull( host, "host cannot be null" );
@@ -373,11 +376,17 @@ public final class CatalogueClient
                                    .build() );
     }
 
+    /**
+     * @since 0.7
+     */
     public void registerSSLProxy( File proxyCertificate )
     {
         registerSSLCerificates( proxyCertificate, proxyCertificate, null );
     }
 
+    /**
+     * @since 0.7
+     */
     public void registerSSLCerificates( File sslCertificate, File sslKey, String sslPassword )
     {
         checkFile( sslCertificate );
@@ -418,6 +427,9 @@ public final class CatalogueClient
         }
     }
 
+    /**
+     * @since 0.7
+     */
     private static String encrypt( String pwd )
     {
         StringBuilder sBuilder = new StringBuilder();
