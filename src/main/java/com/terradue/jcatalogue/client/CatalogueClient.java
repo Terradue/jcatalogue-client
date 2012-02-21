@@ -16,8 +16,8 @@ package com.terradue.jcatalogue.client;
  *    limitations under the License.
  */
 
-import static com.terradue.jcatalogue.client.utils.Assertions.*;
-
+import static com.terradue.jcatalogue.client.utils.Assertions.checkArgument;
+import static com.terradue.jcatalogue.client.utils.Assertions.checkNotNull;
 import static java.lang.String.format;
 import static java.net.HttpURLConnection.HTTP_OK;
 import static java.util.Arrays.asList;
@@ -156,30 +156,15 @@ public final class CatalogueClient
 
     private static void checkFile( File file )
     {
-        if ( !file.exists() )
-        {
-            throw new IllegalArgumentException( format( "File %s not found, please verify it exists", file ) );
-        }
-
-        if ( file.isDirectory() )
-        {
-            throw new IllegalArgumentException( format( "File %s must be not a directory", file ) );
-        }
+        checkArgument( file.exists(), "File %s not found, please verify it exists", file );
+        checkArgument( !file.isDirectory(), "File %s must be not a directory", file );
     }
 
     public void registerDownloader( Downloader downloader )
     {
-        if ( downloader == null )
-        {
-            throw new IllegalArgumentException( "Input downloader must not be null." );
-        }
-
-        if ( !downloader.getClass().isAnnotationPresent( Protocol.class ) )
-        {
-            throw new RuntimeException( format( "Class %s must be annotated with %s",
-                                                downloader.getClass().getName(),
-                                                Protocol.class.getName() ) );
-        }
+        downloader = checkNotNull( downloader, "Input downloader cannot be null" );
+        checkArgument( downloader.getClass().isAnnotationPresent( Protocol.class ),
+                       "Class %s must be annotated with %s", downloader.getClass().getName(), Protocol.class.getName() );
 
         for ( String protocol : downloader.getClass().getAnnotation( Protocol.class ).value() )
         {
@@ -189,24 +174,15 @@ public final class CatalogueClient
 
     public void registerDownloader( String protocol, Downloader downloader )
     {
-        if ( protocol == null )
-        {
-            throw new IllegalArgumentException( "Input protocol must not be null." );
-        }
-        if ( downloader == null )
-        {
-            throw new IllegalArgumentException( "Input downloader must not be null." );
-        }
+        protocol = checkNotNull( protocol, "Input protocol cannot be null" );
+        downloader = checkNotNull( downloader, "Input downloader cannot be null" );
 
         downloaders.put( protocol, downloader );
     }
 
     public <D extends Downloader> D lookupDownloader( String protocol )
     {
-        if ( protocol == null )
-        {
-            throw new IllegalArgumentException( "Input protocol must be not null" );
-        }
+        protocol = checkNotNull( protocol, "Input protocol cannot be null" );
 
         if ( !downloaders.containsKey( protocol ) )
         {
@@ -276,10 +252,7 @@ public final class CatalogueClient
 
     <CE extends CatalogueEntity> CE invoke( final DigesterLoader digesterLoader, String uri, Parameter...parameters )
     {
-        if ( uri == null )
-        {
-            throw new IllegalArgumentException( "Input URI must be not null" );
-        }
+        uri = checkNotNull( uri, "Input URI cannot be null" );
 
         try
         {
@@ -293,10 +266,7 @@ public final class CatalogueClient
 
     <CE extends CatalogueEntity> CE invoke( final DigesterLoader digesterLoader, final URI uri, Parameter...parameters )
     {
-        if ( uri == null )
-        {
-            throw new IllegalArgumentException( "Input URI must be not null" );
-        }
+        checkNotNull( uri, "Input URI cannot be null" );
 
         if ( logger.isDebugEnabled() )
         {
@@ -396,22 +366,10 @@ public final class CatalogueClient
 
     public void registerRealm( String host, String username, String password, boolean preemptive, HttpAuthScheme authScheme )
     {
-        if ( host == null )
-        {
-            throw new IllegalArgumentException( "Input username must not be null." );
-        }
-        if ( username == null )
-        {
-            throw new IllegalArgumentException( "Input username must not be null." );
-        }
-        if ( password == null )
-        {
-            throw new IllegalArgumentException( "Input password must not be null." );
-        }
-        if ( authScheme == null )
-        {
-            throw new IllegalArgumentException( "Input authScheme must not be null." );
-        }
+        host = checkNotNull( host, "host cannot be null" );
+        username = checkNotNull( username, "username cannot be null" );
+        password = checkNotNull( password, "password cannot be null" );
+        authScheme = checkNotNull( authScheme, "authScheme cannot be null" );
 
         realms.put( host, new Realm.RealmBuilder()
                                    .setPrincipal( username )
