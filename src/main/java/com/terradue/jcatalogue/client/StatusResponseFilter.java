@@ -18,6 +18,10 @@ package com.terradue.jcatalogue.client;
 
 import static com.terradue.jcatalogue.client.utils.Assertions.checkState;
 import static java.net.HttpURLConnection.HTTP_OK;
+import static java.net.HttpURLConnection.HTTP_MOVED_PERM;
+import static java.net.HttpURLConnection.HTTP_MOVED_TEMP;
+
+import java.util.BitSet;
 
 import com.ning.http.client.HttpResponseStatus;
 import com.ning.http.client.filter.FilterContext;
@@ -31,6 +35,15 @@ final class StatusResponseFilter
     implements ResponseFilter
 {
 
+    private final BitSet bitSet = new BitSet();
+
+    public StatusResponseFilter()
+    {
+        bitSet.set( HTTP_OK );
+        bitSet.set( HTTP_MOVED_PERM );
+        bitSet.set( HTTP_MOVED_TEMP );
+    }
+
     @Override
     @SuppressWarnings( "rawtypes" )
     public FilterContext filter( FilterContext ctx )
@@ -38,7 +51,7 @@ final class StatusResponseFilter
     {
         HttpResponseStatus responseStatus = ctx.getResponseStatus();
 
-        checkState( HTTP_OK == responseStatus.getStatusCode(),
+        checkState( bitSet.get( responseStatus.getStatusCode() ),
                     "Impossible to query the catalog %s, server replied %s",
                     ctx.getRequest().getRawUrl(), responseStatus.getStatusText() );
 
