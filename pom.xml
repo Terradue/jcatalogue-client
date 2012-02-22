@@ -50,7 +50,7 @@
     <dependency>
       <groupId>com.ning</groupId>
       <artifactId>async-http-client</artifactId>
-      <version>1.6.5</version>
+      <version>1.7.1</version>
       <exclusions>
         <exclusion>
           <groupId>org.slf4j</groupId>
@@ -69,12 +69,6 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>1.6.4</version>
-    </dependency>
-
-    <dependency>
-      <groupId>net.sourceforge.nekohtml</groupId>
-      <artifactId>nekohtml</artifactId>
-      <version>1.9.15</version>
     </dependency>
 
     <dependency>

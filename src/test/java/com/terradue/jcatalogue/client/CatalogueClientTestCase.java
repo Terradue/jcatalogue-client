@@ -22,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.File;
+import java.net.URI;
 import java.util.Iterator;
 
 import org.junit.After;
@@ -30,7 +31,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.terradue.jcatalogue.client.download.DownloadHandler;
-import com.terradue.jcatalogue.client.umsso.Credentials;
 
 public final class CatalogueClientTestCase
 {
@@ -187,15 +187,14 @@ public final class CatalogueClientTestCase
     public void ssoLogin()
         throws Exception
     {
-        client.registerUmSsoCredentials( "eo-sso-idp.eo.esa.int",
-                                         new Credentials.Builder( "/html/body/table[2]/tbody/tr/td/fieldset/form" )
-                                                .addParameter( "cn", "stripodi" )
-                                                .addParameter( "password", "Princesa_1979" )
-                                                .addParameter( "idleTime", "oneday" )
-                                                .addParameter( "sessionTime", "untilbrowserclose" )
-                                                .addParameter( "loginFields", "cn%40password" )
-                                                .addParameter( "loginMethod", "umsso" )
-                                                .build() );
+        client.registerUmSsoCredentials( URI.create( "https://eo-sso-idp.eo.esa.int/idp/umsso20/login" ),
+                                         HttpMethod.POST,
+                                         new Parameter( "cn", "stripodi" ),
+                                         new Parameter( "password", "XXX" ),
+                                         new Parameter( "idleTime", "oneday" ),
+                                         new Parameter( "sessionTime", "untilbrowserclose" ),
+                                         new Parameter( "loginFields", "cn@password" ),
+                                         new Parameter( "loginMethod", "umsso" ) );
         client.getDataSet( "https://va4h01.esa.int/ER01_SAR_IMS_1P/1992/05/ER01_SAR_IMS_1P_19920502T091150_19920502T091207_IPA_04160_0000.ESA.tar.gz" );
     }
 
