@@ -30,6 +30,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.terradue.jcatalogue.client.download.DownloadHandler;
+import com.terradue.jcatalogue.client.umsso.Credentials;
 
 public final class CatalogueClientTestCase
 {
@@ -160,7 +161,7 @@ public final class CatalogueClientTestCase
     public void accessToDataSet()
         throws Exception
     {
-        DataSet dataSet = client.getDataSet( "http://10.11.12.248/catalogue/gpod/ASA_GM__0P/ASA_GM__0PNPDK20101202_174508_000006653097_00084_45788_7504.N1/atom" );
+        DataSet dataSet = client.getDataSet( "http://t2-10-11-12-248.hadoop.terradue.int/catalogue/gpod/ASA_IM__0P/ASA_IM__0CNPDE20110409_004512_000000163101_00189_47617_2648.N1/atom" );
 
         assertNotNull( dataSet );
     }
@@ -177,6 +178,25 @@ public final class CatalogueClientTestCase
                                        new Parameter( "stopDate", "1995-07-18T14:46:54.000" ) );
 
         assertTrue( serie.getTotalResults() > 0 );
+    }
+
+    /**
+     * @since 0.8
+     */
+    @Test
+    public void ssoLogin()
+        throws Exception
+    {
+        client.registerUmSsoCredentials( "eo-sso-idp.eo.esa.int",
+                                         new Credentials.Builder( "/html/body/table[2]/tbody/tr/td/fieldset/form" )
+                                                .addParameter( "cn", "stripodi" )
+                                                .addParameter( "password", "Princesa_1979" )
+                                                .addParameter( "idleTime", "oneday" )
+                                                .addParameter( "sessionTime", "untilbrowserclose" )
+                                                .addParameter( "loginFields", "cn%40password" )
+                                                .addParameter( "loginMethod", "umsso" )
+                                                .build() );
+        client.getDataSet( "https://va4h01.esa.int/ER01_SAR_IMS_1P/1992/05/ER01_SAR_IMS_1P_19920502T091150_19920502T091207_IPA_04160_0000.ESA.tar.gz" );
     }
 
 }

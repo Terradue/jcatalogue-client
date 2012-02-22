@@ -16,6 +16,7 @@ package com.terradue.jcatalogue.client;
  *    limitations under the License.
  */
 
+import static com.ning.http.util.AsyncHttpProviderUtils.parseCookie;
 import static com.terradue.jcatalogue.client.utils.Assertions.checkArgument;
 import static com.terradue.jcatalogue.client.utils.Assertions.checkNotNull;
 import static java.lang.String.format;
@@ -33,24 +34,32 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
+import javax.xml.xpath.XPathConstants;
 
 import org.apache.commons.beanutils.Converter;
 import org.apache.commons.digester3.binder.DigesterLoader;
 import org.apache.commons.ssl.KeyMaterial;
+import org.cyberneko.html.parsers.DOMParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
 
 import com.ning.http.client.AsyncCompletionHandler;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
+import com.ning.http.client.Cookie;
+import com.ning.http.client.HttpResponseHeaders;
 import com.ning.http.client.Realm;
 import com.ning.http.client.RequestBuilder;
 import com.ning.http.client.Response;
@@ -275,6 +284,15 @@ public final class CatalogueClient
 
         RequestBuilder requestBuilder = new RequestBuilder( "GET" ).setUrl( uri.toString() );
 
+        // we cannot know which SSO server is the backends the resources
+        for ( Credentials credentials : umSsoCredentials.values() )
+        {
+            if ( credentials.getSsoCookie() != null )
+            {
+                requestBuilder.addCookie( credentials.getSsoCookie() );
+            }
+        }
+
         for ( Parameter parameter : parameters )
         {
             requestBuilder.addQueryParameter( parameter.getName(), parameter.getValue() );
@@ -292,10 +310,79 @@ public final class CatalogueClient
             description = httpClient.executeRequest( requestBuilder.build(), new AsyncCompletionHandler<CE>()
             {
 
+                private boolean requireSsoLogin;
+
+                private Credentials credentials;
+
+                @Override
+                public STATE onHeadersReceived( HttpResponseHeaders headers )
+                    throws Exception
+                {
+                    requireSsoLogin = false;
+                    credentials = null;
+
+                    String contentType = headers.getHeaders().getFirstValue( "Content-Type" );
+                    if ( "text/html".equals( contentType ) ) // maybe an SSO login page? :)
+                    {
+                        for ( String cookieValue : headers.getHeaders().get( "Set-Cookie" ) )
+                        {
+                            Cookie cookie = parseCookie( cookieValue );
+
+                            if ( umSsoCredentials.containsKey( cookie.getDomain() ) )
+                            {
+                                requireSsoLogin = true;
+                                credentials = umSsoCredentials.get( cookie.getDomain() );
+                                credentials.setSsoCookie( cookie );
+                            }
+                        }
+                    }
+
+                    return STATE.CONTINUE;
+                }
+
                 @Override
                 public CE onCompleted( Response response )
                     throws Exception
                 {
+                    if ( requireSsoLogin )
+                    {
+                        final DOMParser domParser = new DOMParser();
+                        domParser.parse( new InputSource( response.getResponseBodyAsStream() ) );
+                        Document htmlDocument = domParser.getDocument();
+
+                        String loginAction = (String) credentials.getLoginFormActionXPath().evaluate( htmlDocument, XPathConstants.STRING );
+
+                        List<Parameter> additionalParameters = new LinkedList<Parameter>();
+
+                        int querySeparator = loginAction.indexOf( '?' );
+                        if ( querySeparator >= 0 )
+                        {
+                            String queryPart = loginAction.substring( querySeparator );
+                            StringTokenizer t1 = new StringTokenizer( queryPart, "&" );
+                            while ( t1.hasMoreTokens() )
+                            {
+                                StringTokenizer t2 = new StringTokenizer( t1.nextToken(), "=" );
+
+                                additionalParameters.add( new Parameter( t2.nextToken(), t2.nextToken() ) );
+                            }
+
+                            loginAction = loginAction.substring( 0, querySeparator );
+                        }
+
+                        Cookie umssoCookie = credentials.getSsoCookie();
+
+                        RequestBuilder authRequestBuilder = new RequestBuilder( "POST" )
+                            .setUrl( new URI( umssoCookie.isSecure() ? "https" : "http", umssoCookie.getDomain(), loginAction, null ).toString() )
+                            .addCookie( umssoCookie );
+
+                        for ( Parameter parameter : credentials.getParameters() )
+                        {
+                            authRequestBuilder.addParameter( parameter.getName(), parameter.getValue() );
+                        }
+
+                        return httpClient.executeRequest( authRequestBuilder.build(), this ).get();
+                    }
+
                     return digesterLoader.newDigester().parse( response.getResponseBodyAsStream() );
                 }
 
@@ -448,13 +535,12 @@ public final class CatalogueClient
     /**
      * @since 0.8
      */
-    public void registerUmSsoCredentials( String host, String username, String password )
+    public void registerUmSsoCredentials( String host, Credentials credentials )
     {
         host = checkNotNull( host, "host cannot be null" );
-        username = checkNotNull( username, "username cannot be null" );
-        password = checkNotNull( password, "password cannot be null" );
+        credentials = checkNotNull( credentials, "credentials cannot be null" );
 
-        umSsoCredentials.put( host, new Credentials( username, password ) );
+        umSsoCredentials.put( host, credentials );
     }
 
     /**
