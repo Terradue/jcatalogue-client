@@ -14,14 +14,13 @@ import org.slf4j.LoggerFactory;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Realm;
 import com.ning.http.client.RequestBuilder;
+import com.terradue.jcatalogue.client.HttpMethod;
 
 @Data
 @Protocol({ "http", "https" })
 public final class HttpDownloader
     implements Downloader
 {
-
-    private static final String GET = "GET";
 
     private final Logger logger = LoggerFactory.getLogger( getClass() );
 
@@ -52,7 +51,7 @@ public final class HttpDownloader
             logger.info( "Downloading {} to {}...", fileUri, targetDir );
         }
 
-        RequestBuilder requestBuilder = new RequestBuilder( GET ).setUrl( fileUri.toString() );
+        RequestBuilder requestBuilder = new RequestBuilder( HttpMethod.GET.toString() ).setUrl( fileUri.toString() );
 
         if ( realms.containsKey( fileUri.getHost() ) )
         {
