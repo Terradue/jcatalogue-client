@@ -182,6 +182,7 @@ final class UmSsoStatusResponseFilter
                     return new FilterContext.FilterContextBuilder()
                                 .request( authRequestBuilder.build() )
                                 .asyncHandler( ctx.getAsyncHandler() )
+                                .replayRequest( true )
                                 .build();
                 }
                 else if ( logger.isWarnEnabled() )
