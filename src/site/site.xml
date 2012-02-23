@@ -37,8 +37,9 @@
 
   <body>
     <menu name="User guide">
-      <item name="5 minutes tutorial" href="index.html" />
+      <item name="Overview" href="index.html" />
       <item name="Installation" href="installation.html" />
+      <item name="Authentication stuff" href="auth.html" />
     </menu>
 
     <menu ref="reports" inherit="bottom" />
