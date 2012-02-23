@@ -55,13 +55,13 @@ client.registerSSLCerificates( new File( "/user/home/user/.ssh/user-proxy" ) );<
 
         <source>CatalogueClient client = new CatalogueClient();
 client.registerUmSsoCredentials( URI.create( "https://eo-sso-idp.eo.esa.int/idp/umsso20/login" ),
-                                             HttpMethod.POST,
-                                             new Parameter( "cn", "username" ),
-                                             new Parameter( "password", "XXXXX" ),
-                                             new Parameter( "idleTime", "oneday" ),
-                                             new Parameter( "sessionTime", "untilbrowserclose" ),
-                                             new Parameter( "loginFields", "cn@password" ),
-                                             new Parameter( "loginMethod", "umsso" ) );</source>
+                                 HttpMethod.POST,
+                                 new Parameter( "cn", "username" ),
+                                 new Parameter( "password", "XXXXX" ),
+                                 new Parameter( "idleTime", "oneday" ),
+                                 new Parameter( "sessionTime", "untilbrowserclose" ),
+                                 new Parameter( "loginFields", "cn@password" ),
+                                 new Parameter( "loginMethod", "umsso" ) );</source>
       </subsection>
     </section>
   </body>
