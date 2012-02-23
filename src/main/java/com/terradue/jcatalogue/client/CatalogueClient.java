@@ -16,11 +16,9 @@ package com.terradue.jcatalogue.client;
  *    limitations under the License.
  */
 
-import static com.ning.http.util.AsyncHttpProviderUtils.parseCookie;
 import static com.terradue.jcatalogue.client.utils.Assertions.checkArgument;
 import static com.terradue.jcatalogue.client.utils.Assertions.checkNotNull;
 import static java.lang.String.format;
-import static java.util.Arrays.asList;
 import static org.apache.commons.beanutils.ConvertUtils.register;
 import static org.apache.commons.digester3.binder.DigesterLoader.newLoader;
 
@@ -28,37 +26,23 @@ import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
-import java.security.KeyStore;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.net.ssl.KeyManager;
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
+import lombok.Getter;
 
 import org.apache.commons.beanutils.Converter;
 import org.apache.commons.digester3.binder.DigesterLoader;
-import org.apache.commons.ssl.KeyMaterial;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ning.http.client.AsyncCompletionHandler;
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.AsyncHttpClientConfig;
-import com.ning.http.client.Cookie;
-import com.ning.http.client.HttpResponseHeaders;
-import com.ning.http.client.Realm;
-import com.ning.http.client.RequestBuilder;
 import com.ning.http.client.Response;
-import com.ning.http.client.resumable.ResumableIOExceptionFilter;
 import com.terradue.jcatalogue.client.download.DownloadHandler;
 import com.terradue.jcatalogue.client.download.Downloader;
 import com.terradue.jcatalogue.client.download.HttpDownloader;
@@ -66,6 +50,7 @@ import com.terradue.jcatalogue.client.download.Protocol;
 import com.terradue.jcatalogue.client.geo.Line;
 import com.terradue.jcatalogue.client.geo.Point;
 import com.terradue.jcatalogue.client.geo.Polygon;
+import com.terradue.jcatalogue.client.internal.ahc.HttpInvoker;
 import com.terradue.jcatalogue.client.internal.converters.AtomDateConverter;
 import com.terradue.jcatalogue.client.internal.converters.CharsetConverter;
 import com.terradue.jcatalogue.client.internal.converters.GeoConverter;
@@ -75,7 +60,6 @@ import com.terradue.jcatalogue.client.internal.digester.DataSetRulesModule;
 import com.terradue.jcatalogue.client.internal.digester.LinkedAtomEntityModule;
 import com.terradue.jcatalogue.client.internal.digester.OpenSearchModule;
 import com.terradue.jcatalogue.client.internal.digester.SingleDataSetRulesModule;
-import com.terradue.jcatalogue.client.internal.umsso.UmSSoAccess;
 
 public final class CatalogueClient
 {
@@ -96,25 +80,8 @@ public final class CatalogueClient
 
     private final Logger logger = LoggerFactory.getLogger( getClass() );
 
-    /**
-     * @since 0.7
-     */
-    private final Map<String, Realm> realms = new HashMap<String, Realm>();
-
-    /**
-     * @since 0.7
-     */
-    private final List<KeyManager> keyManagers = new ArrayList<KeyManager>();
-
-    /**
-     * @since 0.7
-     */
-    private final TrustManager[] trustManagers = new TrustManager[] { new DummyTrustManager() };
-
-    /**
-     * @since 0.8
-     */
-    private final Map<String, UmSSoAccess> umSsoCredentials = new HashMap<String, UmSSoAccess>();
+    @Getter
+    private final HttpInvoker httpInvoker = new HttpInvoker();
 
     private final DigesterLoader descriptionDigesterLoader;
 
@@ -124,8 +91,6 @@ public final class CatalogueClient
 
     private final DigesterLoader singleDataSetDigesterLoader;
 
-    private final AsyncHttpClient httpClient;
-
     public CatalogueClient()
     {
         descriptionDigesterLoader = newLoader( new OpenSearchModule() ).setNamespaceAware( true );
@@ -134,34 +99,7 @@ public final class CatalogueClient
         serieDigesterLoader = newLoader( new AtomRulesModule( Series.class ), new DataSetRulesModule() ).setNamespaceAware( true );
         singleDataSetDigesterLoader = newLoader( new SingleDataSetRulesModule() ).setNamespaceAware( true );
 
-        SSLContext context = null;
-        try
-        {
-            context = SSLContext.getInstance( "TLS" );
-            context.init( new KeyManager[] {}, trustManagers, null );
-        }
-        catch ( Exception e )
-        {
-            throw new IllegalStateException( "Impossible to initialize SSL context", e );
-        }
-
-        httpClient = new AsyncHttpClient( new AsyncHttpClientConfig.Builder()
-                                                            .setAllowPoolingConnection( true )
-                                                            .addIOExceptionFilter( new ResumableIOExceptionFilter() )
-                                                            .setMaximumConnectionsPerHost( 10 )
-                                                            .setMaximumConnectionsTotal( 100 )
-                                                            .setFollowRedirects( true )
-                                                            .addResponseFilter( new StatusResponseFilter() )
-                                                            .setSSLContext( context )
-                                                            .build() );
-
-        registerDownloader( new HttpDownloader( httpClient, realms ) );
-    }
-
-    private static void checkFile( File file )
-    {
-        checkArgument( file.exists(), "File %s not found, please verify it exists", file );
-        checkArgument( !file.isDirectory(), "File %s must be not a directory", file );
+        registerDownloader( new HttpDownloader( httpInvoker ) );
     }
 
     public void registerDownloader( Downloader downloader )
@@ -277,101 +215,17 @@ public final class CatalogueClient
             logger.debug( "Invoking Catalogue URI '{}' with parameters: ", uri, Arrays.toString( parameters ) );
         }
 
-        RequestBuilder requestBuilder = new RequestBuilder( "GET" ).setUrl( uri.toString() );
-
-        // we cannot know which SSO server is the backends the resources, send all
-        for ( UmSSoAccess access : umSsoCredentials.values() )
+        CE description = httpInvoker.invoke( HttpMethod.GET, uri, new AsyncCompletionHandler<CE>()
         {
-            for ( Cookie cookie : access.getUmSsoCookies() )
+
+            @Override
+            public CE onCompleted( Response response )
+                throws Exception
             {
-                requestBuilder.addCookie( cookie );
+                return digesterLoader.newDigester().parse( response.getResponseBodyAsStream() );
             }
-        }
 
-        for ( Parameter parameter : parameters )
-        {
-            requestBuilder.addQueryParameter( parameter.getName(), parameter.getValue() );
-        }
-
-        if ( realms.containsKey( uri.getHost() ) )
-        {
-            requestBuilder.setRealm( realms.get( uri.getHost() ) );
-        }
-
-        CE description;
-
-        try
-        {
-            description = httpClient.executeRequest( requestBuilder.build(), new AsyncCompletionHandler<CE>()
-            {
-
-                private boolean requireSsoLogin;
-
-                private UmSSoAccess umSsoAccess;
-
-                @Override
-                public STATE onHeadersReceived( HttpResponseHeaders headers )
-                    throws Exception
-                {
-                    requireSsoLogin = false;
-                    umSsoAccess = null;
-                    List<Cookie> umSsoCookies = new LinkedList<Cookie>();
-
-                    String contentType = headers.getHeaders().getFirstValue( "Content-Type" );
-                    if ( "text/html".equals( contentType ) ) // maybe an SSO login page? :)
-                    {
-                        requireSsoLogin = true;
-
-                        for ( String cookieValue : headers.getHeaders().get( "Set-Cookie" ) )
-                        {
-                            Cookie cookie = parseCookie( cookieValue );
-
-                            umSsoCookies.add( cookie );
-
-                            if ( umSsoCredentials.containsKey( cookie.getDomain() ) )
-                            {
-                                requireSsoLogin = true;
-                                umSsoAccess = umSsoCredentials.get( cookie.getDomain() );
-                            }
-                        }
-
-                        umSsoAccess.getUmSsoCookies().addAll( umSsoCookies );
-                    }
-
-                    return STATE.CONTINUE;
-                }
-
-                @Override
-                public CE onCompleted( Response response )
-                    throws Exception
-                {
-                    if ( requireSsoLogin )
-                    {
-                        RequestBuilder authRequestBuilder = new RequestBuilder( umSsoAccess.getHttpMethod().toString() )
-                            .setUrl( umSsoAccess.getLoginFormUrl().toString() );
-
-                        for ( Cookie cookie : umSsoAccess.getUmSsoCookies() )
-                        {
-                            authRequestBuilder.addCookie( cookie );
-                        }
-
-                        for ( Parameter parameter : umSsoAccess.getParameters() )
-                        {
-                            authRequestBuilder.addParameter( parameter.getName(), parameter.getValue() );
-                        }
-
-                        return httpClient.executeRequest( authRequestBuilder.build(), this ).get();
-                    }
-
-                    return digesterLoader.newDigester().parse( response.getResponseBodyAsStream() );
-                }
-
-            } ).get();
-        }
-        catch ( Exception e )
-        {
-            throw new RuntimeException( "An error occurred while invoking " + uri, e );
-        }
+        }, parameters );
 
         description.setCatalogueClient( this );
         return description;
@@ -430,17 +284,7 @@ public final class CatalogueClient
      */
     public void registerRealm( String host, String username, String password, boolean preemptive, HttpAuthScheme authScheme )
     {
-        host = checkNotNull( host, "host cannot be null" );
-        username = checkNotNull( username, "username cannot be null" );
-        password = checkNotNull( password, "password cannot be null" );
-        authScheme = checkNotNull( authScheme, "authScheme cannot be null" );
-
-        realms.put( host, new Realm.RealmBuilder()
-                                   .setPrincipal( username )
-                                   .setPassword( password )
-                                   .setUsePreemptiveAuth( preemptive )
-                                   .setScheme( authScheme.getAuthScheme() )
-                                   .build() );
+        httpInvoker.registerRealm( host, username, password, preemptive, authScheme );
     }
 
     /**
@@ -448,7 +292,7 @@ public final class CatalogueClient
      */
     public void registerSSLProxy( File proxyCertificate )
     {
-        registerSSLCerificates( proxyCertificate, proxyCertificate, null );
+        httpInvoker.registerSSLProxy( proxyCertificate );
     }
 
     /**
@@ -456,60 +300,7 @@ public final class CatalogueClient
      */
     public void registerSSLCerificates( File sslCertificate, File sslKey, String sslPassword )
     {
-        checkFile( sslCertificate );
-        checkFile( sslKey );
-
-        if ( logger.isInfoEnabled() )
-        {
-            logger.info( "Registering SSL certificate {} and key {} with password {}",
-                         new Object[] { sslCertificate, sslKey, encrypt( sslPassword ) } );
-        }
-
-        if ( sslPassword == null )
-        {
-            sslPassword = "";
-        }
-
-        final char[] password = sslPassword.toCharArray();
-
-        try
-        {
-            final KeyStore store = new KeyMaterial( sslCertificate, sslKey, password ).getKeyStore();
-            store.load( null, password );
-
-            // initialize key and trust managers -> default behavior
-            final KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance( "SunX509" );
-            // password for key and store have to be the same IIRC
-            keyManagerFactory.init( store, password );
-
-            keyManagers.addAll( asList( keyManagerFactory.getKeyManagers() ) );
-
-            httpClient.getConfig().getSSLContext().init( keyManagers.toArray( new KeyManager[keyManagers.size()] ),
-                                                         trustManagers,
-                                                         null );
-        }
-        catch ( Exception e )
-        {
-            throw new IllegalStateException( "Impossible to initialize SSL certificate/key", e );
-        }
-    }
-
-    /**
-     * @since 0.7
-     */
-    private static String encrypt( String pwd )
-    {
-        StringBuilder sBuilder = new StringBuilder();
-
-        if ( pwd != null )
-        {
-            for ( int i = 0; i < pwd.length(); i++ )
-            {
-                sBuilder.append( '*' );
-            }
-        }
-
-        return sBuilder.toString();
+        httpInvoker.registerSSLCerificates( sslCertificate, sslKey, sslPassword );
     }
 
     /**
@@ -517,9 +308,7 @@ public final class CatalogueClient
      */
     public void registerUmSsoAccess( String loginFormUrl, HttpMethod httpMethod, Parameter...parameters )
     {
-        loginFormUrl = checkNotNull( loginFormUrl, "loginFormUrl cannot be null" );
-
-        registerUmSsoCredentials( URI.create( loginFormUrl ), httpMethod, parameters );
+        httpInvoker.registerUmSsoAccess( loginFormUrl, httpMethod, parameters );
     }
 
     /**
@@ -527,11 +316,7 @@ public final class CatalogueClient
      */
     public void registerUmSsoCredentials( URI loginFormUrl, HttpMethod httpMethod, Parameter...parameters )
     {
-        loginFormUrl = checkNotNull( loginFormUrl, "loginFormUrl cannot be null" );
-        httpMethod = checkNotNull( httpMethod, "httpMethod cannot be null" );
-        parameters = checkNotNull( parameters, "loginFormUrl cannot be null" );
-
-        umSsoCredentials.put( loginFormUrl.getHost(), new UmSSoAccess( loginFormUrl, httpMethod, parameters ) );
+        httpInvoker.registerUmSsoCredentials( loginFormUrl, httpMethod, parameters );
     }
 
     /**
@@ -539,7 +324,7 @@ public final class CatalogueClient
      */
     public void shutDown()
     {
-        httpClient.close();
+        httpInvoker.shutDown();
     }
 
 }

@@ -2,7 +2,6 @@ package com.terradue.jcatalogue.client.download;
 
 import java.io.File;
 import java.net.URI;
-import java.util.Map;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -11,10 +10,8 @@ import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Realm;
-import com.ning.http.client.RequestBuilder;
 import com.terradue.jcatalogue.client.HttpMethod;
+import com.terradue.jcatalogue.client.internal.ahc.HttpInvoker;
 
 @Data
 @Protocol({ "http", "https" })
@@ -25,19 +22,7 @@ public final class HttpDownloader
     private final Logger logger = LoggerFactory.getLogger( getClass() );
 
     @Getter( AccessLevel.NONE )
-    private final AsyncHttpClient httpClient;
-
-    @Getter( AccessLevel.NONE )
-    private final Map<String, Realm> realms;
-
-    /**
-     * @deprecated
-     */
-    @Deprecated
-    public void registerRealm( String host, Realm realm )
-    {
-        throw new UnsupportedOperationException( "Since 0.7 this method is no longer supported" );
-    }
+    private final HttpInvoker httpInvoker;
 
     @Override
     public void download( File targetDir, URI fileUri, DownloadHandler handler )
@@ -51,16 +36,9 @@ public final class HttpDownloader
             logger.info( "Downloading {} to {}...", fileUri, targetDir );
         }
 
-        RequestBuilder requestBuilder = new RequestBuilder( HttpMethod.GET.toString() ).setUrl( fileUri.toString() );
-
-        if ( realms.containsKey( fileUri.getHost() ) )
-        {
-            requestBuilder.setRealm( realms.get( fileUri.getHost() ) );
-        }
-
         try
         {
-            httpClient.executeRequest( requestBuilder.build(), new SimpleDownloadHandler( targetFile, handler ) ).get();
+            httpInvoker.invoke( HttpMethod.GET, fileUri, new SimpleDownloadHandler( targetFile, handler ) );
         }
         catch ( Exception e )
         {

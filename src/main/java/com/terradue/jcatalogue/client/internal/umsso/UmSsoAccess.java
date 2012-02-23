@@ -17,14 +17,11 @@ package com.terradue.jcatalogue.client.internal.umsso;
  */
 
 import java.net.URI;
-import java.util.LinkedList;
-import java.util.List;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
-import com.ning.http.client.Cookie;
 import com.terradue.jcatalogue.client.HttpMethod;
 import com.terradue.jcatalogue.client.Parameter;
 
@@ -34,7 +31,7 @@ import com.terradue.jcatalogue.client.Parameter;
 @RequiredArgsConstructor
 @Getter
 @ToString
-public final class UmSSoAccess
+public final class UmSsoAccess
 {
 
     private final URI loginFormUrl;
@@ -42,7 +39,5 @@ public final class UmSSoAccess
     private final HttpMethod httpMethod;
 
     private final Parameter[] parameters;
-
-    private final List<Cookie> umSsoCookies = new LinkedList<Cookie>();
 
 }

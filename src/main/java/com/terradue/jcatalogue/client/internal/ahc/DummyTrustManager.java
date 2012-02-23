@@ -1,4 +1,4 @@
-package com.terradue.jcatalogue.client;
+package com.terradue.jcatalogue.client.internal.ahc;
 
 /*
  *    Copyright 2011 Terradue srl
@@ -21,6 +21,9 @@ import java.security.cert.X509Certificate;
 
 import javax.net.ssl.X509TrustManager;
 
+/**
+ * @since 0.7
+ */
 final class DummyTrustManager
     implements X509TrustManager
 {
