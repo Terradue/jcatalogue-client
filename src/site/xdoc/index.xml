@@ -189,7 +189,7 @@ dataSet.download( new File( "/tmp" ), new DownloadHandler()
 {
 
     @Override
-    public void onSuccess( File file )
+    public void onCompleted( File file )
     {
         check( file.exists() );
         extractAndProcess( file );
