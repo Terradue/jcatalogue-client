@@ -25,7 +25,7 @@
 
   <body>
     <section name="Catalogue Java APIs">
-      <p>This project aims to maintain a REST client APIs set for <i>OpenSearch Geo and Temporal protocol</i>servers.</p>
+      <p>This project aims to maintain a REST client APIs set for <i>OpenSearch Geo and Temporal protocol</i> servers.</p>
 
       <subsection name="Obtaining a Client instance">
         <p>The main entry point is querying the Catalogue accessing to the main <i>OpenSearch</i> description:</p>
