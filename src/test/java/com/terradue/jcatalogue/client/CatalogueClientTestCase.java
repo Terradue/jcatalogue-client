@@ -168,8 +168,8 @@ public final class CatalogueClientTestCase
         throws Exception
     {
         Series serie = client.getSeries( "http://10.11.12.248/catalogue/gpod/ER2_TIM_AX/atom",
-                                       new Parameter( "startDate", "1995-07-18T14:46:54.000" ),
-                                       new Parameter( "stopDate", "1995-07-18T14:46:54.000" ) );
+                                         new Parameter( "startDate", "1995-07-18T14:46:54.000" ),
+                                         new Parameter( "stopDate", "1995-07-18T14:46:54.000" ) );
 
         assertTrue( serie.getTotalResults() > 0 );
     }
