@@ -16,6 +16,7 @@ package com.terradue.jcatalogue.client.internal.ahc;
  *    limitations under the License.
  */
 
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
 import static com.ning.http.util.AsyncHttpProviderUtils.parseCookie;
 import static com.terradue.jcatalogue.client.internal.lang.Assertions.checkState;
 import static java.net.HttpURLConnection.HTTP_MOVED_PERM;
@@ -27,6 +28,7 @@ import java.util.BitSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +52,7 @@ final class UmSsoStatusResponseFilter
 
     private static final String CONTENT_TYPE = "Content-Type";
 
-    private static final String TEXT_HTML = "text/html";
+    private final Pattern textHtmlPattern = Pattern.compile( "text/html.*", CASE_INSENSITIVE );
 
     private final BitSet admittedStatuses = new BitSet();
 
@@ -72,7 +74,7 @@ final class UmSsoStatusResponseFilter
     }
 
     @Override
-    @SuppressWarnings( "rawtypes" )
+    @SuppressWarnings( { "rawtypes", "unchecked" } )
     public FilterContext filter( FilterContext ctx )
         throws FilterException
     {
@@ -127,11 +129,22 @@ final class UmSsoStatusResponseFilter
             }
         }
 
+        if ( logger.isDebugEnabled() )
+        {
+            logger.debug( "Checking server status code reply: {}", responseStatus.getStatusCode() );
+        }
+
         // check UM-SSO conditions - this is hack-ish but didn't find a better solution ATM
         if ( HTTP_OK == responseStatus.getStatusCode() )
         {
             String contentType = ctx.getResponseHeaders().getHeaders().getFirstValue( CONTENT_TYPE );
-            if ( contentType.contains( TEXT_HTML ) )
+
+            if ( logger.isDebugEnabled() )
+            {
+                logger.debug( "Checking content type {} behavior", contentType );
+            }
+
+            if ( textHtmlPattern.matcher( contentType ).matches() )
             {
                 if ( logger.isDebugEnabled() )
                 {
@@ -142,6 +155,12 @@ final class UmSsoStatusResponseFilter
 
                 if ( umSsoAccess != null )
                 {
+                    if ( logger.isDebugEnabled() )
+                    {
+                        logger.debug( "Redirecting request to {} {}",
+                                      umSsoAccess.getHttpMethod(), umSsoAccess.getLoginFormUrl() );
+                    }
+
                     RequestBuilder authRequestBuilder = new RequestBuilder( umSsoAccess.getHttpMethod().toString() )
                                                                  .setUrl( umSsoAccess.getLoginFormUrl().toString() );
 
@@ -149,7 +168,7 @@ final class UmSsoStatusResponseFilter
                     {
                         if ( logger.isDebugEnabled() )
                         {
-                            logger.debug( "Adding cookie {} for host {}", cookie, currentDomain );
+                            logger.debug( "Adding {} for host {}", cookie, currentDomain );
                         }
 
                         authRequestBuilder.addCookie( cookie );
@@ -160,13 +179,21 @@ final class UmSsoStatusResponseFilter
                         authRequestBuilder.addParameter( parameter.getName(), parameter.getValue() );
                     }
 
-                    return new FilterContext.FilterContextBuilder( ctx ).request( authRequestBuilder.build() ).build();
+                    return new FilterContext.FilterContextBuilder()
+                                .request( authRequestBuilder.build() )
+                                .asyncHandler( ctx.getAsyncHandler() )
+                                .build();
                 }
                 else if ( logger.isWarnEnabled() )
                 {
                     logger.warn( "Domain {} not managed for UM-SSO authentication!", currentDomain );
                 }
             }
+        }
+
+        if ( logger.isDebugEnabled() )
+        {
+            logger.debug( "Proceeding on serving the request" );
         }
 
         return ctx;
