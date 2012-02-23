@@ -1,4 +1,4 @@
-package com.terradue.jcatalogue.client.internal.umsso;
+package com.terradue.jcatalogue.client.internal.ahc;
 
 /*
  *    Copyright 2011-2012 Terradue srl
@@ -31,7 +31,7 @@ import com.terradue.jcatalogue.client.Parameter;
 @RequiredArgsConstructor
 @Getter
 @ToString
-public final class UmSsoAccess
+final class UmSsoAccess
 {
 
     private final URI loginFormUrl;

@@ -38,7 +38,6 @@ import com.ning.http.client.filter.FilterContext;
 import com.ning.http.client.filter.FilterException;
 import com.ning.http.client.filter.ResponseFilter;
 import com.terradue.jcatalogue.client.Parameter;
-import com.terradue.jcatalogue.client.internal.umsso.UmSsoAccess;
 
 /**
  * @since 0.8

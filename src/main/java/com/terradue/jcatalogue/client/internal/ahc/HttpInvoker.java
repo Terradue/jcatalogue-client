@@ -29,7 +29,6 @@ import com.ning.http.client.resumable.ResumableIOExceptionFilter;
 import com.terradue.jcatalogue.client.HttpAuthScheme;
 import com.terradue.jcatalogue.client.HttpMethod;
 import com.terradue.jcatalogue.client.Parameter;
-import com.terradue.jcatalogue.client.internal.umsso.UmSsoAccess;
 
 /**
  * @since 0.8
