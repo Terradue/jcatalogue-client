@@ -29,9 +29,6 @@ public interface DownloadHandler
 
     void onFatal( String message );
 
-    @Deprecated
-    void onSuccess( File file );
-
     /**
      * @since 0.8
      */
