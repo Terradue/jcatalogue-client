@@ -28,7 +28,7 @@
   <packaging>jar</packaging>
 
   <name>JCatalogue Client</name>
-  <description>TODO - fill me</description>
+  <description>REST client for OpenSearch Geo and Temporal protocol servers</description>
   <url>http://terradue.github.com/jcatalogue-client/</url>
 
   <scm>
