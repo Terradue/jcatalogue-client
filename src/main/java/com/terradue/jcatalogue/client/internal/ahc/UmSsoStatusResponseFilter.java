@@ -17,7 +17,7 @@ package com.terradue.jcatalogue.client.internal.ahc;
  */
 
 import static com.ning.http.util.AsyncHttpProviderUtils.parseCookie;
-import static com.terradue.jcatalogue.client.utils.Assertions.checkState;
+import static com.terradue.jcatalogue.client.internal.lang.Assertions.checkState;
 import static java.net.HttpURLConnection.HTTP_MOVED_PERM;
 import static java.net.HttpURLConnection.HTTP_MOVED_TEMP;
 import static java.net.HttpURLConnection.HTTP_OK;

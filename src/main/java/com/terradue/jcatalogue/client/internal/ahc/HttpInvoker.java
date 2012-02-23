@@ -1,7 +1,7 @@
 package com.terradue.jcatalogue.client.internal.ahc;
 
-import static com.terradue.jcatalogue.client.utils.Assertions.checkArgument;
-import static com.terradue.jcatalogue.client.utils.Assertions.checkNotNull;
+import static com.terradue.jcatalogue.client.internal.lang.Assertions.checkArgument;
+import static com.terradue.jcatalogue.client.internal.lang.Assertions.checkNotNull;
 import static java.util.Arrays.asList;
 
 import java.io.File;

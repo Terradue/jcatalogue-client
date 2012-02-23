@@ -1,4 +1,4 @@
-package com.terradue.jcatalogue.client.utils;
+package com.terradue.jcatalogue.client.internal.lang;
 
 import static java.lang.String.format;
 

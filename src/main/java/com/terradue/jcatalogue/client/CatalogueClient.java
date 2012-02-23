@@ -16,8 +16,8 @@ package com.terradue.jcatalogue.client;
  *    limitations under the License.
  */
 
-import static com.terradue.jcatalogue.client.utils.Assertions.checkArgument;
-import static com.terradue.jcatalogue.client.utils.Assertions.checkNotNull;
+import static com.terradue.jcatalogue.client.internal.lang.Assertions.checkArgument;
+import static com.terradue.jcatalogue.client.internal.lang.Assertions.checkNotNull;
 import static java.lang.String.format;
 import static org.apache.commons.beanutils.ConvertUtils.register;
 import static org.apache.commons.digester3.binder.DigesterLoader.newLoader;
