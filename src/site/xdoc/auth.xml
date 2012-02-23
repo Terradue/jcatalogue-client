@@ -24,7 +24,7 @@
   </properties>
 
   <body>
-    <section name="Miscellaneous">
+    <section name="Authentications">
       <subsection name="HTTP Authentication">
         <p>It often happens that both <i>OpenSearch</i> server and resources server are protected by HTTP
         authentication, so the client supports the registration of different realms:</p>
