@@ -116,12 +116,6 @@ public final class CatalogueClientTestCase
         dataSet.download( new File( "/tmp" ), new DownloadHandler()
         {
 
-            @Override
-            public void onSuccess( File file )
-            {
-                assertTrue( file.exists() );
-            }
-
             public void onCompleted( File file )
             {
                 assertTrue( file.exists() );
