@@ -113,39 +113,7 @@ public final class CatalogueClientTestCase
 
         // dowload the DataSet
 
-        dataSet.download( new File( "/tmp" ), new DownloadHandler()
-        {
-
-            public void onCompleted( File file )
-            {
-                assertTrue( file.exists() );
-            }
-
-            @Override
-            public void onError( String message )
-            {
-                fail( message );
-            }
-
-            @Override
-            public void onWarning( String message )
-            {
-                System.out.printf( "[WARNING] %s%n",  message );
-            }
-
-            @Override
-            public void onFatal( String message )
-            {
-                fail( message );
-            }
-
-            @Override
-            public void onError( Throwable t )
-            {
-                fail( t.getMessage() );
-            }
-
-        } );
+        dataSet.download( new File( "/tmp" ), new AssertingDownloadHanlder() );
     }
 
     /**
@@ -181,7 +149,7 @@ public final class CatalogueClientTestCase
     public void ssoLogin()
         throws Exception
     {
-        client.registerUmSsoCredentials( URI.create( "https://eo-sso-idp.eo.esa.int/idp/umsso20/login" ),
+        client.registerUmSsoCredentials( URI.create( "https://eo-sso-idp.eo.esa.int/idp/umsso20/login?null" ),
                                          HttpMethod.POST,
                                          new Parameter( "cn", "stripodi" ),
                                          new Parameter( "password", "XXX" ),
@@ -189,7 +157,9 @@ public final class CatalogueClientTestCase
                                          new Parameter( "sessionTime", "untilbrowserclose" ),
                                          new Parameter( "loginFields", "cn@password" ),
                                          new Parameter( "loginMethod", "umsso" ) );
-        client.getDataSet( "https://va4h01.esa.int/ER01_SAR_IMS_1P/1992/05/ER01_SAR_IMS_1P_19920502T091150_19920502T091207_IPA_04160_0000.ESA.tar.gz" );
+        Series series = client.getSeries( "http://eo-virtual-archive4.esa.int/search/ER02_SAR_IM__0P/atom?bbox=-75,20,-85,30" );
+
+        series.iterator().next().download( new File( "/tmp" ), new AssertingDownloadHanlder() );
     }
 
 }
