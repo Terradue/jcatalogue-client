@@ -62,15 +62,16 @@ public final class HttpInvoker
         }
 
         httpClient = new AsyncHttpClient( new AsyncHttpClientConfig.Builder()
-                                                            .setAllowPoolingConnection( true )
-                                                            .addIOExceptionFilter( new ResumableIOExceptionFilter() )
-                                                            .setMaximumConnectionsPerHost( 10 )
-                                                            .setMaximumConnectionsTotal( 100 )
-                                                            .setFollowRedirects( true )
-                                                            .addResponseFilter( new UmSsoStatusResponseFilter( umSsoCredentials,
-                                                                                                               cookiesRegistry ) )
-                                                            .setSSLContext( context )
-                                                            .build() );
+                                                .setAllowPoolingConnection( true )
+                                                .addIOExceptionFilter( new ResumableIOExceptionFilter() )
+                                                .setMaximumConnectionsPerHost( 10 )
+                                                .setMaximumConnectionsTotal( 100 )
+                                                .addResponseFilter( new UmSsoStatusResponseFilter( umSsoCredentials,
+                                                                                                   cookiesRegistry ) )
+                                                .setFollowRedirects( true )
+                                                .setMaximumNumberOfRedirects( Integer.MAX_VALUE ) // thanks ESA guys
+                                                .setSSLContext( context )
+                                                .build() );
     }
 
     public <T> T invoke( HttpMethod httpMethod, URI uri, AsyncHandler<T> handler, Parameter...parameters )

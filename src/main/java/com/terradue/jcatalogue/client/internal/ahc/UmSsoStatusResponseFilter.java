@@ -16,16 +16,17 @@ package com.terradue.jcatalogue.client.internal.ahc;
  *    limitations under the License.
  */
 
-import static java.util.regex.Pattern.CASE_INSENSITIVE;
 import static com.ning.http.util.AsyncHttpProviderUtils.parseCookie;
 import static com.terradue.jcatalogue.client.internal.lang.Assertions.checkState;
 import static java.net.HttpURLConnection.HTTP_MOVED_PERM;
 import static java.net.HttpURLConnection.HTTP_MOVED_TEMP;
 import static java.net.HttpURLConnection.HTTP_OK;
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
 
 import java.net.URI;
 import java.util.BitSet;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -39,6 +40,7 @@ import com.ning.http.client.RequestBuilder;
 import com.ning.http.client.filter.FilterContext;
 import com.ning.http.client.filter.FilterException;
 import com.ning.http.client.filter.ResponseFilter;
+import com.terradue.jcatalogue.client.HttpMethod;
 import com.terradue.jcatalogue.client.Parameter;
 
 /**
@@ -52,7 +54,7 @@ final class UmSsoStatusResponseFilter
 
     private static final String CONTENT_TYPE = "Content-Type";
 
-    private final Pattern textHtmlPattern = Pattern.compile( "text/html.*", CASE_INSENSITIVE );
+    private final Pattern textHtmlPattern = Pattern.compile( "text/html", CASE_INSENSITIVE );
 
     private final BitSet admittedStatuses = new BitSet();
 
@@ -71,6 +73,7 @@ final class UmSsoStatusResponseFilter
         admittedStatuses.set( HTTP_OK );
         admittedStatuses.set( HTTP_MOVED_PERM );
         admittedStatuses.set( HTTP_MOVED_TEMP );
+        admittedStatuses.set( 307 ); // Temporary Redirect
     }
 
     @Override
@@ -89,10 +92,11 @@ final class UmSsoStatusResponseFilter
 
         // 2. collect all the cookies, indexing them per domain
 
-        final List<String> cookies = ctx.getResponseHeaders().getHeaders().get( SET_COOKIE );
+        final List<String> cookiesString = ctx.getResponseHeaders().getHeaders().get( SET_COOKIE );
+        final List<Cookie> cookies = new LinkedList<Cookie>();
 
         // just log there are no cookies to manage for the current domain
-        if ( cookies == null || cookies.isEmpty() )
+        if ( cookiesString == null || cookiesString.isEmpty() )
         {
             if ( logger.isDebugEnabled() )
             {
@@ -116,7 +120,7 @@ final class UmSsoStatusResponseFilter
             }
 
             // collect all cookies, adding/replacing them with latest updated value
-            for ( String cookieValue : cookies )
+            for ( String cookieValue : cookiesString )
             {
                 if ( logger.isDebugEnabled() )
                 {
@@ -125,6 +129,7 @@ final class UmSsoStatusResponseFilter
 
                 Cookie currentCookie = parseCookie( cookieValue );
 
+                cookies.add( currentCookie );
                 domainCookies.put( currentCookie.getName(), currentCookie );
             }
         }
@@ -144,57 +149,78 @@ final class UmSsoStatusResponseFilter
                 logger.debug( "Checking content type {} behavior", contentType );
             }
 
-            if ( textHtmlPattern.matcher( contentType ).matches() )
+            if ( !textHtmlPattern.matcher( contentType ).matches() )
+            {
+                logger.debug( "Content type {} doesn't ned to be analyzed, just proceed", contentType );
+
+                // return ctx;
+            }
+
+            if ( logger.isDebugEnabled() )
+            {
+                logger.debug( "Checking UM-SSO auth credentials for current host {}", currentDomain );
+            }
+
+            UmSsoAccess umSsoAccess = umSsoCredentials.get( currentDomain );
+
+            if ( umSsoAccess != null )
             {
                 if ( logger.isDebugEnabled() )
                 {
-                    logger.debug( "Checking UM-SSO auth credentials for current host {}", currentDomain );
+                    logger.debug( "Redirecting request to {} {}",
+                                  umSsoAccess.getHttpMethod(), umSsoAccess.getLoginFormUrl() );
                 }
 
-                UmSsoAccess umSsoAccess = umSsoCredentials.get( currentDomain );
+                RequestBuilder authRequestBuilder = new RequestBuilder( umSsoAccess.getHttpMethod().toString() )
+                                                             .setUrl( umSsoAccess.getLoginFormUrl().toString() );
 
-                if ( umSsoAccess != null )
+                for ( Cookie cookie : cookiesRegistry.get( currentDomain ).values() )
                 {
                     if ( logger.isDebugEnabled() )
                     {
-                        logger.debug( "Redirecting request to {} {}",
-                                      umSsoAccess.getHttpMethod(), umSsoAccess.getLoginFormUrl() );
+                        logger.debug( "Adding {} for host {}", cookie, currentDomain );
                     }
 
-                    RequestBuilder authRequestBuilder = new RequestBuilder( umSsoAccess.getHttpMethod().toString() )
-                                                                 .setUrl( umSsoAccess.getLoginFormUrl().toString() );
-
-                    for ( Cookie cookie : cookiesRegistry.get( currentDomain ).values() )
-                    {
-                        if ( logger.isDebugEnabled() )
-                        {
-                            logger.debug( "Adding {} for host {}", cookie, currentDomain );
-                        }
-
-                        authRequestBuilder.addCookie( cookie );
-                    }
-
-                    for ( Parameter parameter : umSsoAccess.getParameters() )
-                    {
-                        authRequestBuilder.addParameter( parameter.getName(), parameter.getValue() );
-                    }
-
-                    return new FilterContext.FilterContextBuilder()
-                                .request( authRequestBuilder.build() )
-                                .asyncHandler( ctx.getAsyncHandler() )
-                                .replayRequest( true )
-                                .build();
+                    authRequestBuilder.addCookie( cookie );
                 }
-                else if ( logger.isWarnEnabled() )
+
+                for ( Parameter parameter : umSsoAccess.getParameters() )
                 {
-                    logger.warn( "Domain {} not managed for UM-SSO authentication!", currentDomain );
+                    authRequestBuilder.addParameter( parameter.getName(), parameter.getValue() );
                 }
+
+                return new FilterContext.FilterContextBuilder( ctx )
+                            .request( authRequestBuilder.build() )
+                            .asyncHandler( ctx.getAsyncHandler() )
+                            .replayRequest( true )
+                            .build();
+            }
+            else if ( logger.isWarnEnabled() )
+            {
+                logger.warn( "Domain {} not managed for UM-SSO authentication!", currentDomain );
             }
         }
 
         if ( logger.isDebugEnabled() )
         {
             logger.debug( "Proceeding on serving the request" );
+        }
+
+        if ( HttpMethod.POST.toString().equals( ctx.getRequest().getMethod() ) )
+        {
+            RequestBuilder redirect = new RequestBuilder( ctx.getRequest() )
+                .setMethod( HttpMethod.GET.toString() );
+
+            // reply all cookies
+            for ( Cookie cookie : cookies )
+            {
+                redirect.addOrReplaceCookie( cookie );
+            }
+
+            return new FilterContext.FilterContextBuilder( ctx )
+                .request( redirect.build() )
+                .replayRequest( true )
+                .build();
         }
 
         return ctx;
