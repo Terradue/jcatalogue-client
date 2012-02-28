@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
@@ -42,9 +44,9 @@ public final class HttpInvoker
 
     private final TrustManager[] trustManagers = new TrustManager[] { new DummyTrustManager() };
 
-    private final Map<String, Map<String, Cookie>> cookiesRegistry = new HashMap<String, Map<String, Cookie>>();
+    private final ConcurrentMap<String, ConcurrentMap<String, Cookie>> cookiesRegistry = new ConcurrentHashMap<String, ConcurrentMap<String, Cookie>>();
 
-    private final Map<String, UmSsoAccess> umSsoCredentials = new HashMap<String, UmSsoAccess>();
+    private final ConcurrentMap<String, UmSsoAccess> umSsoCredentials = new ConcurrentHashMap<String, UmSsoAccess>();
 
     private final AsyncHttpClient httpClient;
 

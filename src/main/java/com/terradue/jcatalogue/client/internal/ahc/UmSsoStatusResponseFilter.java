@@ -25,10 +25,11 @@ import static java.util.regex.Pattern.CASE_INSENSITIVE;
 
 import java.net.URI;
 import java.util.BitSet;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
@@ -62,10 +63,10 @@ final class UmSsoStatusResponseFilter
 
     private final Map<String, UmSsoAccess> umSsoCredentials;
 
-    private final Map<String, Map<String, Cookie>> cookiesRegistry;
+    private final ConcurrentMap<String, ConcurrentMap<String, Cookie>> cookiesRegistry;
 
-    public UmSsoStatusResponseFilter( Map<String, UmSsoAccess> umSsoCredentials,
-                                      Map<String, Map<String, Cookie>> cookiesRegistry)
+    public UmSsoStatusResponseFilter( ConcurrentMap<String, UmSsoAccess> umSsoCredentials,
+                                      ConcurrentMap<String, ConcurrentMap<String, Cookie>> cookiesRegistry)
     {
         this.umSsoCredentials = umSsoCredentials;
         this.cookiesRegistry = cookiesRegistry;
@@ -106,7 +107,7 @@ final class UmSsoStatusResponseFilter
         else
         {
             // verify there is a cookies index for the current domain
-            Map<String, Cookie> domainCookies = cookiesRegistry.get( currentDomain );
+            ConcurrentMap<String, Cookie> domainCookies = cookiesRegistry.get( currentDomain );
             if ( domainCookies == null )
             {
                 if ( logger.isDebugEnabled() )
@@ -115,7 +116,7 @@ final class UmSsoStatusResponseFilter
                 }
 
                 // create the index and store it
-                domainCookies = new HashMap<String, Cookie>();
+                domainCookies = new ConcurrentHashMap<String, Cookie>();
                 cookiesRegistry.put( currentDomain, domainCookies );
             }
 
