@@ -199,6 +199,8 @@ final class UmSsoStatusResponseFilter
             {
                 logger.warn( "Domain {} not managed for UM-SSO authentication!", currentDomain );
             }
+
+            return ctx;
         }
 
         if ( logger.isDebugEnabled() )
@@ -206,8 +208,7 @@ final class UmSsoStatusResponseFilter
             logger.debug( "Proceeding on serving the request" );
         }
 
-        if ( ctx.getResponseStatus().getStatusCode() > 300 // if it is a redirect
-                        && HttpMethod.POST.toString().equals( ctx.getRequest().getMethod() ) )
+        if ( HttpMethod.POST.toString().equals( ctx.getRequest().getMethod() ) )
         {
             RequestBuilder redirect = new RequestBuilder( ctx.getRequest() )
                 .setMethod( HttpMethod.GET.toString() );
