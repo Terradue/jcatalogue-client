@@ -149,9 +149,13 @@
     <li class="api apilevel-">
   <a href="../../../../../com/terradue/jcatalogue/client/geo/package-summary.html">com.terradue.jcatalogue.client.geo</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../com/terradue/jcatalogue/client/internal/ahc/package-summary.html">com.terradue.jcatalogue.client.internal.ahc</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../com/terradue/jcatalogue/client/internal/converters/package-summary.html">com.terradue.jcatalogue.client.internal.converters</a></li>
     <li class="api apilevel-">
   <a href="../../../../../com/terradue/jcatalogue/client/internal/digester/package-summary.html">com.terradue.jcatalogue.client.internal.digester</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/terradue/jcatalogue/client/internal/lang/package-summary.html">com.terradue.jcatalogue.client.internal.lang</a></li>
               </ul><br/>
             </div> <!-- end packages -->
           </div> <!-- end resize-packages -->
@@ -341,7 +345,7 @@
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onError(java.lang.String)">onError</a></span>(String message)</nobr>
+        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onCompleted(java.io.File)">onCompleted</a></span>(File file)</nobr>
         
   </td></tr>
 
@@ -357,7 +361,7 @@
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onError(java.lang.Throwable)">onError</a></span>(Throwable t)</nobr>
+        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onError(java.lang.String)">onError</a></span>(String message)</nobr>
         
   </td></tr>
 
@@ -373,7 +377,7 @@
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onFatal(java.lang.String)">onFatal</a></span>(String message)</nobr>
+        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onError(java.lang.Throwable)">onError</a></span>(Throwable t)</nobr>
         
   </td></tr>
 
@@ -389,7 +393,7 @@
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onSuccess(java.io.File)">onSuccess</a></span>(File file)</nobr>
+        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onFatal(java.lang.String)">onFatal</a></span>(String message)</nobr>
         
   </td></tr>
 
@@ -456,6 +460,37 @@
 
 <h2>Public Methods</h2>
 
+
+
+<A NAME="onCompleted(java.io.File)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">onCompleted</span>
+      <span class="normal">(File file)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
 
 
 <A NAME="onError(java.lang.String)"></A>
@@ -534,37 +569,6 @@
       </span>
       <span class="sympad">onFatal</span>
       <span class="normal">(String message)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="onSuccess(java.io.File)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        void
-      </span>
-      <span class="sympad">onSuccess</span>
-      <span class="normal">(File file)</span>
     </h4>
       <div class="api-level">
         <div>

@@ -311,6 +311,51 @@
 <parameter name="proxyCertificate" type="java.io.File">
 </parameter>
 </method>
+<method name="registerUmSsoAccess"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="loginFormUrl" type="java.lang.String">
+</parameter>
+<parameter name="httpMethod" type="com.terradue.jcatalogue.client.HttpMethod">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="registerUmSsoCredentials"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="loginFormUrl" type="java.net.URI">
+</parameter>
+<parameter name="httpMethod" type="com.terradue.jcatalogue.client.HttpMethod">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="shutDown"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 </class>
 <class name="CatalogueDescription"
  extends="com.terradue.jcatalogue.client.CatalogueEntity"
@@ -500,6 +545,39 @@
 >
 </method>
 </class>
+<class name="HttpMethod"
+ extends="java.lang.Enum"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="valueOf"
+ return="com.terradue.jcatalogue.client.HttpMethod"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+</method>
+<method name="values"
+ return="com.terradue.jcatalogue.client.HttpMethod[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
 <class name="OpenSearchUrl"
  extends="com.terradue.jcatalogue.client.CatalogueEntity"
  abstract="false"
@@ -656,6 +734,19 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<method name="onCompleted"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="file" type="java.io.File">
+</parameter>
+</method>
 <method name="onError"
  return="void"
  abstract="true"
@@ -693,19 +784,6 @@
  visibility="public"
 >
 <parameter name="message" type="java.lang.String">
-</parameter>
-</method>
-<method name="onSuccess"
- return="void"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="file" type="java.io.File">
 </parameter>
 </method>
 <method name="onWarning"
@@ -780,21 +858,6 @@
 <parameter name="fileUri" type="java.net.URI">
 </parameter>
 <parameter name="handler" type="com.terradue.jcatalogue.client.download.DownloadHandler">
-</parameter>
-</method>
-<method name="registerRealm"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="deprecated"
- visibility="public"
->
-<parameter name="host" type="java.lang.String">
-</parameter>
-<parameter name="realm" type="com.ning.http.client.Realm">
 </parameter>
 </method>
 </class>
@@ -896,6 +959,141 @@
  visibility="public"
 >
 </constructor>
+</class>
+</package>
+<package name="com.terradue.jcatalogue.client.internal.ahc"
+>
+<class name="HttpInvoker"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="HttpInvoker"
+ type="com.terradue.jcatalogue.client.internal.ahc.HttpInvoker"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="invoke"
+ return="T"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="httpMethod" type="com.terradue.jcatalogue.client.HttpMethod">
+</parameter>
+<parameter name="uri" type="java.net.URI">
+</parameter>
+<parameter name="handler" type="com.ning.http.client.AsyncHandler&lt;T&gt;">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="registerRealm"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="host" type="java.lang.String">
+</parameter>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<parameter name="password" type="java.lang.String">
+</parameter>
+<parameter name="preemptive" type="boolean">
+</parameter>
+<parameter name="authScheme" type="com.terradue.jcatalogue.client.HttpAuthScheme">
+</parameter>
+</method>
+<method name="registerSSLCerificates"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sslCertificate" type="java.io.File">
+</parameter>
+<parameter name="sslKey" type="java.io.File">
+</parameter>
+<parameter name="sslPassword" type="java.lang.String">
+</parameter>
+</method>
+<method name="registerSSLProxy"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="proxyCertificate" type="java.io.File">
+</parameter>
+</method>
+<method name="registerUmSsoAccess"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="loginFormUrl" type="java.lang.String">
+</parameter>
+<parameter name="httpMethod" type="com.terradue.jcatalogue.client.HttpMethod">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="registerUmSsoCredentials"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="loginFormUrl" type="java.net.URI">
+</parameter>
+<parameter name="httpMethod" type="com.terradue.jcatalogue.client.HttpMethod">
+</parameter>
+<parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
+</parameter>
+</method>
+<method name="shutDown"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 </class>
 </package>
 <package name="com.terradue.jcatalogue.client.internal.converters"
@@ -1179,6 +1377,69 @@
  deprecated="not deprecated"
  visibility="protected"
 >
+</method>
+</class>
+</package>
+<package name="com.terradue.jcatalogue.client.internal.lang"
+>
+<class name="Assertions"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="checkArgument"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="expression" type="boolean">
+</parameter>
+<parameter name="errorMessageTemplate" type="java.lang.String">
+</parameter>
+<parameter name="errorMessageArgs" type="java.lang.Object...">
+</parameter>
+</method>
+<method name="checkNotNull"
+ return="T"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="reference" type="T">
+</parameter>
+<parameter name="errorMessageTemplate" type="java.lang.String">
+</parameter>
+<parameter name="errorMessageArgs" type="java.lang.Object...">
+</parameter>
+</method>
+<method name="checkState"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="expression" type="boolean">
+</parameter>
+<parameter name="errorMessageTemplate" type="java.lang.String">
+</parameter>
+<parameter name="errorMessageArgs" type="java.lang.Object...">
+</parameter>
 </method>
 </class>
 </package>
