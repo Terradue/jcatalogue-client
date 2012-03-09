@@ -63,8 +63,10 @@ public final class HttpInvoker
             throw new IllegalStateException( "Impossible to initialize SSL context", e );
         }
 
+        int timeout = 45 * 60 * 60 * 1000; // 45 minutes
+
         httpClient = new AsyncHttpClient( new AsyncHttpClientConfig.Builder()
-                                                .setConnectionTimeoutInMs( 45 * 60 * 60 * 1000 )
+                                                .setRequestTimeoutInMs( timeout )
                                                 .setAllowPoolingConnection( true )
                                                 .addIOExceptionFilter( new ResumableIOExceptionFilter() )
                                                 .setMaximumConnectionsPerHost( 10 )
