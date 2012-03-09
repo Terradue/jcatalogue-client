@@ -64,6 +64,7 @@ public final class HttpInvoker
         }
 
         httpClient = new AsyncHttpClient( new AsyncHttpClientConfig.Builder()
+                                                .setConnectionTimeoutInMs( 45 * 60 * 60 * 1000 )
                                                 .setAllowPoolingConnection( true )
                                                 .addIOExceptionFilter( new ResumableIOExceptionFilter() )
                                                 .setMaximumConnectionsPerHost( 10 )
