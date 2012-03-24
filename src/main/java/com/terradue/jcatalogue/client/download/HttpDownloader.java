@@ -38,7 +38,7 @@ public final class HttpDownloader
 
         try
         {
-            return httpInvoker.invoke( HttpMethod.GET, fileUri, new SimpleDownloadHandler<T>( targetFile, handler ) );
+            return httpInvoker.invoke( HttpMethod.GET, fileUri, new HttpDownloadHandler<T>( targetFile, handler ) );
         }
         catch ( Exception e )
         {
