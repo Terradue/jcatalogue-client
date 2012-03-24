@@ -1,8 +1,5 @@
 package com.terradue.jcatalogue.client.download;
 
-import static java.lang.String.format;
-import static java.net.HttpURLConnection.HTTP_OK;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -72,14 +69,6 @@ final class SimpleDownloadHandler<T>
     public STATE onStatusReceived( HttpResponseStatus responseStatus )
         throws Exception
     {
-        if ( HTTP_OK != responseStatus.getStatusCode() )
-        {
-            downloadHandler.onError( format( "Impossible to download %s from %s, server replied %s",
-                                     targetFile.getName(), targetFile.getName(), responseStatus.getStatusText() ) ) ;
-            targetFile.delete();
-
-            return STATE.ABORT;
-        }
         return STATE.CONTINUE;
     }
 
