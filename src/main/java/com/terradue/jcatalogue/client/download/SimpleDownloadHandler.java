@@ -16,8 +16,8 @@ import com.ning.http.client.HttpResponseStatus;
 /**
  * @since 0.5
  */
-final class SimpleDownloadHandler
-    implements AsyncHandler<Void>
+final class SimpleDownloadHandler<T>
+    implements AsyncHandler<T>
 {
 
     private static final String CONTENT_LENGTH = "Content-Length";
@@ -28,13 +28,13 @@ final class SimpleDownloadHandler
 
     private final FileOutputStream output;
 
-    private final DownloadHandler downloadHandler;
+    private final DownloadHandler<T> downloadHandler;
 
     private int contentLength = -1;
 
     private int downloadCounter = 0;
 
-    public SimpleDownloadHandler( File targetFile, DownloadHandler downloadHandler )
+    public SimpleDownloadHandler( File targetFile, DownloadHandler<T> downloadHandler )
         throws FileNotFoundException
     {
         this.targetFile = targetFile;
@@ -98,7 +98,7 @@ final class SimpleDownloadHandler
     }
 
     @Override
-    public Void onCompleted()
+    public T onCompleted()
         throws Exception
     {
         System.out.println( "Done." );
@@ -106,8 +106,7 @@ final class SimpleDownloadHandler
         output.flush();
         output.close();
 
-        downloadHandler.onCompleted( targetFile );
-        return null;
+        return downloadHandler.onCompleted( targetFile );
     }
 
 }

@@ -25,7 +25,7 @@ public final class HttpDownloader
     private final HttpInvoker httpInvoker;
 
     @Override
-    public void download( File targetDir, URI fileUri, DownloadHandler handler )
+    public <T> T download( File targetDir, URI fileUri, DownloadHandler<T> handler )
     {
         String fileName = fileUri.getPath().substring( fileUri.getPath().lastIndexOf( '/' ) + 1 );
 
@@ -38,11 +38,12 @@ public final class HttpDownloader
 
         try
         {
-            httpInvoker.invoke( HttpMethod.GET, fileUri, new SimpleDownloadHandler( targetFile, handler ) );
+            return httpInvoker.invoke( HttpMethod.GET, fileUri, new SimpleDownloadHandler<T>( targetFile, handler ) );
         }
         catch ( Exception e )
         {
             handler.onError( e );
+            return null;
         }
     }
 

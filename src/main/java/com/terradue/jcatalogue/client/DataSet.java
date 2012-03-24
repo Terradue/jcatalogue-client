@@ -42,14 +42,14 @@ public final class DataSet
 
     private GeoLocation geoLocation;
 
-    public void download( File targetDir, DownloadHandler handler )
+    public <T> T download( File targetDir, DownloadHandler<T> handler )
     {
         if ( logger.isInfoEnabled() )
         {
             logger.info( "Downloading DataSet {} media file...", getId() );
         }
 
-        getCatalogueClient().downloadFile( targetDir, getEnclosures(), handler );
+        return getCatalogueClient().downloadFile( targetDir, getEnclosures(), handler );
     }
 
 }

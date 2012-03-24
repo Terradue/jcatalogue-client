@@ -22,6 +22,6 @@ import java.net.URI;
 public interface Downloader
 {
 
-    void download( File targetDir, URI fileUri, DownloadHandler handler );
+    <T> T download( File targetDir, URI fileUri, DownloadHandler<T> handler );
 
 }

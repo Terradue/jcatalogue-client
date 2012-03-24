@@ -18,7 +18,7 @@ package com.terradue.jcatalogue.client.download;
 
 import java.io.File;
 
-public interface DownloadHandler
+public interface DownloadHandler<T>
 {
 
     void onError( Throwable t );
@@ -32,6 +32,6 @@ public interface DownloadHandler
     /**
      * @since 0.8
      */
-    void onCompleted( File file );
+    T onCompleted( File file );
 
 }

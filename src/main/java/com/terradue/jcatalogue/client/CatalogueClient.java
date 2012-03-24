@@ -231,7 +231,7 @@ public final class CatalogueClient
         return description;
     }
 
-    void downloadFile( File targetDir, List<URI> fileUris, final DownloadHandler handler )
+    <T> T downloadFile( File targetDir, List<URI> fileUris, final DownloadHandler<T> handler )
     {
         if ( !targetDir.exists() )
         {
@@ -251,32 +251,26 @@ public final class CatalogueClient
             }
         }
 
-        CallbackDownloadHandler callback = new CallbackDownloadHandler( handler );
         Iterator<URI> fileUrisIterator = fileUris.iterator();
 
-        while ( !callback.isDownloaded() )
+        while ( fileUrisIterator.hasNext() )
         {
-            if ( !fileUrisIterator.hasNext() )
-            {
-                callback.onFatal( "DataSet media file download not possible, none of the submitted URIs succeeded" );
-
-                return;
-            }
-
             URI fileUri = fileUrisIterator.next();
 
             Downloader downloader = lookupDownloader( fileUri.getScheme() );
 
             if ( downloader != null )
             {
-                downloader.download( targetDir, fileUri, callback );
+                return downloader.download( targetDir, fileUri, handler );
             }
             else
             {
-                callback.onWarning( format( "'%s' protocol is not supported, impossible to download %s",
-                                            fileUri.getScheme(), fileUri ) );
+                handler.onWarning( format( "'%s' protocol is not supported, impossible to download %s",
+                                           fileUri.getScheme(), fileUri ) );
             }
         }
+
+        throw new IllegalStateException( "DataSet media file download not possible, none of the submitted URIs succeeded" );
     }
 
     /**

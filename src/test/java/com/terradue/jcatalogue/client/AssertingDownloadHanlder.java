@@ -8,12 +8,13 @@ import java.io.File;
 import com.terradue.jcatalogue.client.download.DownloadHandler;
 
 final class AssertingDownloadHanlder
-    implements DownloadHandler
+    implements DownloadHandler<Void>
 {
 
-    public void onCompleted( File file )
+    public Void onCompleted( File file )
     {
         assertTrue( file.exists() );
+        return null;
     }
 
     @Override

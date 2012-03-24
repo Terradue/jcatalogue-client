@@ -19,7 +19,6 @@ package com.terradue.jcatalogue.client;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.net.URI;
@@ -29,8 +28,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import com.terradue.jcatalogue.client.download.DownloadHandler;
 
 public final class CatalogueClientTestCase
 {
@@ -152,7 +149,7 @@ public final class CatalogueClientTestCase
         client.registerUmSsoCredentials( URI.create( "https://eo-sso-idp.eo.esa.int/idp/umsso20/login?null" ),
                                          HttpMethod.POST,
                                          new Parameter( "cn", "stripodi" ),
-                                         new Parameter( "password", "XXX" ),
+                                         new Parameter( "password", "Princesa_1979" ),
                                          new Parameter( "idleTime", "oneday" ),
                                          new Parameter( "sessionTime", "untilbrowserclose" ),
                                          new Parameter( "loginFields", "cn@password" ),
