@@ -76,12 +76,12 @@ public final class CatalogueClient
         register( geoConverter, Polygon.class );
     }
 
-    private final Map<String, Downloader> downloaders = new HashMap<String, Downloader>();
+    private final Map<String, Downloader> downloaders;
 
     private final Logger logger = LoggerFactory.getLogger( getClass() );
 
     @Getter
-    private final HttpInvoker httpInvoker = new HttpInvoker();
+    private final HttpInvoker httpInvoker;
 
     private final DigesterLoader descriptionDigesterLoader;
 
@@ -93,33 +93,20 @@ public final class CatalogueClient
 
     public CatalogueClient()
     {
+        this( new Configuration() );
+    }
+
+    public CatalogueClient( Configuration configuration )
+    {
+        httpInvoker = configuration.httpInvoker;
+        configuration.registerDownloader( new HttpDownloader( httpInvoker ) );
+        downloaders = configuration.downloaders;
+
         descriptionDigesterLoader = newLoader( new OpenSearchModule() ).setNamespaceAware( true );
         catalogueDigesterLoader = newLoader( new AtomRulesModule( Catalogue.class ), new LinkedAtomEntityModule() )
             .setNamespaceAware( true );
         serieDigesterLoader = newLoader( new AtomRulesModule( Series.class ), new DataSetRulesModule() ).setNamespaceAware( true );
         singleDataSetDigesterLoader = newLoader( new SingleDataSetRulesModule() ).setNamespaceAware( true );
-
-        registerDownloader( new HttpDownloader( httpInvoker ) );
-    }
-
-    public void registerDownloader( Downloader downloader )
-    {
-        downloader = checkNotNull( downloader, "Input downloader cannot be null" );
-        checkArgument( downloader.getClass().isAnnotationPresent( Protocol.class ),
-                       "Class %s must be annotated with %s", downloader.getClass().getName(), Protocol.class.getName() );
-
-        for ( String protocol : downloader.getClass().getAnnotation( Protocol.class ).value() )
-        {
-            registerDownloader( protocol, downloader );
-        }
-    }
-
-    public void registerDownloader( String protocol, Downloader downloader )
-    {
-        protocol = checkNotNull( protocol, "Input protocol cannot be null" );
-        downloader = checkNotNull( downloader, "Input downloader cannot be null" );
-
-        downloaders.put( protocol, downloader );
     }
 
     public <D extends Downloader> D lookupDownloader( String protocol )
@@ -274,51 +261,94 @@ public final class CatalogueClient
     }
 
     /**
-     * @since 0.7
-     */
-    public void registerRealm( String host, String username, String password, boolean preemptive, HttpAuthScheme authScheme )
-    {
-        httpInvoker.registerRealm( host, username, password, preemptive, authScheme );
-    }
-
-    /**
-     * @since 0.7
-     */
-    public void registerSSLProxy( File proxyCertificate )
-    {
-        httpInvoker.registerSSLProxy( proxyCertificate );
-    }
-
-    /**
-     * @since 0.7
-     */
-    public void registerSSLCerificates( File sslCertificate, File sslKey, String sslPassword )
-    {
-        httpInvoker.registerSSLCerificates( sslCertificate, sslKey, sslPassword );
-    }
-
-    /**
-     * @since 0.8
-     */
-    public void registerUmSsoAccess( String loginFormUrl, HttpMethod httpMethod, Parameter...parameters )
-    {
-        httpInvoker.registerUmSsoAccess( loginFormUrl, httpMethod, parameters );
-    }
-
-    /**
-     * @since 0.8
-     */
-    public void registerUmSsoCredentials( URI loginFormUrl, HttpMethod httpMethod, Parameter...parameters )
-    {
-        httpInvoker.registerUmSsoCredentials( loginFormUrl, httpMethod, parameters );
-    }
-
-    /**
      * @since 0.8
      */
     public void shutDown()
     {
         httpInvoker.shutDown();
+    }
+
+    public static final class Configuration
+    {
+
+        final HttpInvoker httpInvoker = new HttpInvoker();
+
+        final Map<String, Downloader> downloaders = new HashMap<String, Downloader>();
+
+        public Configuration registerDownloader( Downloader downloader )
+        {
+            downloader = checkNotNull( downloader, "Input downloader cannot be null" );
+            checkArgument( downloader.getClass().isAnnotationPresent( Protocol.class ),
+                           "Class %s must be annotated with %s", downloader.getClass().getName(), Protocol.class.getName() );
+
+            for ( String protocol : downloader.getClass().getAnnotation( Protocol.class ).value() )
+            {
+                registerDownloader( protocol, downloader );
+            }
+
+            return this;
+        }
+
+        public Configuration registerDownloader( String protocol, Downloader downloader )
+        {
+            protocol = checkNotNull( protocol, "Input protocol cannot be null" );
+            downloader = checkNotNull( downloader, "Input downloader cannot be null" );
+
+            downloaders.put( protocol, downloader );
+
+            return this;
+        }
+
+        /**
+         * @since 0.7
+         */
+        public Configuration registerRealm( String host, String username, String password, boolean preemptive, HttpAuthScheme authScheme )
+        {
+            httpInvoker.registerRealm( host, username, password, preemptive, authScheme );
+
+            return this;
+        }
+
+        /**
+         * @since 0.7
+         */
+        public Configuration registerSSLCerificates( File sslCertificate, File sslKey, String sslPassword )
+        {
+            httpInvoker.registerSSLCerificates( sslCertificate, sslKey, sslPassword );
+
+            return this;
+        }
+
+        /**
+         * @since 0.7
+         */
+        public Configuration registerSSLProxy( File proxyCertificate )
+        {
+            httpInvoker.registerSSLProxy( proxyCertificate );
+
+            return this;
+        }
+
+        /**
+         * @since 0.8
+         */
+        public Configuration registerUmSsoAccess( String loginFormUrl, HttpMethod httpMethod, Parameter...parameters )
+        {
+            httpInvoker.registerUmSsoAccess( loginFormUrl, httpMethod, parameters );
+
+            return this;
+        }
+
+        /**
+         * @since 0.8
+         */
+        public Configuration registerUmSsoCredentials( URI loginFormUrl, HttpMethod httpMethod, Parameter...parameters )
+        {
+            httpInvoker.registerUmSsoCredentials( loginFormUrl, httpMethod, parameters );
+
+            return this;
+        }
+
     }
 
 }
