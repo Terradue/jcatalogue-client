@@ -21,7 +21,7 @@
     <title>JCatalogue Client Changes</title>
   </properties>
   <body>
-    <release version="0.7" date="2012-??-??" description="Maintainance release.">
+    <release version="0.8" date="2012-??-??" description="Maintainance release.">
       <action dev="simonetripodi" type="update">
         Added CatalogueClient#shutDown() method.
       </action>
