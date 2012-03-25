@@ -19,17 +19,15 @@ final class HttpDownloadHandler<T>
 
     private static final String CONTENT_LENGTH = "Content-Length";
 
-    private static final int FILE_LENGTH = 1024;
-
     private final File targetFile;
 
     private final FileOutputStream output;
 
     private final DownloadHandler<T> downloadHandler;
 
-    private int contentLength = -1;
+    private long contentLength = -1;
 
-    private int downloadCounter = 0;
+    private long downloadCounter = 0;
 
     public HttpDownloadHandler( File targetFile, DownloadHandler<T> downloadHandler )
         throws FileNotFoundException
@@ -56,10 +54,7 @@ final class HttpDownloadHandler<T>
         {
             downloadCounter += bodyPart.getBodyPartBytes().length;
 
-            int current = downloadCounter / FILE_LENGTH;
-
-            int currentPercentage = ( 100 * current ) / contentLength;
-            System.out.print( current + "/" + contentLength + "MB (" + currentPercentage + "%)\r" );
+            downloadHandler.onContentDownloadProgress( downloadCounter, contentLength );
         }
 
         return STATE.CONTINUE;
@@ -80,7 +75,7 @@ final class HttpDownloadHandler<T>
 
         if ( !contentLength.isEmpty() )
         {
-            this.contentLength = Integer.valueOf( contentLength.iterator().next() ).intValue() / FILE_LENGTH;
+            this.contentLength = Long.valueOf( contentLength.iterator().next() ).longValue();
         }
 
         return STATE.CONTINUE;
@@ -90,8 +85,6 @@ final class HttpDownloadHandler<T>
     public T onCompleted()
         throws Exception
     {
-        System.out.println( "Done." );
-
         output.flush();
         output.close();
 

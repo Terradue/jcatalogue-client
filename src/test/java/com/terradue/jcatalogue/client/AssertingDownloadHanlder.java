@@ -11,8 +11,15 @@ final class AssertingDownloadHanlder
     implements DownloadHandler<Void>
 {
 
+    @Override
+    public void onContentDownloadProgress( long current, long total )
+    {
+        System.out.printf( "%s%%\r", ( ( 100 * current ) / total ) );
+    }
+
     public Void onCompleted( File file )
     {
+        System.out.println( "Done!" );
         assertTrue( file.exists() );
         return null;
     }

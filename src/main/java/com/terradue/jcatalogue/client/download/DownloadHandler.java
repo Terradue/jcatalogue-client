@@ -29,6 +29,8 @@ public interface DownloadHandler<T>
 
     void onFatal( String message );
 
+    void onContentDownloadProgress( long current, long total );
+
     /**
      * @since 0.8
      */
