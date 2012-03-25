@@ -18,10 +18,27 @@ package com.terradue.jcatalogue.client;
 
 import static org.junit.Assert.assertTrue;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public final class QueryParametersTestCase
 {
+
+    private CatalogueClient client;
+
+    @Before
+    public void setUp()
+    {
+        client = new CatalogueClient();
+    }
+
+    @After
+    public void tearDown()
+    {
+        client.shutDown();
+        client = null;
+    }
 
     /**
      * @since 0.3
@@ -30,7 +47,6 @@ public final class QueryParametersTestCase
     public void testQueryParameters()
         throws Exception
     {
-        CatalogueClient client = new CatalogueClient();
         Series serie = client.getSeries( "http://10.11.12.248/catalogue/gpod/ER2_TIM_AX/atom",
                                          new Parameter( "startDate", "1995-07-18T14:46:54.000" ),
                                          new Parameter( "stopDate", "1995-07-18T14:46:54.000" ) );

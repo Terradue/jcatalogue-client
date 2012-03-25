@@ -18,10 +18,27 @@ package com.terradue.jcatalogue.client;
 
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public final class DataSetAccessTestCase
 {
+
+    private CatalogueClient client;
+
+    @Before
+    public void setUp()
+    {
+        client = new CatalogueClient();
+    }
+
+    @After
+    public void tearDown()
+    {
+        client.shutDown();
+        client = null;
+    }
 
     /**
      * @since 0.2

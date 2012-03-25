@@ -50,6 +50,7 @@ public final class CatalogueClientTestCase
     @After
     public void tearDown()
     {
+        client.shutDown();
         client = null;
     }
 
