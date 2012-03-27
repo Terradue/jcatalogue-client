@@ -268,6 +268,9 @@ public final class CatalogueClient
         httpInvoker.shutDown();
     }
 
+    /**
+     * @since 0.8
+     */
     public static final class Configuration
     {
 
@@ -299,9 +302,6 @@ public final class CatalogueClient
             return this;
         }
 
-        /**
-         * @since 0.7
-         */
         public Configuration registerRealm( String host, String username, String password, boolean preemptive, HttpAuthScheme authScheme )
         {
             httpInvoker.registerRealm( host, username, password, preemptive, authScheme );
@@ -309,9 +309,6 @@ public final class CatalogueClient
             return this;
         }
 
-        /**
-         * @since 0.7
-         */
         public Configuration registerSSLCerificates( File sslCertificate, File sslKey, String sslPassword )
         {
             httpInvoker.registerSSLCerificates( sslCertificate, sslKey, sslPassword );
@@ -319,9 +316,6 @@ public final class CatalogueClient
             return this;
         }
 
-        /**
-         * @since 0.7
-         */
         public Configuration registerSSLProxy( File proxyCertificate )
         {
             httpInvoker.registerSSLProxy( proxyCertificate );
@@ -329,9 +323,6 @@ public final class CatalogueClient
             return this;
         }
 
-        /**
-         * @since 0.8
-         */
         public Configuration registerUmSsoAccess( String loginFormUrl, HttpMethod httpMethod, Parameter...parameters )
         {
             httpInvoker.registerUmSsoAccess( loginFormUrl, httpMethod, parameters );
@@ -339,9 +330,6 @@ public final class CatalogueClient
             return this;
         }
 
-        /**
-         * @since 0.8
-         */
         public Configuration registerUmSsoCredentials( URI loginFormUrl, HttpMethod httpMethod, Parameter...parameters )
         {
             httpInvoker.registerUmSsoCredentials( loginFormUrl, httpMethod, parameters );
