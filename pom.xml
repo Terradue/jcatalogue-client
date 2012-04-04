@@ -20,7 +20,7 @@
   <parent>
     <groupId>com.terradue</groupId>
     <artifactId>oss-java-parent</artifactId>
-    <version>3</version>
+    <version>4</version>
   </parent>
 
   <artifactId>jcatalogue-client-parent</artifactId>
