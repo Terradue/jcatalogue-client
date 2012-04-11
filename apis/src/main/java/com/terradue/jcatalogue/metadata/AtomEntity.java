@@ -164,77 +164,77 @@ abstract class AtomEntity
             this.derived = derived;
         }
 
-        public T setTitle( String title )
+        public final T setTitle( String title )
         {
             this.title = title;
 
             return derived.cast( this );
         }
 
-        public T setSubtitle( String subtitle )
+        public final T setSubtitle( String subtitle )
         {
             this.subtitle = subtitle;
 
             return derived.cast( this );
         }
 
-        public T setContent( String content )
+        public final T setContent( String content )
         {
             this.content = content;
 
             return derived.cast( this );
         }
 
-        public T setPublished( Date published )
+        public final T setPublished( Date published )
         {
             this.published = published;
 
             return derived.cast( this );
         }
 
-        public T setUpdated( Date updated )
+        public final T setUpdated( Date updated )
         {
             this.updated = updated;
 
             return derived.cast( this );
         }
 
-        public T setId( String id )
+        public final T setId( String id )
         {
             this.id = id;
 
             return derived.cast( this );
         }
 
-        public T setTotalResults( int totalResults )
+        public final T setTotalResults( int totalResults )
         {
             this.totalResults = totalResults;
 
             return derived.cast( this );
         }
 
-        public T setStartIndex( int startIndex )
+        public final T setStartIndex( int startIndex )
         {
             this.startIndex = startIndex;
 
             return derived.cast( this );
         }
 
-        public T setItemsPerPage( int itemsPerPage )
+        public final T setItemsPerPage( int itemsPerPage )
         {
             this.itemsPerPage = itemsPerPage;
 
             return derived.cast( this );
         }
 
-        public T setNextResultsUri( String nextResultsUri )
+        public final T setNextResultsUri( String nextResultsUri )
         {
             this.nextResultsUri = nextResultsUri;
 
             return derived.cast( this );
         }
 
-        public T addLink( String rel, String type, String href )
+        public final T addLink( String rel, String type, String href )
         {
             if ( NEXT.equals( rel ) && ATOM_XML.equals( type ) )
             {
