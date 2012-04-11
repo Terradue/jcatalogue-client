@@ -1,15 +1,13 @@
 package com.terradue.jcatalogue.repository;
 
-import static java.lang.String.format;
-
 import static com.terradue.jcatalogue.repository.ChecksumPolicy.IGNORE;
 import static com.terradue.jcatalogue.repository.UpdatePolicy.ALWAYS;
-
 import static com.terradue.jcatalogue.utils.Objects.checkArgument;
 import static com.terradue.jcatalogue.utils.Objects.eq;
 import static com.terradue.jcatalogue.utils.Objects.hash;
+import static java.lang.String.format;
 
-import java.net.URL;
+import java.net.URI;
 
 /**
  * A repository on a remote server.
@@ -22,7 +20,7 @@ public final class RemoteRepository
 
     private final String contentType;
 
-    private URL url;
+    private URI url;
 
     private Proxy proxy;
 
@@ -37,9 +35,9 @@ public final class RemoteRepository
      *
      * @param id The identifier of the repository, may be {@code null}.
      * @param type The type of the repository, may be {@code null}.
-     * @param url The (base) URL of the repository, may be {@code null}.
+     * @param url The (base) URI of the repository, may be {@code null}.
      */
-    public RemoteRepository( String id, String type, URL url )
+    public RemoteRepository( String id, String type, URI url )
     {
         checkArgument( id != null, "Argument 'id' must not be null" );
         checkArgument( type != null, "Argument 'type' must not be null" );
@@ -61,11 +59,11 @@ public final class RemoteRepository
     }
 
     /**
-     * Gets the (base) URL of this repository.
+     * Gets the (base) URI of this repository.
      *
-     * @return The (base) URL of this repository, never {@code null}.
+     * @return The (base) URI of this repository, never {@code null}.
      */
-    public URL getUrl()
+    public URI getUrl()
     {
         return url;
     }
