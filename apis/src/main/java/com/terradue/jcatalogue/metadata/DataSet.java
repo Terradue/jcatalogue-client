@@ -34,8 +34,8 @@ public final class DataSet
                enclosures );
     }
 
-    public static abstract class Builder
-        extends AtomEntityBuilder<Builder>
+    public static class Builder
+        extends AtomEntityBuilder<DataSet, Builder>
     {
 
         public Builder()

@@ -124,7 +124,7 @@ abstract class AtomEntity
         return nextResultsUri != null;
     }
 
-    protected static abstract class AtomEntityBuilder<T extends AtomEntityBuilder<T>>
+    protected static abstract class AtomEntityBuilder<AE extends AtomEntity, T extends AtomEntityBuilder<AE, T>>
     {
 
         private static final String NEXT = "next";
@@ -247,6 +247,8 @@ abstract class AtomEntity
 
             return derived.cast( this );
         }
+
+        public abstract AE build();
 
     }
 

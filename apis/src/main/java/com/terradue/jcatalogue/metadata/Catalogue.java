@@ -34,8 +34,8 @@ public final class Catalogue
                enclosures );
     }
 
-    public static abstract class Builder
-        extends AtomEntityBuilder<Builder>
+    public static class Builder
+        extends AtomEntityBuilder<Catalogue, Builder>
     {
 
         public Builder()

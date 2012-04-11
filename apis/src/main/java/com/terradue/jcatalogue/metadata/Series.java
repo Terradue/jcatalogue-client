@@ -61,8 +61,8 @@ public final class Series
         return geoLocation;
     }
 
-    public static abstract class Builder
-        extends AtomEntityBuilder<Builder>
+    public static class Builder
+        extends AtomEntityBuilder<Series, Builder>
     {
 
         private Date beginPosition;
