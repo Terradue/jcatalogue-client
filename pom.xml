@@ -45,6 +45,8 @@
 
   <modules>
     <module>apis</module>
+    <module>impl</module>
+    <!-- to be deprecated -->
     <module>core</module>
     <module>cli</module>
   </modules>
