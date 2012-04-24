@@ -30,7 +30,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -105,7 +104,8 @@ public final class CatalogueClient
         descriptionDigesterLoader = newLoader( new OpenSearchModule() ).setNamespaceAware( true );
         catalogueDigesterLoader = newLoader( new AtomRulesModule( Catalogue.class ), new LinkedAtomEntityModule() )
             .setNamespaceAware( true );
-        serieDigesterLoader = newLoader( new AtomRulesModule( Series.class ), new DataSetRulesModule() ).setNamespaceAware( true );
+        serieDigesterLoader = newLoader( new AtomRulesModule( Series.class ), new DataSetRulesModule() )
+                              .setNamespaceAware( true );
         singleDataSetDigesterLoader = newLoader( new SingleDataSetRulesModule() ).setNamespaceAware( true );
     }
 
@@ -218,7 +218,7 @@ public final class CatalogueClient
         return description;
     }
 
-    <T> T downloadFile( File targetDir, List<URI> fileUris, final DownloadHandler<T> handler )
+    <T> T downloadFile( File targetDir, Iterator<URI> fileUrisIterator, final DownloadHandler<T> handler )
     {
         if ( !targetDir.exists() )
         {
@@ -237,8 +237,6 @@ public final class CatalogueClient
                 logger.info( "Directory {} created.", targetDir );
             }
         }
-
-        Iterator<URI> fileUrisIterator = fileUris.iterator();
 
         while ( fileUrisIterator.hasNext() )
         {

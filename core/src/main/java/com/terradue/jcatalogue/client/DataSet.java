@@ -49,7 +49,7 @@ public final class DataSet
             logger.info( "Downloading DataSet {} media file...", getId() );
         }
 
-        return getCatalogueClient().downloadFile( targetDir, getEnclosures(), handler );
+        return getCatalogueClient().downloadFile( targetDir, getEnclosures().iterator(), handler );
     }
 
 }

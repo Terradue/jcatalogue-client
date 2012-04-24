@@ -46,7 +46,7 @@ public final class AtomRulesModule
         forPattern( "feed/itemsPerPage" ).withNamespaceURI( OPEN_SEARCH ).setBeanProperty().withName( "itemsPerPage" );
 
         forPattern( "feed/link" ).callMethod( "addLink" )
-                                     .withParamTypes( String.class, String.class, String.class )
+                                     .withParamTypes( String.class, String.class, String.class, Integer.class )
                                  .then()
                                  .callParam()
                                      .fromAttribute( "rel" )
@@ -58,7 +58,9 @@ public final class AtomRulesModule
                                      .then()
                                  .callParam()
                                      .fromAttribute( "href" )
-                                     .ofIndex( 2 );
+                                     .ofIndex( 2 )
+                                     .then()
+                                 .addRuleCreatedBy( new PriorityParamRule.PriorityParamRuleProvider( 3 ) );
     }
 
 }

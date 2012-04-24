@@ -75,7 +75,7 @@ public final class DataSetRulesModule
             .addRuleCreatedBy( new SetGeoDataLocationRule.Factory( Point.class ) );
 
         forPattern( "feed/entry/link" ).callMethod( "addLink" )
-                                             .withParamTypes( String.class, String.class, String.class )
+                                             .withParamTypes( String.class, String.class, String.class, Integer.class )
                                              .then()
                                              .callParam()
                                                  .fromAttribute( "rel" )
@@ -87,7 +87,9 @@ public final class DataSetRulesModule
                                                  .then()
                                              .callParam()
                                                  .fromAttribute( "href" )
-                                                 .ofIndex( 2 );
+                                                 .ofIndex( 2 )
+                                                 .then()
+                                             .addRuleCreatedBy( new PriorityParamRule.PriorityParamRuleProvider( 3 ) );
     }
 
 }

@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.terradue.jcatalogue.client.internal.collections.Enclosures;
+
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -63,9 +65,9 @@ abstract class AtomEntity
     private String nextResultsUri;
 
     @Getter( AccessLevel.PACKAGE )
-    private final List<URI> enclosures = new ArrayList<URI>();
+    private final Enclosures enclosures = new Enclosures();
 
-    public void addLink( String rel, String type, String href )
+    public void addLink( String rel, String type, String href, Integer priority )
     {
         if ( NEXT.equals( rel ) && ATOM_XML.equals( type ) )
         {
@@ -73,7 +75,7 @@ abstract class AtomEntity
         }
         else if ( ENCLOSURE.equals( rel ) )
         {
-            enclosures.add( URI.create( href ) );
+            enclosures.addEnclosure( URI.create( href ), priority );
         }
     }
 
