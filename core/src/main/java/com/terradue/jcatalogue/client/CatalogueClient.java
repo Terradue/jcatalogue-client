@@ -98,7 +98,6 @@ public final class CatalogueClient
     public CatalogueClient( Configuration configuration )
     {
         httpInvoker = configuration.httpInvoker;
-        configuration.registerDownloader( new HttpDownloader( httpInvoker ) );
         downloaders = configuration.downloaders;
 
         descriptionDigesterLoader = newLoader( new OpenSearchModule() ).setNamespaceAware( true );
@@ -275,6 +274,11 @@ public final class CatalogueClient
         final HttpInvoker httpInvoker = new HttpInvoker();
 
         final Map<String, Downloader> downloaders = new HashMap<String, Downloader>();
+
+        public Configuration()
+        {
+            registerDownloader( new HttpDownloader( httpInvoker ) );
+        }
 
         public Configuration registerDownloader( Downloader downloader )
         {
