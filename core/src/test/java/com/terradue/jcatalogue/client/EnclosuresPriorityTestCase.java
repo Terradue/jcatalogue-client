@@ -58,7 +58,7 @@ public final class EnclosuresPriorityTestCase
     @Test
     public void accessToSeriesWhereEachDataSetEnclosureHasPriority()
     {
-        Series series = client.getSeries( "http://t2-10-11-30-89.play.terradue.int/search/ASA_IMS_1P/atom/" );
+        Series series = client.getSeries( "http://10.11.12.248/catalogue/gpod/ASA_APH_0P/ASA_APH_0CNPDK20050612_135118_000000162038_00082_17170_0011.N1/atom" );
         for ( DataSet dataSet : series )
         {
             dataSet.download( new File( "/tmp" ), new DownloadHandler<Void>()
