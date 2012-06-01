@@ -58,7 +58,7 @@
   CatalogueClient
 
 
-| JCatalogue Client
+| JCatalogue Client :: Core APIs
 
 </title>
 <link href="../../../../../assets/android-developer-docs.css" rel="stylesheet" type="text/css" />
@@ -90,7 +90,7 @@
 <div id="header">
     <div id="headerLeft">
     
-      <span id="masthead-title">JCatalogue Client</span>
+      <span id="masthead-title">JCatalogue Client :: Core APIs</span>
     
     </div>
     <div id="headerRight">
@@ -151,6 +151,8 @@
     <li class="api apilevel-">
   <a href="../../../../com/terradue/jcatalogue/client/internal/ahc/package-summary.html">com.terradue.jcatalogue.client.internal.ahc</a></li>
     <li class="api apilevel-">
+  <a href="../../../../com/terradue/jcatalogue/client/internal/collections/package-summary.html">com.terradue.jcatalogue.client.internal.collections</a></li>
+    <li class="api apilevel-">
   <a href="../../../../com/terradue/jcatalogue/client/internal/converters/package-summary.html">com.terradue.jcatalogue.client.internal.converters</a></li>
     <li class="api apilevel-">
   <a href="../../../../com/terradue/jcatalogue/client/internal/digester/package-summary.html">com.terradue.jcatalogue.client.internal.digester</a></li>
@@ -167,6 +169,7 @@
       <ul>
           <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/Catalogue.html">Catalogue</a></li>
           <li class="selected api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html">CatalogueClient</a></li>
+          <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.Configuration.html">CatalogueClient.Configuration</a></li>
           <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/CatalogueDescription.html">CatalogueDescription</a></li>
           <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/CatalogueEntity.html">CatalogueEntity</a></li>
           <li class="api apilevel-"><a href="../../../../com/terradue/jcatalogue/client/DataSet.html">DataSet</a></li>
@@ -234,6 +237,8 @@
 
 Summary:
 
+  <a href="#nestedclasses">Nested Classes</a>
+  
 
 
 
@@ -242,7 +247,8 @@ Summary:
 
 
 
-  <a href="#pubctors">Ctors</a>
+
+  &#124; <a href="#pubctors">Ctors</a>
   
 
 
@@ -352,6 +358,26 @@ Summary:
 
 
 
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<table id="nestedclasses" class="jd-sumtable"><tr><th colspan="12">Nested Classes</th></tr>
+
+
+  
+    <tr class="alt-color api apilevel-" >
+      <td class="jd-typecol"><nobr>
+        
+         
+         
+        
+        class</nobr></td>
+      <td class="jd-linkcol"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.Configuration.html">CatalogueClient.Configuration</a></td>
+      <td class="jd-descrcol" width="100%">&nbsp;</td>
+    </tr>
+    
+    
+
+
+
 
 
 
@@ -389,6 +415,22 @@ Summary:
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#CatalogueClient()">CatalogueClient</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#CatalogueClient(com.terradue.jcatalogue.client.CatalogueClient.Configuration)">CatalogueClient</a></span>(<a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.Configuration.html">CatalogueClient.Configuration</a> configuration)</nobr>
         
   </td></tr>
 
@@ -552,118 +594,6 @@ Summary:
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#registerDownloader(com.terradue.jcatalogue.client.download.Downloader)">registerDownloader</a></span>(<a href="../../../../com/terradue/jcatalogue/client/download/Downloader.html">Downloader</a> downloader)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#registerDownloader(java.lang.String, com.terradue.jcatalogue.client.download.Downloader)">registerDownloader</a></span>(String protocol, <a href="../../../../com/terradue/jcatalogue/client/download/Downloader.html">Downloader</a> downloader)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#registerRealm(java.lang.String, java.lang.String, java.lang.String, boolean, com.terradue.jcatalogue.client.HttpAuthScheme)">registerRealm</a></span>(String host, String username, String password, boolean preemptive, <a href="../../../../com/terradue/jcatalogue/client/HttpAuthScheme.html">HttpAuthScheme</a> authScheme)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#registerSSLCerificates(java.io.File, java.io.File, java.lang.String)">registerSSLCerificates</a></span>(File sslCertificate, File sslKey, String sslPassword)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#registerSSLProxy(java.io.File)">registerSSLProxy</a></span>(File proxyCertificate)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#registerUmSsoAccess(java.lang.String, com.terradue.jcatalogue.client.HttpMethod, com.terradue.jcatalogue.client.Parameter...)">registerUmSsoAccess</a></span>(String loginFormUrl, <a href="../../../../com/terradue/jcatalogue/client/HttpMethod.html">HttpMethod</a> httpMethod, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.html#registerUmSsoCredentials(java.net.URI, com.terradue.jcatalogue.client.HttpMethod, com.terradue.jcatalogue.client.Parameter...)">registerUmSsoCredentials</a></span>(URI loginFormUrl, <a href="../../../../com/terradue/jcatalogue/client/HttpMethod.html">HttpMethod</a> httpMethod, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -959,6 +889,37 @@ From class
 </div>
 
 
+<A NAME="CatalogueClient(com.terradue.jcatalogue.client.CatalogueClient.Configuration)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">CatalogueClient</span>
+      <span class="normal">(<a href="../../../../com/terradue/jcatalogue/client/CatalogueClient.Configuration.html">CatalogueClient.Configuration</a> configuration)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
 
 
 
@@ -1236,223 +1197,6 @@ From class
       </span>
       <span class="sympad">lookupDownloader</span>
       <span class="normal">(String protocol)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="registerDownloader(com.terradue.jcatalogue.client.download.Downloader)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">registerDownloader</span>
-      <span class="normal">(<a href="../../../../com/terradue/jcatalogue/client/download/Downloader.html">Downloader</a> downloader)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="registerDownloader(java.lang.String, com.terradue.jcatalogue.client.download.Downloader)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">registerDownloader</span>
-      <span class="normal">(String protocol, <a href="../../../../com/terradue/jcatalogue/client/download/Downloader.html">Downloader</a> downloader)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="registerRealm(java.lang.String, java.lang.String, java.lang.String, boolean, com.terradue.jcatalogue.client.HttpAuthScheme)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">registerRealm</span>
-      <span class="normal">(String host, String username, String password, boolean preemptive, <a href="../../../../com/terradue/jcatalogue/client/HttpAuthScheme.html">HttpAuthScheme</a> authScheme)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="registerSSLCerificates(java.io.File, java.io.File, java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">registerSSLCerificates</span>
-      <span class="normal">(File sslCertificate, File sslKey, String sslPassword)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="registerSSLProxy(java.io.File)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">registerSSLProxy</span>
-      <span class="normal">(File proxyCertificate)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="registerUmSsoAccess(java.lang.String, com.terradue.jcatalogue.client.HttpMethod, com.terradue.jcatalogue.client.Parameter...)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">registerUmSsoAccess</span>
-      <span class="normal">(String loginFormUrl, <a href="../../../../com/terradue/jcatalogue/client/HttpMethod.html">HttpMethod</a> httpMethod, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="registerUmSsoCredentials(java.net.URI, com.terradue.jcatalogue.client.HttpMethod, com.terradue.jcatalogue.client.Parameter...)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">registerUmSsoCredentials</span>
-      <span class="normal">(URI loginFormUrl, <a href="../../../../com/terradue/jcatalogue/client/HttpMethod.html">HttpMethod</a> httpMethod, <a href="../../../../com/terradue/jcatalogue/client/Parameter.html">Parameter...</a> parameters)</span>
     </h4>
       <div class="api-level">
         <div>

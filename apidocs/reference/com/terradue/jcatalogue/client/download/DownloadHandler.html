@@ -58,7 +58,7 @@
   DownloadHandler
 
 
-| JCatalogue Client
+| JCatalogue Client :: Core APIs
 
 </title>
 <link href="../../../../../../assets/android-developer-docs.css" rel="stylesheet" type="text/css" />
@@ -90,7 +90,7 @@
 <div id="header">
     <div id="headerLeft">
     
-      <span id="masthead-title">JCatalogue Client</span>
+      <span id="masthead-title">JCatalogue Client :: Core APIs</span>
     
     </div>
     <div id="headerRight">
@@ -151,6 +151,8 @@
     <li class="api apilevel-">
   <a href="../../../../../com/terradue/jcatalogue/client/internal/ahc/package-summary.html">com.terradue.jcatalogue.client.internal.ahc</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../com/terradue/jcatalogue/client/internal/collections/package-summary.html">com.terradue.jcatalogue.client.internal.collections</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../com/terradue/jcatalogue/client/internal/converters/package-summary.html">com.terradue.jcatalogue.client.internal.converters</a></li>
     <li class="api apilevel-">
   <a href="../../../../../com/terradue/jcatalogue/client/internal/digester/package-summary.html">com.terradue.jcatalogue.client.internal.digester</a></li>
@@ -164,7 +166,7 @@
               
     <li><h2>Interfaces</h2>
       <ul>
-          <li class="selected api apilevel-"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html">DownloadHandler</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html">DownloadHandler</a>&lt;T&gt;</li>
           <li class="api apilevel-"><a href="../../../../../com/terradue/jcatalogue/client/download/Downloader.html">Downloader</a></li>
       </ul>
     </li>
@@ -262,7 +264,7 @@
 
     <tr>
          	
-        <td colspan="1" class="jd-inheritance-class-cell">com.terradue.jcatalogue.client.download.DownloadHandler</td>
+        <td colspan="1" class="jd-inheritance-class-cell">com.terradue.jcatalogue.client.download.DownloadHandler&lt;T&gt;</td>
     </tr>
     
 
@@ -342,7 +344,7 @@
             
             
             
-            void</nobr>
+            T</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onCompleted(java.io.File)">onCompleted</a></span>(File file)</nobr>
@@ -361,7 +363,7 @@
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onError(java.lang.String)">onError</a></span>(String message)</nobr>
+        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onContentDownloadProgress(long, long)">onContentDownloadProgress</a></span>(long current, long total)</nobr>
         
   </td></tr>
 
@@ -377,7 +379,7 @@
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onError(java.lang.Throwable)">onError</a></span>(Throwable t)</nobr>
+        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onError(java.lang.String)">onError</a></span>(String message)</nobr>
         
   </td></tr>
 
@@ -393,13 +395,29 @@
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onFatal(java.lang.String)">onFatal</a></span>(String message)</nobr>
+        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onError(java.lang.Throwable)">onError</a></span>(Throwable t)</nobr>
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/terradue/jcatalogue/client/download/DownloadHandler.html#onFatal(java.lang.String)">onFatal</a></span>(String message)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -472,10 +490,41 @@
          
         abstract 
          
-        void
+        T
       </span>
       <span class="sympad">onCompleted</span>
       <span class="normal">(File file)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="onContentDownloadProgress(long, long)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">onContentDownloadProgress</span>
+      <span class="normal">(long current, long total)</span>
     </h4>
       <div class="api-level">
         <div>

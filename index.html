@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>
-    JCatalogue Client</title>
+    <title>About</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -14,7 +13,6 @@
     <script type="text/javascript" src="./js/apache-maven-fluido.min.js"></script>
 
     
-      <meta name="author" content="Terradue srl" />
     <meta name="Date-Revision-yyyymmdd" content="20120601" />
     <meta http-equiv="Content-Language" content="en" />
     
@@ -58,27 +56,9 @@
         <div class="well">
                 
                     
-                                   <h5>User guide</h5>
+                                             <h5>Project Documentation</h5>
                   <ul>
-                  <li class="none">
-            <strong>Overview</strong>
-          </li>
-                  <li class="none">
-                          <a href="installation.html" title="Installation">Installation</a>
-            </li>
-                  <li class="none">
-                          <a href="auth.html" title="Authentication stuff">Authentication stuff</a>
-            </li>
-          </ul>
-                                 <h5>Links</h5>
-                  <ul>
-                  <li class="none">
-                          <a href="http://www.terradue.com/" class="externalLink" title="Terradue">Terradue</a>
-            </li>
-          </ul>
-                       <h5>Project Documentation</h5>
-                  <ul>
-                                                                                                                                                                                                                                                                                                                        <li class="expanded">
+                                                                                                                                                                                                                                                                                                      <li class="expanded">
                           <a href="project-info.html" title="Project Information">Project Information</a>
                     <ul>
                       <li class="none">
@@ -118,14 +98,11 @@
                           <a href="plugin-management.html" title="Plugin Management">Plugin Management</a>
             </li>
                       <li class="none">
-                          <a href="modules.html" title="Project Modules">Project Modules</a>
-            </li>
-                      <li class="none">
                           <a href="project-summary.html" title="Project Summary">Project Summary</a>
             </li>
               </ul>
         </li>
-                                                                                                                                            <li class="collapsed">
+                                                                                                                                                                                                                                      <li class="collapsed">
                           <a href="project-reports.html" title="Project Reports">Project Reports</a>
                   </li>
           </ul>
@@ -144,262 +121,7 @@
       <div id="bodyColumn" class="content">
         <div id="contentBox">
                               
-          <!-- Copyright 2011-2012 Terradue srl
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License. -->
-
-  
-    <div class="section"><h2>Catalogue Java APIs<a name="Catalogue_Java_APIs"></a></h2>
-      <p>This project aims to maintain a REST client APIs set for <i>OpenSearch Geo and Temporal protocol</i> servers.</p>
-
-      <div class="section"><h3>Obtaining a Client instance<a name="Obtaining_a_Client_instance"></a></h3>
-        <p>The main entry point is querying the Catalogue accessing to the main <i>OpenSearch</i> description:</p>
-
-        <div class="source"><pre class="prettyprint">import com.terradue.jcatalogue.client.*;
-
-final CatalogueClient client = new CatalogueClient();
-
-CatalogueDescription catalogueDescription = client.discover( &quot;http://eo-virtual-archive4.esa.int/search/description&quot; );</pre></div>
-      </div>
-
-      <div class="section"><h3>The OpenSearch meta data<a name="The_OpenSearch_meta_data"></a></h3>
-        <p>Once obtained a <tt>CatalogueDescription</tt> instance, users can now access (via getters) to search
-        metadata, such as:</p>
-
-        <ul>
-          <li>short name;</li>
-          <li>long name;</li>
-          <li>description;</li>
-          <li>tags;</li>
-          <li>contact;</li>
-          <li>developer;</li>
-          <li>attribution;</li>
-          <li>syndication right;</li>
-          <li>adult content flag;</li>
-          <li>language;</li>
-          <li>input encoding;</li>
-          <li>output encoding.</li>
-        </ul>
-
-        <p>The next step is accessing to the OpenSearch URL templates, which describe the how to query the server to
-        obtain a <tt>Catalogue</tt> instance:</p>
-
-        <div class="source"><pre class="prettyprint">for ( OpenSearchUrl url : catalogueDescription.getOpenSearchUrls() )
-{
-    System.out.printf( &quot;%s) %s%n&quot;, url.getType(), url.getBaseUrl() );
-
-    for ( OpenSearchParameter parameter : url.getParameters() )
-    {
-        System.out.printf( &quot;    Key: %s, parameter: %s, mandatory: %s%n&quot;,
-                           parameter.getKey(), parameter.getType(), parameter.isMandatory() );
-    }
-}</pre></div>
-
-        <p><span class="label notice">Notice</span>: the <b>standard</b> Atom protocol
-        (<tt>application/xml+atom</tt>) is supported by default by the client.</p>
-      </div>
-
-      <div class="section"><h3>Accessing to the Catalogue<a name="Accessing_to_the_Catalogue"></a></h3>
-        <p>From a <tt>CatalogueDescription</tt> is very easy accessing to a <tt>Catalogue</tt>:</p>
-
-        <div class="source"><pre class="prettyprint">Catalogue catalogue = catalogueDescription.getCatalogue();</pre></div>
-
-        <p><tt>Catalogue</tt> instances allow access (via getters) to meta informations such as:</p>
-        <ul>
-          <li>title;</li>
-          <li>subtitle;</li>
-          <li>content;</li>
-          <li>published;</li>
-          <li>updated;</li>
-          <li>id;</li>
-          <li>total results;</li>
-          <li>start index;</li>
-          <li>items per page.</li>
-        </ul>
-
-        <p>Users that need  accurate filter, have to pass parameters to perform:</p>
-
-        <div class="source"><pre class="prettyprint">Catalogue catalogue = catalogueDescription.getCatalogue( new Parameter( &quot;startPage&quot;, &quot;2&quot; ), ... );</pre></div>
-
-        <p>where parameters are defined in the section above.</p>
-
-        <p>Simple pagination feature is offered in the <tt>Catalogue</tt> class:</p>
-
-        <div class="source"><pre class="prettyprint">while ( catalogue.hasMoreResults() )
-{
-    Catalogue next = catalogue.getNextResults();
-}</pre></div>
-      </div>
-
-      <div class="section"><h3>Accessing to the Series<a name="Accessing_to_the_Series"></a></h3>
-        <p><tt>Series</tt> can be accessed from a <tt>Catalogue</tt> instance:</p>
-
-        <div class="source"><pre class="prettyprint">for ( Series series : catalogue )
-{
-    // put your code here
-}</pre></div>
-
-        <p><tt>Series</tt> instances allow access (via getters) to meta informations such as:</p>
-        <ul>
-          <li>title;</li>
-          <li>subtitle;</li>
-          <li>content;</li>
-          <li>published;</li>
-          <li>updated;</li>
-          <li>id;</li>
-          <li>total results;</li>
-          <li>start index;</li>
-          <li>items per page.</li>
-        </ul>
-
-        <p>Simple pagination feature is offered in the <tt>Serie</tt> class:</p>
-
-        <div class="source"><pre class="prettyprint">while ( serie.hasMoreResults() )
-{
-    Serie next = serie.getNextResults();
-}</pre></div>
-
-        <p>If series URLs are already known, users can access to <tt>Series</tt> instances directly from the
-        <tt>CatalogueClient</tt>:</p>
-
-        <div class="source"><pre class="prettyprint">Series series = client.getSerie( &quot;http://catalog.gpod.terradue.int/catalogue/gpod/ASA_WSM_1P/ASA_WSM_1PNPDE20111103_193813_000001713108_00171_50616_5757.N1/xml&quot; )</pre></div>
-
-        <p>and optionally can pass <tt>Parameter</tt>s instances.</p>
-      </div>
-
-      <div class="section"><h3>Accessing to the DataSets<a name="Accessing_to_the_DataSets"></a></h3>
-        <p><tt>DataSet</tt> instances can be accessed from a <tt>Series</tt> instance:</p>
-
-        <div class="source"><pre class="prettyprint">for ( DataSet dataset : series )
-{
-    // put your code here
-}</pre></div>
-
-        <p><tt>DataSet</tt> instances allow access (via getters) to meta informations such as:</p>
-        <ul>
-          <li>title;</li>
-          <li>subtitle;</li>
-          <li>updated;</li>
-          <li>begin position;</li>
-          <li>end position;</li>
-          <li>geo location.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section"><h2>Related GeoData<a name="Related_GeoData"></a></h2>
-      <p><tt>DataSet</tt> geo location can be of various formats:</p>
-      <ul>
-        <li>box;</li>
-        <li>line;</li>
-        <li>point;</li>
-        <li>polygon.</li>
-      </ul>
-      <p>Classes that represent this format are contained in the subpackage
-      <tt>com.terradue.jcatalogue.client.geo</tt>:</p>
-      <ul>
-        <li>Box;</li>
-        <li>Line;</li>
-        <li>Point;</li>
-        <li>Polygon.</li>
-      </ul>
-    </div>
-
-    <div class="section"><h2>Downloading DataSets<a name="Downloading_DataSets"></a></h2>
-      <p>DataSets download can be invoked directly in the <tt>DataSet</tt> instance:</p>
-
-      <div class="source"><pre class="prettyprint">import com.terradue.jcatalogue.client.download.*;
-
-dataSet.download( new File( &quot;/tmp&quot; ), new DownloadHandler()
-{
-
-    @Override
-    public void onCompleted( File file )
-    {
-        check( file.exists() );
-        extractAndProcess( file );
-    }
-
-    @Override
-    public void onWarning( String message )
-    {
-        System.out.printf( &quot;[WARNING] %s%n&quot;,  message );
-    }
-
-    @Override
-    public void onError( String message )
-    {
-        log( message );
-    }
-
-    @Override
-    public void onError( Throwable t )
-    {
-        log( t );
-    }
-
-    @Override
-    public void onFatal( String message )
-    {
-        fail( message );
-    }
-
-} );</pre></div>
-
-      <p>the first argument of the <tt>download</tt> method is the target directory where users intend download
-      the dataset, the secondi argument is an handler useful to implement callbacks on errors and success.</p>
-
-      <div class="section"><h3>Downloaders<a name="Downloaders"></a></h3>
-        <p><tt>DataSet</tt> instances allow downloading the associated media file, that is usually enlisted
-        in the <tt>enclosure</tt> URL type.</p>
-
-        <p>Each <tt>DataSet</tt> could have more that one <tt>enclosure</tt> URL, so the client will iterate
-        over them until it can download the media file - or URLs are exhausted</p>
-
-        <p>By default, the client provides support for <tt>http(s)</tt> only, downloaders for different protocols
-        need to be provided.</p>
-
-        <p>It is possible to plug <tt>Downloader</tt>s by two way:</p>
-
-        <ul>
-          <li><i>explicit</i>: by associating the <tt>Downloader</tt> instance to a related protocol:
-            <div class="source"><pre class="prettyprint">client.registerDownloader( &quot;ftp&quot;, new MyFtpDownloader() );</pre></div>
-          </li>
-          <li><i>implicit</i>: by annotating the <tt>Downloader</tt> class with
-          <tt>@com.terradue.jcatalogue.client.download.Protocol</tt> annotation, where specified the protocol(s)
-
-          <div class="source"><pre class="prettyprint">@Protocol({ &quot;ftp&quot;, &quot;sftp&quot; })
-public final class MyFtpDownloader
-    implements Downloader
-{
-
-    @Override
-    public void download( File targetDir, URI fileUri, DownloadHandler handler )
-    {
-        // your implementation here
-    }
-
-}</pre></div>
-
-          then registering the instance (omitting the protocols):
-
-          <div class="source"><pre class="prettyprint">client.registerDownloader( new MyFtpDownloader() );</pre></div></li>
-        </ul>
-      </div>
-    </div>
-  
-
-
+          <div class="section"><h2>About JCatalogue Client :: Core APIs<a name="About_JCatalogue_Client_::_Core_APIs"></a></h2><a name="About_JCatalogue_Client_::_Core_APIs"></a><p>REST client for OpenSearch Geo and Temporal protocol servers</p></div>
                   </div>
       </div>
     </div>

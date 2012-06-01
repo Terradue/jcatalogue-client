@@ -1,3 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
+<duplication lines="23" tokens="118">
+<file line="73" path="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/internal/digester/DataSetRulesModule.java"/>
+<file line="75" path="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/internal/digester/SingleDataSetRulesModule.java"/>
+<codefragment>
+<![CDATA[
+        forPattern( "feed/where/Point/pos" )
+            .withNamespaceURI( GML )
+            .addRuleCreatedBy( new SetGeoDataLocationRule.Factory( Point.class ) );
+
+        forPattern( "feed/entry/link" ).callMethod( "addLink" )
+                                             .withParamTypes( String.class, String.class, String.class, Integer.class )
+                                             .then()
+                                             .callParam()
+                                                 .fromAttribute( "rel" )
+                                                 .ofIndex( 0 )
+                                                 .then()
+                                             .callParam()
+                                                 .fromAttribute( "type" )
+                                                 .ofIndex( 1 )
+                                                 .then()
+                                             .callParam()
+                                                 .fromAttribute( "href" )
+                                                 .ofIndex( 2 )
+                                                 .then()
+                                             .addRuleCreatedBy( new PriorityParamRule.PriorityParamRuleProvider( 3 ) );
+    }
+
+}
+]]>
+</codefragment>
+</duplication>
 </pmd-cpd>

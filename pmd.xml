@@ -1,45 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2012-02-28T10:09:42.602">
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/AtomEntity.java">
-<violation beginline="44" endline="44" begincolumn="20" endcolumn="24" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="title" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<pmd version="4.2.5" timestamp="2012-06-01T10:29:19.253">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/AtomEntity.java">
+<violation beginline="46" endline="46" begincolumn="20" endcolumn="24" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="title" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'title'.
 </violation>
-<violation beginline="46" endline="46" begincolumn="20" endcolumn="27" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="subtitle" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="48" endline="48" begincolumn="20" endcolumn="27" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="subtitle" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'subtitle'.
 </violation>
-<violation beginline="48" endline="48" begincolumn="20" endcolumn="26" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="content" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="50" endline="50" begincolumn="20" endcolumn="26" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="content" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'content'.
 </violation>
-<violation beginline="50" endline="50" begincolumn="18" endcolumn="26" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="published" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="52" endline="52" begincolumn="18" endcolumn="26" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="published" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'published'.
 </violation>
-<violation beginline="52" endline="52" begincolumn="18" endcolumn="24" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="updated" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="54" endline="54" begincolumn="18" endcolumn="24" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="updated" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'updated'.
 </violation>
-<violation beginline="54" endline="54" begincolumn="20" endcolumn="21" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="id" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="56" endline="56" begincolumn="20" endcolumn="21" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="id" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'id'.
 </violation>
-<violation beginline="56" endline="56" begincolumn="17" endcolumn="28" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="totalResults" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="58" endline="58" begincolumn="17" endcolumn="28" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="totalResults" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'totalResults'.
 </violation>
-<violation beginline="58" endline="58" begincolumn="17" endcolumn="26" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="startIndex" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="60" endline="60" begincolumn="17" endcolumn="26" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="startIndex" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'startIndex'.
 </violation>
-<violation beginline="60" endline="60" begincolumn="17" endcolumn="28" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="itemsPerPage" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="62" endline="62" begincolumn="17" endcolumn="28" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="AtomEntity" variable="itemsPerPage" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'itemsPerPage'.
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/CallbackDownloadHandler.java">
-<violation beginline="18" endline="18" begincolumn="21" endcolumn="30" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="CallbackDownloadHandler" variable="downloaded" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
-Avoid unused private fields such as 'downloaded'.
-</violation>
-</file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/CatalogueClient.java">
-<violation beginline="1" endline="330" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="com.terradue.jcatalogue.client" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/CatalogueClient.java">
+<violation beginline="1" endline="409" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="com.terradue.jcatalogue.client" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
 Too many static imports may lead to messy code
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/CatalogueDescription.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/CatalogueDescription.java">
 <violation beginline="40" endline="40" begincolumn="20" endcolumn="28" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="CatalogueDescription" variable="shortName" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'shortName'.
 </violation>
@@ -77,12 +72,12 @@ Avoid unused private fields such as 'inputEncoding'.
 Avoid unused private fields such as 'outputEncoding'.
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/CatalogueEntity.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/CatalogueEntity.java">
 <violation beginline="28" endline="28" begincolumn="29" endcolumn="43" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="CatalogueEntity" variable="catalogueClient" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'catalogueClient'.
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/DataSet.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/DataSet.java">
 <violation beginline="39" endline="39" begincolumn="18" endcolumn="30" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="DataSet" variable="beginPosition" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'beginPosition'.
 </violation>
@@ -93,7 +88,7 @@ Avoid unused private fields such as 'endPosition'.
 Avoid unused private fields such as 'geoLocation'.
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/OpenSearchParameter.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/OpenSearchParameter.java">
 <violation beginline="25" endline="25" begincolumn="26" endcolumn="28" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="OpenSearchParameter" variable="key" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'key'.
 </violation>
@@ -104,12 +99,12 @@ Avoid unused private fields such as 'type'.
 Avoid unused private fields such as 'mandatory'.
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/OpenSearchUrl.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/OpenSearchUrl.java">
 <violation beginline="79" endline="81" begincolumn="13" endcolumn="13" rule="EmptyIfStmt" ruleset="Basic Rules" package="com.terradue.jcatalogue.client" class="OpenSearchUrl" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/Parameter.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/Parameter.java">
 <violation beginline="25" endline="25" begincolumn="26" endcolumn="29" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client" class="Parameter" variable="name" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'name'.
 </violation>
@@ -117,7 +112,15 @@ Avoid unused private fields such as 'name'.
 Avoid unused private fields such as 'value'.
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/geo/Box.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/download/HttpDownloadHandler.java">
+<violation beginline="149" endline="152" begincolumn="9" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="com.terradue.jcatalogue.client.download" class="HttpDownloadHandler" method="writeMd5ChecksumFile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="163" endline="166" begincolumn="13" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="com.terradue.jcatalogue.client.download" class="HttpDownloadHandler" method="closeQuietly" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/geo/Box.java">
 <violation beginline="28" endline="28" begincolumn="19" endcolumn="29" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client.geo" class="Box" variable="lowerCorner" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'lowerCorner'.
 </violation>
@@ -125,12 +128,12 @@ Avoid unused private fields such as 'lowerCorner'.
 Avoid unused private fields such as 'upperCorner'.
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/geo/Line.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/geo/Line.java">
 <violation beginline="28" endline="28" begincolumn="27" endcolumn="31" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client.geo" class="Line" variable="point" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'point'.
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/geo/Point.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/geo/Point.java">
 <violation beginline="28" endline="28" begincolumn="26" endcolumn="33" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client.geo" class="Point" variable="latitude" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'latitude'.
 </violation>
@@ -138,12 +141,12 @@ Avoid unused private fields such as 'latitude'.
 Avoid unused private fields such as 'longitude'.
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/geo/Polygon.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/geo/Polygon.java">
 <violation beginline="28" endline="28" begincolumn="27" endcolumn="32" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client.geo" class="Polygon" variable="points" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'points'.
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/internal/ahc/UmSsoAccess.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/internal/ahc/UmSsoAccess.java">
 <violation beginline="37" endline="37" begincolumn="23" endcolumn="34" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.terradue.jcatalogue.client.internal.ahc" class="UmSsoAccess" variable="loginFormUrl" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'loginFormUrl'.
 </violation>
@@ -154,12 +157,12 @@ Avoid unused private fields such as 'httpMethod'.
 Avoid unused private fields such as 'parameters'.
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/internal/ahc/UmSsoStatusResponseFilter.java">
-<violation beginline="1" endline="231" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="com.terradue.jcatalogue.client.internal.ahc" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/internal/ahc/UmSsoStatusResponseFilter.java">
+<violation beginline="1" endline="232" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="com.terradue.jcatalogue.client.internal.ahc" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
 Too many static imports may lead to messy code
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/internal/converters/AtomDateConverter.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/internal/converters/AtomDateConverter.java">
 <violation beginline="1" endline="127" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="com.terradue.jcatalogue.client.internal.converters" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
 Too many static imports may lead to messy code
 </violation>
@@ -167,12 +170,12 @@ Too many static imports may lead to messy code
 These nested if statements could be combined
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/internal/converters/CharsetConverter.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/internal/converters/CharsetConverter.java">
 <violation beginline="47" endline="50" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="com.terradue.jcatalogue.client.internal.converters" class="CharsetConverter" method="convert" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
 These nested if statements could be combined
 </violation>
 </file>
-<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client/src/main/java/com/terradue/jcatalogue/client/internal/converters/LocaleConverter.java">
+<file name="/Users/simonetripodi/Documents/workspace/jcatalogue-client-parent/target/checkout/core/src/main/java/com/terradue/jcatalogue/client/internal/converters/LocaleConverter.java">
 <violation beginline="50" endline="54" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="com.terradue.jcatalogue.client.internal.converters" class="LocaleConverter" method="convert" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
 These nested if statements could be combined
 </violation>

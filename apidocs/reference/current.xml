@@ -48,6 +48,8 @@
 </parameter>
 <parameter name="href" type="java.lang.String">
 </parameter>
+<parameter name="priority" type="java.lang.Integer">
+</parameter>
 </method>
 <method name="getNextResults"
  return="com.terradue.jcatalogue.client.Catalogue"
@@ -98,6 +100,16 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</constructor>
+<constructor name="CatalogueClient"
+ type="com.terradue.jcatalogue.client.CatalogueClient"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="configuration" type="com.terradue.jcatalogue.client.CatalogueClient.Configuration">
+</parameter>
 </constructor>
 <method name="discover"
  return="com.terradue.jcatalogue.client.CatalogueDescription"
@@ -232,8 +244,36 @@
 <parameter name="protocol" type="java.lang.String">
 </parameter>
 </method>
-<method name="registerDownloader"
+<method name="shutDown"
  return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="CatalogueClient.Configuration"
+ extends="java.lang.Object"
+ abstract="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="CatalogueClient.Configuration"
+ type="com.terradue.jcatalogue.client.CatalogueClient.Configuration"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="registerDownloader"
+ return="com.terradue.jcatalogue.client.CatalogueClient.Configuration"
  abstract="false"
  native="false"
  synchronized="false"
@@ -246,7 +286,7 @@
 </parameter>
 </method>
 <method name="registerDownloader"
- return="void"
+ return="com.terradue.jcatalogue.client.CatalogueClient.Configuration"
  abstract="false"
  native="false"
  synchronized="false"
@@ -261,7 +301,7 @@
 </parameter>
 </method>
 <method name="registerRealm"
- return="void"
+ return="com.terradue.jcatalogue.client.CatalogueClient.Configuration"
  abstract="false"
  native="false"
  synchronized="false"
@@ -282,7 +322,7 @@
 </parameter>
 </method>
 <method name="registerSSLCerificates"
- return="void"
+ return="com.terradue.jcatalogue.client.CatalogueClient.Configuration"
  abstract="false"
  native="false"
  synchronized="false"
@@ -299,7 +339,7 @@
 </parameter>
 </method>
 <method name="registerSSLProxy"
- return="void"
+ return="com.terradue.jcatalogue.client.CatalogueClient.Configuration"
  abstract="false"
  native="false"
  synchronized="false"
@@ -312,7 +352,7 @@
 </parameter>
 </method>
 <method name="registerUmSsoAccess"
- return="void"
+ return="com.terradue.jcatalogue.client.CatalogueClient.Configuration"
  abstract="false"
  native="false"
  synchronized="false"
@@ -329,7 +369,7 @@
 </parameter>
 </method>
 <method name="registerUmSsoCredentials"
- return="void"
+ return="com.terradue.jcatalogue.client.CatalogueClient.Configuration"
  abstract="false"
  native="false"
  synchronized="false"
@@ -344,17 +384,6 @@
 </parameter>
 <parameter name="parameters" type="com.terradue.jcatalogue.client.Parameter...">
 </parameter>
-</method>
-<method name="shutDown"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 </method>
 </class>
 <class name="CatalogueDescription"
@@ -473,9 +502,11 @@
 </parameter>
 <parameter name="href" type="java.lang.String">
 </parameter>
+<parameter name="priority" type="java.lang.Integer">
+</parameter>
 </method>
 <method name="download"
- return="void"
+ return="T"
  abstract="false"
  native="false"
  synchronized="false"
@@ -486,7 +517,7 @@
 >
 <parameter name="targetDir" type="java.io.File">
 </parameter>
-<parameter name="handler" type="com.terradue.jcatalogue.client.download.DownloadHandler">
+<parameter name="handler" type="com.terradue.jcatalogue.client.download.DownloadHandler&lt;T&gt;">
 </parameter>
 </method>
 <method name="hasMoreResults"
@@ -689,6 +720,8 @@
 </parameter>
 <parameter name="href" type="java.lang.String">
 </parameter>
+<parameter name="priority" type="java.lang.Integer">
+</parameter>
 </method>
 <method name="getNextResults"
  return="com.terradue.jcatalogue.client.Series"
@@ -735,7 +768,7 @@
  visibility="public"
 >
 <method name="onCompleted"
- return="void"
+ return="T"
  abstract="true"
  native="false"
  synchronized="false"
@@ -745,6 +778,21 @@
  visibility="public"
 >
 <parameter name="file" type="java.io.File">
+</parameter>
+</method>
+<method name="onContentDownloadProgress"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="current" type="long">
+</parameter>
+<parameter name="total" type="long">
 </parameter>
 </method>
 <method name="onError"
@@ -808,7 +856,7 @@
  visibility="public"
 >
 <method name="download"
- return="void"
+ return="T"
  abstract="true"
  native="false"
  synchronized="false"
@@ -821,7 +869,7 @@
 </parameter>
 <parameter name="fileUri" type="java.net.URI">
 </parameter>
-<parameter name="handler" type="com.terradue.jcatalogue.client.download.DownloadHandler">
+<parameter name="handler" type="com.terradue.jcatalogue.client.download.DownloadHandler&lt;T&gt;">
 </parameter>
 </method>
 </interface>
@@ -844,7 +892,7 @@
 >
 </constructor>
 <method name="download"
- return="void"
+ return="T"
  abstract="false"
  native="false"
  synchronized="false"
@@ -857,7 +905,7 @@
 </parameter>
 <parameter name="fileUri" type="java.net.URI">
 </parameter>
-<parameter name="handler" type="com.terradue.jcatalogue.client.download.DownloadHandler">
+<parameter name="handler" type="com.terradue.jcatalogue.client.download.DownloadHandler&lt;T&gt;">
 </parameter>
 </method>
 </class>
@@ -1085,6 +1133,71 @@
 </method>
 <method name="shutDown"
  return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+</package>
+<package name="com.terradue.jcatalogue.client.internal.collections"
+>
+<class name="Enclosures"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="java.util.Comparator">
+</implements>
+<implements name="java.lang.Iterable">
+</implements>
+<constructor name="Enclosures"
+ type="com.terradue.jcatalogue.client.internal.collections.Enclosures"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="addEnclosure"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="uri" type="java.net.URI">
+</parameter>
+<parameter name="priority" type="java.lang.Integer">
+</parameter>
+</method>
+<method name="compare"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="o1" type="java.lang.Integer">
+</parameter>
+<parameter name="o2" type="java.lang.Integer">
+</parameter>
+</method>
+<method name="iterator"
+ return="java.util.Iterator&lt;java.net.URI&gt;"
  abstract="false"
  native="false"
  synchronized="false"
