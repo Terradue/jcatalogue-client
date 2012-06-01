@@ -245,7 +245,13 @@ public final class CatalogueClient
 
             if ( downloader != null )
             {
-                return downloader.download( targetDir, fileUri, handler );
+                EventsRegisterDownloadHandler<T> wrapperHandler = new EventsRegisterDownloadHandler<T>( handler );
+                T returned = downloader.download( targetDir, fileUri, wrapperHandler );
+
+                if ( !wrapperHandler.hasDetectedErrors() )
+                {
+                    return returned;
+                }
             }
             else
             {
@@ -263,6 +269,65 @@ public final class CatalogueClient
     public void shutDown()
     {
         httpInvoker.shutDown();
+    }
+
+    private static final class EventsRegisterDownloadHandler<T>
+        implements DownloadHandler<T>
+    {
+
+        private final DownloadHandler<T> adapted;
+
+        private boolean detectedErrors = false;
+
+        public EventsRegisterDownloadHandler( DownloadHandler<T> adapted )
+        {
+            this.adapted = adapted;
+        }
+
+        @Override
+        public void onError( Throwable t )
+        {
+            detectedErrors = true;
+            adapted.onError( t );
+        }
+
+        @Override
+        public void onError( String message )
+        {
+            detectedErrors = true;
+            adapted.onError( message );
+        }
+
+        @Override
+        public void onWarning( String message )
+        {
+            adapted.onWarning( message );
+        }
+
+        @Override
+        public void onFatal( String message )
+        {
+            detectedErrors = true;
+            adapted.onFatal( message );
+        }
+
+        @Override
+        public void onContentDownloadProgress( long current, long total )
+        {
+            adapted.onContentDownloadProgress( current, total );
+        }
+
+        @Override
+        public T onCompleted( File file )
+        {
+            return adapted.onCompleted( file );
+        }
+
+        public boolean hasDetectedErrors()
+        {
+            return detectedErrors;
+        }
+
     }
 
     /**

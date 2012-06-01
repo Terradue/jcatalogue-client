@@ -16,18 +16,23 @@ package com.terradue.jcatalogue.client;
  *    limitations under the License.
  */
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 import java.io.File;
 import java.net.URI;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
 
 import com.terradue.jcatalogue.client.download.DownloadHandler;
 import com.terradue.jcatalogue.client.download.Downloader;
 
 public final class EnclosuresPriorityTestCase
 {
+
+    private final Logger logger = getLogger( getClass() );
 
     private CatalogueClient client;
 
@@ -41,7 +46,7 @@ public final class EnclosuresPriorityTestCase
             public <T> T download( File targetDir, URI fileUri, DownloadHandler<T> handler )
             {
                 // do nothing, just print out the uri
-                System.out.println( "******************************************** >> " + fileUri );
+                handler.onError( "Impossible to download from " + fileUri );
                 return null;
             }
 
@@ -55,7 +60,10 @@ public final class EnclosuresPriorityTestCase
         client = null;
     }
 
-    @Test
+    /**
+     * This test is designed it has not to success with any URL in the enclosure list
+     */
+    @Test( expected = IllegalStateException.class )
     public void accessToSeriesWhereEachDataSetEnclosureHasPriority()
     {
         Series series = client.getSeries( "http://10.11.12.248/catalogue/gpod/ASA_APH_0P/ASA_APH_0CNPDK20050612_135118_000000162038_00082_17170_0011.N1/atom" );
@@ -73,7 +81,7 @@ public final class EnclosuresPriorityTestCase
                 @Override
                 public void onError( String message )
                 {
-                    // do nothing
+                    logger.error( message );
                 }
 
                 @Override
