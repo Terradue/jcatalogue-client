@@ -29,38 +29,38 @@
 <a class="jxr_linenumber" name="19" href="#19">19</a>  <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.junit.Assert.assertFalse;
 <a class="jxr_linenumber" name="20" href="#20">20</a>  <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.junit.Assert.assertNotNull;
 <a class="jxr_linenumber" name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.junit.Assert.assertTrue;
-<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.junit.Assert.fail;
-<a class="jxr_linenumber" name="23" href="#23">23</a>  
-<a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> java.io.File;
-<a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> java.net.URI;
-<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> java.util.Iterator;
-<a class="jxr_linenumber" name="27" href="#27">27</a>  
-<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.junit.After;
-<a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.junit.Before;
-<a class="jxr_linenumber" name="30" href="#30">30</a>  <strong class="jxr_keyword">import</strong> org.junit.Ignore;
-<a class="jxr_linenumber" name="31" href="#31">31</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
-<a class="jxr_linenumber" name="32" href="#32">32</a>  
-<a class="jxr_linenumber" name="33" href="#33">33</a>  <strong class="jxr_keyword">import</strong> com.terradue.jcatalogue.client.download.DownloadHandler;
-<a class="jxr_linenumber" name="34" href="#34">34</a>  
-<a class="jxr_linenumber" name="35" href="#35">35</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../com/terradue/jcatalogue/client/CatalogueClientTestCase.html">CatalogueClientTestCase</a>
-<a class="jxr_linenumber" name="36" href="#36">36</a>  {
+<a class="jxr_linenumber" name="22" href="#22">22</a>  
+<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> java.io.File;
+<a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> java.util.Iterator;
+<a class="jxr_linenumber" name="25" href="#25">25</a>  
+<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.junit.After;
+<a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.junit.Before;
+<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.junit.Ignore;
+<a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
+<a class="jxr_linenumber" name="30" href="#30">30</a>  
+<a class="jxr_linenumber" name="31" href="#31">31</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../com/terradue/jcatalogue/client/CatalogueClientTestCase.html">CatalogueClientTestCase</a>
+<a class="jxr_linenumber" name="32" href="#32">32</a>  {
+<a class="jxr_linenumber" name="33" href="#33">33</a>  
+<a class="jxr_linenumber" name="34" href="#34">34</a>      <strong class="jxr_keyword">private</strong> CatalogueClient client;
+<a class="jxr_linenumber" name="35" href="#35">35</a>  
+<a class="jxr_linenumber" name="36" href="#36">36</a>      <strong class="jxr_keyword">private</strong> String username = <span class="jxr_string">""</span>;
 <a class="jxr_linenumber" name="37" href="#37">37</a>  
-<a class="jxr_linenumber" name="38" href="#38">38</a>      <strong class="jxr_keyword">private</strong> CatalogueClient client;
+<a class="jxr_linenumber" name="38" href="#38">38</a>      <strong class="jxr_keyword">private</strong> String password = <span class="jxr_string">""</span>;
 <a class="jxr_linenumber" name="39" href="#39">39</a>  
-<a class="jxr_linenumber" name="40" href="#40">40</a>      <strong class="jxr_keyword">private</strong> String username = <span class="jxr_string">""</span>;
-<a class="jxr_linenumber" name="41" href="#41">41</a>  
-<a class="jxr_linenumber" name="42" href="#42">42</a>      <strong class="jxr_keyword">private</strong> String password = <span class="jxr_string">""</span>;
-<a class="jxr_linenumber" name="43" href="#43">43</a>  
-<a class="jxr_linenumber" name="44" href="#44">44</a>      @Before
-<a class="jxr_linenumber" name="45" href="#45">45</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setUp()
-<a class="jxr_linenumber" name="46" href="#46">46</a>      {
-<a class="jxr_linenumber" name="47" href="#47">47</a>          client = <strong class="jxr_keyword">new</strong> CatalogueClient();
-<a class="jxr_linenumber" name="48" href="#48">48</a>          client.registerRealm( <span class="jxr_string">"eo-virtual-archive4.esa.int"</span>, username, password, <strong class="jxr_keyword">true</strong>, HttpAuthScheme.BASIC );
-<a class="jxr_linenumber" name="49" href="#49">49</a>      }
-<a class="jxr_linenumber" name="50" href="#50">50</a>  
-<a class="jxr_linenumber" name="51" href="#51">51</a>      @After
-<a class="jxr_linenumber" name="52" href="#52">52</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> tearDown()
-<a class="jxr_linenumber" name="53" href="#53">53</a>      {
+<a class="jxr_linenumber" name="40" href="#40">40</a>      @Before
+<a class="jxr_linenumber" name="41" href="#41">41</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setUp()
+<a class="jxr_linenumber" name="42" href="#42">42</a>      {
+<a class="jxr_linenumber" name="43" href="#43">43</a>          client = <strong class="jxr_keyword">new</strong> CatalogueClient( <strong class="jxr_keyword">new</strong> CatalogueClient.Configuration().registerRealm( <span class="jxr_string">"eo-virtual-archive4.esa.int"</span>,
+<a class="jxr_linenumber" name="44" href="#44">44</a>                                                                                           username,
+<a class="jxr_linenumber" name="45" href="#45">45</a>                                                                                           password,
+<a class="jxr_linenumber" name="46" href="#46">46</a>                                                                                           <strong class="jxr_keyword">true</strong>,
+<a class="jxr_linenumber" name="47" href="#47">47</a>                                                                                           HttpAuthScheme.BASIC ) );
+<a class="jxr_linenumber" name="48" href="#48">48</a>      }
+<a class="jxr_linenumber" name="49" href="#49">49</a>  
+<a class="jxr_linenumber" name="50" href="#50">50</a>      @After
+<a class="jxr_linenumber" name="51" href="#51">51</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> tearDown()
+<a class="jxr_linenumber" name="52" href="#52">52</a>      {
+<a class="jxr_linenumber" name="53" href="#53">53</a>          client.shutDown();
 <a class="jxr_linenumber" name="54" href="#54">54</a>          client = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="55" href="#55">55</a>      }
 <a class="jxr_linenumber" name="56" href="#56">56</a>  
@@ -126,53 +126,7 @@
 <a class="jxr_linenumber" name="116" href="#116">116</a>         dataSet.download( <strong class="jxr_keyword">new</strong> File( <span class="jxr_string">"/tmp"</span> ), <strong class="jxr_keyword">new</strong> <a href="../../../../com/terradue/jcatalogue/client/AssertingDownloadHanlder.html">AssertingDownloadHanlder</a>() );
 <a class="jxr_linenumber" name="117" href="#117">117</a>     }
 <a class="jxr_linenumber" name="118" href="#118">118</a> 
-<a class="jxr_linenumber" name="119" href="#119">119</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="120" href="#120">120</a> <em class="jxr_javadoccomment">     * @since 0.2</em>
-<a class="jxr_linenumber" name="121" href="#121">121</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="122" href="#122">122</a>     @Test
-<a class="jxr_linenumber" name="123" href="#123">123</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> accessToDataSet()
-<a class="jxr_linenumber" name="124" href="#124">124</a>         <strong class="jxr_keyword">throws</strong> Exception
-<a class="jxr_linenumber" name="125" href="#125">125</a>     {
-<a class="jxr_linenumber" name="126" href="#126">126</a>         DataSet dataSet = client.getDataSet( <span class="jxr_string">"http://t2-10-11-12-248.hadoop.terradue.int/catalogue/gpod/ASA_IM__0P/ASA_IM__0CNPDE20110409_004512_000000163101_00189_47617_2648.N1/atom"</span> );
-<a class="jxr_linenumber" name="127" href="#127">127</a> 
-<a class="jxr_linenumber" name="128" href="#128">128</a>         assertNotNull( dataSet );
-<a class="jxr_linenumber" name="129" href="#129">129</a>     }
-<a class="jxr_linenumber" name="130" href="#130">130</a> 
-<a class="jxr_linenumber" name="131" href="#131">131</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="132" href="#132">132</a> <em class="jxr_javadoccomment">     * @since 0.3</em>
-<a class="jxr_linenumber" name="133" href="#133">133</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="134" href="#134">134</a>     @Test
-<a class="jxr_linenumber" name="135" href="#135">135</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testQueryParameters()
-<a class="jxr_linenumber" name="136" href="#136">136</a>         <strong class="jxr_keyword">throws</strong> Exception
-<a class="jxr_linenumber" name="137" href="#137">137</a>     {
-<a class="jxr_linenumber" name="138" href="#138">138</a>         Series serie = client.getSeries( <span class="jxr_string">"http://10.11.12.248/catalogue/gpod/ER2_TIM_AX/atom"</span>,
-<a class="jxr_linenumber" name="139" href="#139">139</a>                                          <strong class="jxr_keyword">new</strong> Parameter( <span class="jxr_string">"startDate"</span>, <span class="jxr_string">"1995-07-18T14:46:54.000"</span> ),
-<a class="jxr_linenumber" name="140" href="#140">140</a>                                          <strong class="jxr_keyword">new</strong> Parameter( <span class="jxr_string">"stopDate"</span>, <span class="jxr_string">"1995-07-18T14:46:54.000"</span> ) );
-<a class="jxr_linenumber" name="141" href="#141">141</a> 
-<a class="jxr_linenumber" name="142" href="#142">142</a>         assertTrue( serie.getTotalResults() &gt; 0 );
-<a class="jxr_linenumber" name="143" href="#143">143</a>     }
-<a class="jxr_linenumber" name="144" href="#144">144</a> 
-<a class="jxr_linenumber" name="145" href="#145">145</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="146" href="#146">146</a> <em class="jxr_javadoccomment">     * @since 0.8</em>
-<a class="jxr_linenumber" name="147" href="#147">147</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="148" href="#148">148</a>     @Test
-<a class="jxr_linenumber" name="149" href="#149">149</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> ssoLogin()
-<a class="jxr_linenumber" name="150" href="#150">150</a>         <strong class="jxr_keyword">throws</strong> Exception
-<a class="jxr_linenumber" name="151" href="#151">151</a>     {
-<a class="jxr_linenumber" name="152" href="#152">152</a>         client.registerUmSsoCredentials( URI.create( <span class="jxr_string">"https://eo-sso-idp.eo.esa.int/idp/umsso20/login?null"</span> ),
-<a class="jxr_linenumber" name="153" href="#153">153</a>                                          HttpMethod.POST,
-<a class="jxr_linenumber" name="154" href="#154">154</a>                                          <strong class="jxr_keyword">new</strong> Parameter( <span class="jxr_string">"cn"</span>, <span class="jxr_string">"stripodi"</span> ),
-<a class="jxr_linenumber" name="155" href="#155">155</a>                                          <strong class="jxr_keyword">new</strong> Parameter( <span class="jxr_string">"password"</span>, <span class="jxr_string">"Princesa_1979"</span> ),
-<a class="jxr_linenumber" name="156" href="#156">156</a>                                          <strong class="jxr_keyword">new</strong> Parameter( <span class="jxr_string">"idleTime"</span>, <span class="jxr_string">"oneday"</span> ),
-<a class="jxr_linenumber" name="157" href="#157">157</a>                                          <strong class="jxr_keyword">new</strong> Parameter( <span class="jxr_string">"sessionTime"</span>, <span class="jxr_string">"untilbrowserclose"</span> ),
-<a class="jxr_linenumber" name="158" href="#158">158</a>                                          <strong class="jxr_keyword">new</strong> Parameter( <span class="jxr_string">"loginFields"</span>, <span class="jxr_string">"cn@password"</span> ),
-<a class="jxr_linenumber" name="159" href="#159">159</a>                                          <strong class="jxr_keyword">new</strong> Parameter( <span class="jxr_string">"loginMethod"</span>, <span class="jxr_string">"umsso"</span> ) );
-<a class="jxr_linenumber" name="160" href="#160">160</a>         Series series = client.getSeries( <span class="jxr_string">"http://eo-virtual-archive4.esa.int/search/ER02_SAR_IM__0P/atom?bbox=-75,20,-85,30"</span> );
-<a class="jxr_linenumber" name="161" href="#161">161</a> 
-<a class="jxr_linenumber" name="162" href="#162">162</a>         series.iterator().next().download( <strong class="jxr_keyword">new</strong> File( <span class="jxr_string">"/tmp"</span> ), <strong class="jxr_keyword">new</strong> <a href="../../../../com/terradue/jcatalogue/client/AssertingDownloadHanlder.html">AssertingDownloadHanlder</a>() );
-<a class="jxr_linenumber" name="163" href="#163">163</a>     }
-<a class="jxr_linenumber" name="164" href="#164">164</a> 
-<a class="jxr_linenumber" name="165" href="#165">165</a> }
+<a class="jxr_linenumber" name="119" href="#119">119</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

@@ -8,10 +8,10 @@
     <language>en-us</language>
     <copyright>&#169;2011 - 2012 Terradue s.r.l.</copyright>
     <item>
-      <title>File: 50,
-             Errors: 226,
-             Warnings: 150,
-             Infos: 28
+      <title>File: 104,
+             Errors: 123,
+             Warnings: 70,
+             Infos: 14
       </title>
             <link>http://terradue.github.com/jcatalogue-client//checkstyle.html</link>
       <description>
@@ -29,7 +29,7 @@
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.ahc.package-info.java">com/terradue/jcatalogue/client/internal/ahc/package-info.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.lang.package-info.java">java/com/terradue/jcatalogue/client/internal/lang/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -38,26 +38,26 @@
                   0
                 </td>
                 <td>
-                  2
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.converters.CharsetConverter.java">com/terradue/jcatalogue/client/internal/converters/CharsetConverter.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.digester.DataSetRulesModule.java">java/com/terradue/jcatalogue/client/internal/digester/DataSetRulesModule.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  2
+                  0
                 </td>
                 <td>
-                  6
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.digester.OpenSearchUrlCreationFactory.java">com/terradue/jcatalogue/client/internal/digester/OpenSearchUrlCreationFactory.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.download.HttpDownloadHandler.java">java/com/terradue/jcatalogue/client/download/HttpDownloadHandler.java</a>
                 </td>
                 <td>
                   0
@@ -66,12 +66,12 @@
                   0
                 </td>
                 <td>
-                  2
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.geo.Box.java">com/terradue/jcatalogue/client/geo/Box.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.collections.package-info.java">java/com/terradue/jcatalogue/client/internal/collections/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -80,7 +80,63 @@
                   0
                 </td>
                 <td>
-                  4
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.digester.package-info.java">java/com/terradue/jcatalogue/client/internal/digester/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.download.package-info.java">java/com/terradue/jcatalogue/client/download/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.HttpAuthScheme.java">java/com/terradue/jcatalogue/client/HttpAuthScheme.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.digester.OpenSearchModule.java">java/com/terradue/jcatalogue/client/internal/digester/OpenSearchModule.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -94,7 +150,7 @@
                   0
                 </td>
                 <td>
-                  8
+                  4
                 </td>
               </tr>
                           <tr>
@@ -105,10 +161,52 @@
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
                 <td>
-                  4
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.download.HttpDownloader.java">java/com/terradue/jcatalogue/client/download/HttpDownloader.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.package-info.java">java/com/terradue/jcatalogue/client/internal/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.LazyLoadSerieIterator.java">java/com/terradue/jcatalogue/client/LazyLoadSerieIterator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -119,10 +217,10 @@
                   0
                 </td>
                 <td>
-                  20
+                  10
                 </td>
                 <td>
-                  4
+                  6
                 </td>
               </tr>
                           <tr>
@@ -136,7 +234,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
@@ -150,7 +248,7 @@
                   0
                 </td>
                 <td>
-                  20
+                  10
                 </td>
               </tr>
                           <tr>
@@ -164,35 +262,21 @@
                   0
                 </td>
                 <td>
-                  6
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.HttpMethod.java">com/terradue/jcatalogue/client/HttpMethod.java</a>
-                </td>
-                <td>
-                  16
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
                   4
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.converters.GeoConverter.java">com/terradue/jcatalogue/client/internal/converters/GeoConverter.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.geo.Line.java">java/com/terradue/jcatalogue/client/geo/Line.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  2
+                  0
                 </td>
                 <td>
-                  12
+                  0
                 </td>
               </tr>
                           <tr>
@@ -203,15 +287,15 @@
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
                 <td>
-                  6
+                  3
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.geo.Line.java">com/terradue/jcatalogue/client/geo/Line.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.download.DownloadHandler.java">java/com/terradue/jcatalogue/client/download/DownloadHandler.java</a>
                 </td>
                 <td>
                   0
@@ -220,7 +304,7 @@
                   0
                 </td>
                 <td>
-                  4
+                  0
                 </td>
               </tr>
                           <tr>
@@ -234,26 +318,12 @@
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.Catalogue.java">com/terradue/jcatalogue/client/Catalogue.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-                <td>
-                  4
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.MimeTypes.java">com/terradue/jcatalogue/client/MimeTypes.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.converters.package-info.java">java/com/terradue/jcatalogue/client/internal/converters/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -262,7 +332,7 @@
                   0
                 </td>
                 <td>
-                  6
+                  0
                 </td>
               </tr>
                           <tr>
@@ -276,21 +346,7 @@
                   0
                 </td>
                 <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.ahc.UmSsoAccess.java">com/terradue/jcatalogue/client/internal/ahc/UmSsoAccess.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
@@ -301,10 +357,10 @@
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
                 <td>
-                  22
+                  11
                 </td>
               </tr>
                           <tr>
@@ -318,26 +374,12 @@
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.download.SimpleDownloadHandler.java">com/terradue/jcatalogue/client/download/SimpleDownloadHandler.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-                <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.LazyLoadSerieIterator.java">com/terradue/jcatalogue/client/LazyLoadSerieIterator.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.converters.CharsetConverter.java">java/com/terradue/jcatalogue/client/internal/converters/CharsetConverter.java</a>
                 </td>
                 <td>
                   0
@@ -346,21 +388,7 @@
                   0
                 </td>
                 <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.digester.DataSetRulesModule.java">com/terradue/jcatalogue/client/internal/digester/DataSetRulesModule.java</a>
-                </td>
-                <td>
                   0
-                </td>
-                <td>
-                  2
-                </td>
-                <td>
-                  4
                 </td>
               </tr>
                           <tr>
@@ -371,21 +399,7 @@
                   0
                 </td>
                 <td>
-                  6
-                </td>
-                <td>
-                  4
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.lang.package-info.java">com/terradue/jcatalogue/client/internal/lang/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
+                  3
                 </td>
                 <td>
                   2
@@ -393,7 +407,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.Parameter.java">com/terradue/jcatalogue/client/Parameter.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.digester.SingleDataSetRulesModule.java">java/com/terradue/jcatalogue/client/internal/digester/SingleDataSetRulesModule.java</a>
                 </td>
                 <td>
                   0
@@ -402,7 +416,21 @@
                   0
                 </td>
                 <td>
-                  4
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.geo.Box.java">java/com/terradue/jcatalogue/client/geo/Box.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -416,7 +444,763 @@
                   0
                 </td>
                 <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.Parameter.java">com/terradue/jcatalogue/client/Parameter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
                   2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.lang.Assertions.java">com/terradue/jcatalogue/client/internal/lang/Assertions.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.DataSet.java">java/com/terradue/jcatalogue/client/DataSet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.CatalogueClient.java">java/com/terradue/jcatalogue/client/CatalogueClient.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.digester.LinkedAtomEntityModule.java">java/com/terradue/jcatalogue/client/internal/digester/LinkedAtomEntityModule.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.download.Downloader.java">java/com/terradue/jcatalogue/client/download/Downloader.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.download.HttpDownloadHandler.java">com/terradue/jcatalogue/client/download/HttpDownloadHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.digester.AtomRulesModule.java">com/terradue/jcatalogue/client/internal/digester/AtomRulesModule.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.collections.package-info.java">com/terradue/jcatalogue/client/internal/collections/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.geo.Point.java">com/terradue/jcatalogue/client/geo/Point.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.OpenSearchParameter.java">com/terradue/jcatalogue/client/OpenSearchParameter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.Parameter.java">java/com/terradue/jcatalogue/client/Parameter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.digester.OpenSearchUrlCreationFactory.java">java/com/terradue/jcatalogue/client/internal/digester/OpenSearchUrlCreationFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.converters.package-info.java">com/terradue/jcatalogue/client/internal/converters/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.digester.SetGeoDataLocationRule.java">java/com/terradue/jcatalogue/client/internal/digester/SetGeoDataLocationRule.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.digester.package-info.java">com/terradue/jcatalogue/client/internal/digester/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.geo.Point.java">java/com/terradue/jcatalogue/client/geo/Point.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.geo.Polygon.java">com/terradue/jcatalogue/client/geo/Polygon.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.CatalogueEntity.java">com/terradue/jcatalogue/client/CatalogueEntity.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.CatalogueClient.java">com/terradue/jcatalogue/client/CatalogueClient.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  23
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.download.DownloadHandler.java">com/terradue/jcatalogue/client/download/DownloadHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.CatalogueEntity.java">java/com/terradue/jcatalogue/client/CatalogueEntity.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.download.Protocol.java">java/com/terradue/jcatalogue/client/download/Protocol.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.ahc.UmSsoStatusResponseFilter.java">java/com/terradue/jcatalogue/client/internal/ahc/UmSsoStatusResponseFilter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.ahc.package-info.java">com/terradue/jcatalogue/client/internal/ahc/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.lang.Assertions.java">java/com/terradue/jcatalogue/client/internal/lang/Assertions.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.AtomEntity.java">java/com/terradue/jcatalogue/client/AtomEntity.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.converters.CharsetConverter.java">com/terradue/jcatalogue/client/internal/converters/CharsetConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.digester.OpenSearchUrlCreationFactory.java">com/terradue/jcatalogue/client/internal/digester/OpenSearchUrlCreationFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.converters.LocaleConverter.java">java/com/terradue/jcatalogue/client/internal/converters/LocaleConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.ahc.UmSsoAccess.java">java/com/terradue/jcatalogue/client/internal/ahc/UmSsoAccess.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.collections.Enclosures.java">java/com/terradue/jcatalogue/client/internal/collections/Enclosures.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.digester.AtomRulesModule.java">java/com/terradue/jcatalogue/client/internal/digester/AtomRulesModule.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.OpenSearchParameter.java">java/com/terradue/jcatalogue/client/OpenSearchParameter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.geo.Box.java">com/terradue/jcatalogue/client/geo/Box.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.digester.PriorityParamRule.java">com/terradue/jcatalogue/client/internal/digester/PriorityParamRule.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.package-info.java">java/com/terradue/jcatalogue/client/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.geo.package-info.java">java/com/terradue/jcatalogue/client/geo/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.ahc.HttpInvoker.java">java/com/terradue/jcatalogue/client/internal/ahc/HttpInvoker.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.digester.PriorityParamRule.java">java/com/terradue/jcatalogue/client/internal/digester/PriorityParamRule.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.HttpMethod.java">com/terradue/jcatalogue/client/HttpMethod.java</a>
+                </td>
+                <td>
+                  8
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.converters.GeoConverter.java">com/terradue/jcatalogue/client/internal/converters/GeoConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.MimeTypes.java">java/com/terradue/jcatalogue/client/MimeTypes.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.geo.Line.java">com/terradue/jcatalogue/client/geo/Line.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.geo.GeoLocation.java">java/com/terradue/jcatalogue/client/geo/GeoLocation.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.Catalogue.java">com/terradue/jcatalogue/client/Catalogue.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.MimeTypes.java">com/terradue/jcatalogue/client/MimeTypes.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.ahc.UmSsoAccess.java">com/terradue/jcatalogue/client/internal/ahc/UmSsoAccess.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.HttpMethod.java">java/com/terradue/jcatalogue/client/HttpMethod.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.ahc.DummyTrustManager.java">java/com/terradue/jcatalogue/client/internal/ahc/DummyTrustManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.LazyLoadSerieIterator.java">com/terradue/jcatalogue/client/LazyLoadSerieIterator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.digester.DataSetRulesModule.java">com/terradue/jcatalogue/client/internal/digester/DataSetRulesModule.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.lang.package-info.java">com/terradue/jcatalogue/client/internal/lang/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.converters.AtomDateConverter.java">java/com/terradue/jcatalogue/client/internal/converters/AtomDateConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -428,20 +1212,6 @@
                 </td>
                 <td>
                   0
-                </td>
-                <td>
-                  4
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.lang.Assertions.java">com/terradue/jcatalogue/client/internal/lang/Assertions.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  12
                 </td>
                 <td>
                   2
@@ -458,7 +1228,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
@@ -472,7 +1242,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
@@ -483,38 +1253,10 @@
                   0
                 </td>
                 <td>
-                  2
-                </td>
-                <td>
-                  4
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.digester.AtomRulesModule.java">com/terradue/jcatalogue/client/internal/digester/AtomRulesModule.java</a>
-                </td>
-                <td>
-                  0
+                  1
                 </td>
                 <td>
                   2
-                </td>
-                <td>
-                  4
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.geo.Point.java">com/terradue/jcatalogue/client/geo/Point.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  4
                 </td>
               </tr>
                           <tr>
@@ -525,10 +1267,10 @@
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
                 <td>
-                  4
+                  2
                 </td>
               </tr>
                           <tr>
@@ -539,10 +1281,10 @@
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
                 <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
@@ -553,15 +1295,15 @@
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
                 <td>
-                  4
+                  2
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.CallbackDownloadHandler.java">com/terradue/jcatalogue/client/CallbackDownloadHandler.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.Catalogue.java">java/com/terradue/jcatalogue/client/Catalogue.java</a>
                 </td>
                 <td>
                   0
@@ -570,7 +1312,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  0
                 </td>
               </tr>
                           <tr>
@@ -581,21 +1323,7 @@
                   0
                 </td>
                 <td>
-                  2
-                </td>
-                <td>
-                  4
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.OpenSearchParameter.java">com/terradue/jcatalogue/client/OpenSearchParameter.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
+                  1
                 </td>
                 <td>
                   2
@@ -603,7 +1331,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.converters.package-info.java">com/terradue/jcatalogue/client/internal/converters/package-info.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.CatalogueDescription.java">java/com/terradue/jcatalogue/client/CatalogueDescription.java</a>
                 </td>
                 <td>
                   0
@@ -612,12 +1340,12 @@
                   0
                 </td>
                 <td>
-                  2
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.digester.package-info.java">com/terradue/jcatalogue/client/internal/digester/package-info.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.converters.GeoConverter.java">java/com/terradue/jcatalogue/client/internal/converters/GeoConverter.java</a>
                 </td>
                 <td>
                   0
@@ -626,7 +1354,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  0
                 </td>
               </tr>
                           <tr>
@@ -637,15 +1365,29 @@
                   0
                 </td>
                 <td>
-                  4
+                  2
                 </td>
                 <td>
-                  4
+                  2
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.geo.Polygon.java">com/terradue/jcatalogue/client/geo/Polygon.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.internal.collections.Enclosures.java">com/terradue/jcatalogue/client/internal/collections/Enclosures.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.geo.Polygon.java">java/com/terradue/jcatalogue/client/geo/Polygon.java</a>
                 </td>
                 <td>
                   0
@@ -654,7 +1396,21 @@
                   0
                 </td>
                 <td>
-                  4
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.digester.Namespaces.java">java/com/terradue/jcatalogue/client/internal/digester/Namespaces.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -665,10 +1421,24 @@
                   0
                 </td>
                 <td>
-                  6
+                  3
                 </td>
                 <td>
-                  6
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.internal.ahc.package-info.java">java/com/terradue/jcatalogue/client/internal/ahc/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -676,32 +1446,32 @@
                   <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.HttpAuthScheme.java">com/terradue/jcatalogue/client/HttpAuthScheme.java</a>
                 </td>
                 <td>
-                  12
+                  6
+                </td>
+                <td>
+                  1
                 </td>
                 <td>
                   2
                 </td>
+              </tr>
+                          <tr>
                 <td>
-                  4
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.Series.java">java/com/terradue/jcatalogue/client/Series.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.CatalogueClient.java">com/terradue/jcatalogue/client/CatalogueClient.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  62
-                </td>
-                <td>
-                  12
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.CatalogueEntity.java">com/terradue/jcatalogue/client/CatalogueEntity.java</a>
+                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#java.com.terradue.jcatalogue.client.OpenSearchUrl.java">java/com/terradue/jcatalogue/client/OpenSearchUrl.java</a>
                 </td>
                 <td>
                   0
@@ -710,21 +1480,7 @@
                   0
                 </td>
                 <td>
-                  4
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://terradue.github.com/jcatalogue-client//checkstyle.html#com.terradue.jcatalogue.client.download.DownloadHandler.java">com/terradue/jcatalogue/client/download/DownloadHandler.java</a>
-                </td>
-                <td>
                   0
-                </td>
-                <td>
-                  10
-                </td>
-                <td>
-                  4
                 </td>
               </tr>
                       </tbody>
