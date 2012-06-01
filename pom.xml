@@ -44,11 +44,11 @@
   </distributionManagement>
 
   <modules>
+    <module>core</module>
+    <!-- to be restored later
     <module>apis</module>
     <module>impl</module>
-    <!-- to be deprecated -->
-    <module>core</module>
-    <module>cli</module>
+    <module>cli</module> -->
   </modules>
 
   <properties>
