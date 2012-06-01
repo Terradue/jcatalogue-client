@@ -48,7 +48,7 @@ public final class DataSetAccessTestCase
         throws Exception
     {
         CatalogueClient client = new CatalogueClient();
-        DataSet dataSet = client.getDataSet( "http://t2-10-11-12-248.hadoop.terradue.int/catalogue/gpod/ASA_IM__0P/ASA_IM__0CNPDE20110409_004512_000000163101_00189_47617_2648.N1/atom" );
+        DataSet dataSet = client.getDataSet( "http://10.11.12.248/catalogue/gpod/ASA_IM__0P/ASA_IM__0CNPDE20110409_004512_000000163101_00189_47617_2648.N1/atom" );
 
         assertNotNull( dataSet );
     }
