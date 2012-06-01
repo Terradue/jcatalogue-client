@@ -30,11 +30,23 @@
   <name>JCatalogue Client :: Core Impl</name>
 
   <dependencies>
-   <dependency>
-     <groupId>${project.groupId}</groupId>
-     <artifactId>jcatalogue-client-api</artifactId>
-     <version>${project.version}</version>
-   </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>jcatalogue-client-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.ning</groupId>
+      <artifactId>async-http-client</artifactId>
+      <version>1.8.0-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
   </dependencies>
 
 </project>
