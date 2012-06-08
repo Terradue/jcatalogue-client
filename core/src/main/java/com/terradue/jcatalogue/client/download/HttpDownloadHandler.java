@@ -128,7 +128,7 @@ final class HttpDownloadHandler<T>
 
     private void writeMd5ChecksumFile()
     {
-        File checksumFile = new File( targetFile.getParent(), format( "%.md5", targetFile.getName() ) );
+        File checksumFile = new File( targetFile.getParent(), format( "%s.md5", targetFile.getName() ) );
         try
         {
             FileChannel digestChannel = new FileOutputStream( checksumFile ).getChannel();
