@@ -196,10 +196,6 @@ final class UmSsoStatusResponseFilter
                             .replayRequest( true )
                             .build();
             }
-            else if ( logger.isWarnEnabled() )
-            {
-                logger.warn( "Domain {} not managed for UM-SSO authentication!", currentDomain );
-            }
 
             return ctx;
         }
