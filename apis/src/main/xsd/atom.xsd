@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Copyright 2011-2012 Terradue srl
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
 <xs:schema targetNamespace="http://www.w3.org/2005/Atom" elementFormDefault="qualified" 
   attributeFormDefault="unqualified"
-  xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:georss="http://www.georss.org/georss/11">
   <xs:annotation>
     <xs:documentation>
         This version of the Atom schema is based on version 1.0 of the format specifications,
         found here http://www.atomenabled.org/developers/syndication/atom-format-spec.php.
       </xs:documentation>
   </xs:annotation>
+
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd" />
+  <xs:import namespace="http://www.georss.org/georss/11" schemaLocation="http://www.georss.org/xml/1.1/georss.xsd" />
+
   <xs:annotation>
     <xs:documentation>
       An Atom document may have two root elements, feed and entry, as defined in section 2.
     </xs:documentation>
   </xs:annotation>
-  <xs:element name="feed" type="atom:feed"/>
-  <xs:element name="entry" type="atom:entry"/>
+  <xs:element name="feed" type="atom:feed" />
+  <xs:element name="entry" type="atom:entry" />
+
   <xs:complexType name="text" mixed="true">
     <xs:annotation>
       <xs:documentation>
@@ -23,18 +43,18 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:any namespace="http://www.w3.org/1999/xhtml" minOccurs="0"/>
+      <xs:any namespace="http://www.w3.org/1999/xhtml" minOccurs="0" />
     </xs:sequence>
     <xs:attribute name="type" >
       <xs:simpleType>
         <xs:restriction base="xs:token">
-          <xs:enumeration value="text"/>
-          <xs:enumeration value="html"/>
-          <xs:enumeration value="xhtml"/>
+          <xs:enumeration value="text" />
+          <xs:enumeration value="html" />
+          <xs:enumeration value="xhtml" />
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
-    <xs:attributeGroup ref="atom:commonAttributes"/>
+    <xs:attributeGroup ref="atom:commonAttributes" />
   </xs:complexType>
   <xs:complexType name="person">
     <xs:annotation>
@@ -46,9 +66,9 @@
       <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="uri" type="atom:uri" minOccurs="0" maxOccurs="1" />
       <xs:element name="email" type="atom:email" minOccurs="0" maxOccurs="1" />
-      <xs:any namespace="##other"/>
+      <xs:any namespace="##other" />
     </xs:choice>
-    <xs:attributeGroup ref="atom:commonAttributes"/>
+    <xs:attributeGroup ref="atom:commonAttributes" />
   </xs:complexType>
   <xs:simpleType name="email">
     <xs:annotation>
@@ -80,9 +100,9 @@
       <xs:element name="title" type="atom:text" minOccurs="1" maxOccurs="1" />
       <xs:element name="updated" type="atom:dateTime" minOccurs="1" maxOccurs="1" />
       <xs:element name="entry" type="atom:entry" minOccurs="0" maxOccurs="unbounded" />
-      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" />
     </xs:choice>
-    <xs:attributeGroup ref="atom:commonAttributes"/>
+    <xs:attributeGroup ref="atom:commonAttributes" />
   </xs:complexType>
   <xs:complexType name="entry">
     <xs:annotation>
@@ -103,9 +123,10 @@
       <xs:element name="summary" type="atom:text" minOccurs="0" maxOccurs="1" />
       <xs:element name="title" type="atom:text" minOccurs="1" maxOccurs="1" />
       <xs:element name="updated" type="atom:dateTime" minOccurs="1" maxOccurs="1" />
-      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="where" type="georss:whereType" minOccurs="0" maxOccurs="1" />
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" />
     </xs:choice>
-    <xs:attributeGroup ref="atom:commonAttributes"/>
+    <xs:attributeGroup ref="atom:commonAttributes" />
   </xs:complexType>
   <xs:complexType name="content" mixed="true">
     <xs:annotation>
@@ -116,9 +137,9 @@
     <xs:sequence>
       <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
-    <xs:attribute name="type" type="xs:string"/>
-    <xs:attribute name="src" type="xs:anyURI"/>
-    <xs:attributeGroup ref="atom:commonAttributes"/>
+    <xs:attribute name="type" type="xs:string" />
+    <xs:attribute name="src" type="xs:anyURI" />
+    <xs:attributeGroup ref="atom:commonAttributes" />
   </xs:complexType>
   <xs:complexType name="category">
     <xs:annotation>
@@ -126,9 +147,9 @@
         The Atom cagegory construct is defined in section 4.2.2 of the format spec.
       </xs:documentation>
     </xs:annotation>
-    <xs:attribute name="term" type="xs:string" use="required"/>
-    <xs:attribute name="scheme" type="xs:anyURI" use="optional"/>
-    <xs:attribute name="label" type="xs:string" use="optional"/>
+    <xs:attribute name="term" type="xs:string" use="required" />
+    <xs:attribute name="scheme" type="xs:anyURI" use="optional" />
+    <xs:attribute name="label" type="xs:string" use="optional" />
     <xs:attributeGroup ref="atom:commonAttributes" />
   </xs:complexType>
   <xs:complexType name="generator">
@@ -141,7 +162,7 @@
       <xs:extension base="xs:string">
         <xs:attribute name="uri" use="optional" type="xs:anyURI" />
         <xs:attribute name="version" use="optional" type="xs:string" />
-        <xs:attributeGroup ref="atom:commonAttributes"/>
+        <xs:attributeGroup ref="atom:commonAttributes" />
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -153,7 +174,7 @@
     </xs:annotation>
     <xs:simpleContent>
       <xs:extension base="xs:anyURI">
-        <xs:attributeGroup ref="atom:commonAttributes"/>
+        <xs:attributeGroup ref="atom:commonAttributes" />
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -165,7 +186,7 @@
     </xs:annotation>
     <xs:simpleContent>
       <xs:extension base="xs:anyURI">
-        <xs:attributeGroup ref="atom:commonAttributes"/>
+        <xs:attributeGroup ref="atom:commonAttributes" />
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -176,12 +197,12 @@
       </xs:documentation>
     </xs:annotation>
     <xs:attribute name="href" use="required" type="xs:anyURI" />
-    <xs:attribute name="rel" type="xs:string" use="optional"/>
+    <xs:attribute name="rel" type="xs:string" use="optional" />
     <xs:attribute name="type" use="optional" type="xs:string" />
     <xs:attribute name="hreflang" use="optional" type="xs:NMTOKEN" />
     <xs:attribute name="title" use="optional" type="xs:string" />
     <xs:attribute name="length" use="optional" type="xs:positiveInteger" />
-    <xs:attributeGroup ref="atom:commonAttributes"/>
+    <xs:attributeGroup ref="atom:commonAttributes" />
   </xs:complexType>
   <xs:complexType name="logo">
     <xs:annotation>
@@ -191,7 +212,7 @@
     </xs:annotation>
     <xs:simpleContent>
       <xs:extension base="xs:anyURI">
-        <xs:attributeGroup ref="atom:commonAttributes"/>
+        <xs:attributeGroup ref="atom:commonAttributes" />
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -202,39 +223,39 @@
       </xs:documentation>
     </xs:annotation>
     <xs:choice maxOccurs="unbounded">
-      <xs:element name="author" type="atom:person" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="category" type="atom:category" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="contributor" type="atom:person" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="generator" type="atom:generator" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="icon" type="atom:icon" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="id" type="atom:id" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="link" type="atom:link" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="logo" type="atom:logo" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="rights" type="atom:text" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="subtitle" type="atom:text" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="title" type="atom:text" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="updated" type="atom:dateTime" minOccurs="0" maxOccurs="1"/>
-      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="author" type="atom:person" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="category" type="atom:category" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="contributor" type="atom:person" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="generator" type="atom:generator" minOccurs="0" maxOccurs="1" />
+      <xs:element name="icon" type="atom:icon" minOccurs="0" maxOccurs="1" />
+      <xs:element name="id" type="atom:id" minOccurs="0" maxOccurs="1" />
+      <xs:element name="link" type="atom:link" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="logo" type="atom:logo" minOccurs="0" maxOccurs="1" />
+      <xs:element name="rights" type="atom:text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="subtitle" type="atom:text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="title" type="atom:text" minOccurs="0" maxOccurs="1" />
+      <xs:element name="updated" type="atom:dateTime" minOccurs="0" maxOccurs="1" />
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" />
     </xs:choice>
-    <xs:attributeGroup ref="atom:commonAttributes"/>
+    <xs:attributeGroup ref="atom:commonAttributes" />
   </xs:complexType>
   <xs:complexType name="uri">
     <xs:simpleContent>
       <xs:extension base="xs:anyURI">
-        <xs:attributeGroup ref="atom:commonAttributes"/>
+        <xs:attributeGroup ref="atom:commonAttributes" />
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
   <xs:complexType name="dateTime">
     <xs:simpleContent>
       <xs:extension base="xs:dateTime">
-        <xs:attributeGroup ref="atom:commonAttributes"/>
+        <xs:attributeGroup ref="atom:commonAttributes" />
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
   <xs:attributeGroup name="commonAttributes">
     <xs:attribute ref="xml:base" />
     <xs:attribute ref="xml:lang" />
-    <xs:anyAttribute namespace="##other"/>
+    <xs:anyAttribute namespace="##other" />
   </xs:attributeGroup>
 </xs:schema>
