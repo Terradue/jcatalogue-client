@@ -25,11 +25,20 @@
     </xs:appinfo>
   </xs:annotation>
 
-  <xs:element name="totalResults" type="xs:integer" />
+  <xs:element name="totalResults" type="opensearch:OpenSearchTotalResults" />
+  <xs:simpleType name="OpenSearchTotalResults">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
 
-  <xs:element name="startIndex" type="xs:integer" />
+  <xs:element name="startIndex" type="opensearch:OpenSearchStartIndex" />
+  <xs:simpleType name="OpenSearchStartIndex">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
 
-  <xs:element name="itemsPerPage" type="xs:integer" />
+  <xs:element name="itemsPerPage" type="opensearch:OpenSearchItemsPerPage" />
+  <xs:simpleType name="OpenSearchItemsPerPage">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
 
   <xs:element name="OpenSearchDescription" type="opensearch:OpenSearchDescription" />
 

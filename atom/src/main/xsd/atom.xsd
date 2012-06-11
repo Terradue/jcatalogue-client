@@ -17,6 +17,7 @@
 <xs:schema targetNamespace="http://www.w3.org/2005/Atom" elementFormDefault="qualified" 
   attributeFormDefault="unqualified"
   xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/"
   xmlns:georss="http://www.georss.org/georss/11"
   xmlns:metalink="urn:ietf:params:xml:ns:metalink">
   <xs:annotation>
@@ -27,6 +28,7 @@
   </xs:annotation>
 
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd" />
+  <xs:import namespace="http://a9.com/-/spec/opensearch/1.1/" schemaLocation="opensearch-description.xsd" />
   <xs:import namespace="http://www.georss.org/georss/11" schemaLocation="http://www.georss.org/xml/1.1/georss.xsd" />
   <!-- xs:import namespace="urn:ietf:params:xml:ns:metalink" schemaLocation="" /-->
 
@@ -105,7 +107,9 @@
       <xs:element name="title" type="atom:text" minOccurs="1" maxOccurs="1" />
       <xs:element name="updated" type="atom:dateTime" minOccurs="1" maxOccurs="1" />
       <xs:element name="entry" type="atom:entry" minOccurs="0" maxOccurs="unbounded" />
-      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="opensearch:Query" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="opensearch:totalResults" minOccurs="0" maxOccurs="1" />
+      <xs:element ref="opensearch:itemsPerPage" minOccurs="0" maxOccurs="1" />
     </xs:choice>
     <xs:attributeGroup ref="atom:commonAttributes" />
   </xs:complexType>
@@ -129,8 +133,7 @@
       <xs:element name="summary" type="atom:text" minOccurs="0" maxOccurs="1" />
       <xs:element name="title" type="atom:text" minOccurs="1" maxOccurs="1" />
       <xs:element name="updated" type="atom:dateTime" minOccurs="1" maxOccurs="1" />
-      <xs:element name="where" type="georss:whereType" minOccurs="0" maxOccurs="1" />
-      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="georss:where" minOccurs="0" maxOccurs="1" />
     </xs:choice>
     <xs:attributeGroup ref="atom:commonAttributes" />
   </xs:complexType>
