@@ -20,7 +20,7 @@
   <parent>
     <groupId>com.terradue</groupId>
     <artifactId>jcatalogue-client-parent</artifactId>
-    <version>0.8-SNAPSHOT</version>
+    <version>0.9-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
@@ -28,5 +28,22 @@
   <packaging>jar</packaging>
 
   <name>JCatalogue Client :: APIs</name>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <artifactId>maven-jaxb2-plugin</artifactId>
+        <version>0.8.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
