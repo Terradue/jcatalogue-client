@@ -24,9 +24,29 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>jcatalogue-client-api</artifactId>
+  <artifactId>jcatalogue-atom-api</artifactId>
   <packaging>jar</packaging>
 
-  <name>JCatalogue Client :: APIs</name>
+  <name>JCatalogue Client :: Atom Feed APIs</name>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxb2-maven-plugin</artifactId>
+        <version>1.3.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>xjc</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <verbose>true</verbose>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
