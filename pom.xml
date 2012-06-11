@@ -18,12 +18,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.terradue</groupId>
+    <groupId>com.terradue.jcatalogue.client</groupId>
     <artifactId>oss-java-parent</artifactId>
     <version>4</version>
   </parent>
 
-  <artifactId>jcatalogue-client-parent</artifactId>
+  <artifactId>parent</artifactId>
   <version>0.9-SNAPSHOT</version>
   <packaging>pom</packaging>
 

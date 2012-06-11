@@ -18,9 +18,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.terradue</groupId>
-    <artifactId>jcatalogue-client-parent</artifactId>
-    <version>0.8-SNAPSHOT</version>
+    <groupId>com.terradue.jcatalogue.client</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.9-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
@@ -28,22 +28,5 @@
   <packaging>pom</packaging>
 
   <name>JCatalogue Client :: CLI Tool</name>
-
-  <dependencies>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>jcatalogue-client</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
 
 </project>
