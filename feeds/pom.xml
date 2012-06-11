@@ -24,7 +24,7 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>jcatalogue-atom-api</artifactId>
+  <artifactId>jcatalogue-feeds</artifactId>
   <packaging>jar</packaging>
 
   <name>JCatalogue Client :: Atom Feed APIs</name>
