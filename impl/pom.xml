@@ -20,7 +20,7 @@
   <parent>
     <groupId>com.terradue.jcatalogue.client</groupId>
     <artifactId>parent</artifactId>
-    <version>0.8-SNAPSHOT</version>
+    <version>0.9-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
