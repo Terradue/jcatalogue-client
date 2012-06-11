@@ -229,6 +229,7 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+
   <xs:complexType name="source">
     <xs:annotation>
       <xs:documentation>
