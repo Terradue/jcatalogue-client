@@ -18,7 +18,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.terradue.jcatalogue.client</groupId>
+    <groupId>com.terradue.jcatalogue</groupId>
     <artifactId>parent</artifactId>
     <version>0.9-SNAPSHOT</version>
     <relativePath>../</relativePath>
