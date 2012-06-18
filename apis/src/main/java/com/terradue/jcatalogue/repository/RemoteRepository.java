@@ -17,7 +17,7 @@ package com.terradue.jcatalogue.repository;
  */
 
 import static com.terradue.jcatalogue.repository.ChecksumPolicy.IGNORE;
-import static com.terradue.jcatalogue.repository.UpdatePolicy.ALWAYS;
+import static com.terradue.jcatalogue.repository.RemoteRepository.UpdatePolicy.ALWAYS;
 import static com.terradue.jcatalogue.utils.Objects.checkArgument;
 import static com.terradue.jcatalogue.utils.Objects.eq;
 import static com.terradue.jcatalogue.utils.Objects.hash;
