@@ -49,29 +49,4 @@ public final class Objects
         return result;
     }
 
-    public static void checkArgument( boolean expression, String errorMessagePattern, Object...args )
-    {
-        if ( !expression )
-        {
-            throw new IllegalArgumentException( format( errorMessagePattern, args ) );
-        }
-    }
-
-    public static void checkState( boolean expression, String errorMessagePattern, Object...args )
-    {
-        if ( !expression )
-        {
-            throw new IllegalStateException( format( errorMessagePattern, args ) );
-        }
-    }
-
-    public static <T> T checkNotNull( T reference, String errorMessagePattern, Object...args )
-    {
-        if ( reference == null )
-        {
-            throw new NullPointerException( format( errorMessagePattern, args ) );
-        }
-        return reference;
-    }
-
 }

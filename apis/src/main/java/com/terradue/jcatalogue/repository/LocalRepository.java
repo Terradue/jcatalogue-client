@@ -16,9 +16,9 @@ package com.terradue.jcatalogue.repository;
  *    limitations under the License.
  */
 
-import static com.terradue.jcatalogue.utils.Objects.checkArgument;
-import static com.terradue.jcatalogue.utils.Objects.eq;
-import static com.terradue.jcatalogue.utils.Objects.hash;
+import static com.terradue.jcatalogue.utils.Preconditions.checkArgument;
+import static com.terradue.jcatalogue.utils.Preconditions.eq;
+import static com.terradue.jcatalogue.utils.Preconditions.hash;
 
 import java.io.File;
 
