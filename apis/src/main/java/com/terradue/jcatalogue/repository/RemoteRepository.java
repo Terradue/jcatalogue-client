@@ -206,15 +206,7 @@ public final class RemoteRepository
     @Override
     public int hashCode()
     {
-        int hash = 17;
-        hash = hash * 31 + hash( url );
-        hash = hash * 31 + hash( contentType );
-        hash = hash * 31 + hash( id );
-        hash = hash * 31 + hash( proxy );
-        hash = hash * 31 + hash( authentication );
-        hash = hash * 31 + hash( checksumPolicy );
-        hash = hash * 31 + hash( updatePolicy );
-        return hash;
+        return hash( 17, 31, url, contentType, id, proxy, authentication, checksumPolicy, updatePolicy );
     }
 
 }

@@ -108,10 +108,7 @@ public final class LocalRepository
     @Override
     public int hashCode()
     {
-        int hash = 17;
-        hash = hash * 31 + hash( basedir );
-        hash = hash * 31 + hash( type );
-        return hash;
+        return hash( 17, 31, basedir, type );
     }
 
 }

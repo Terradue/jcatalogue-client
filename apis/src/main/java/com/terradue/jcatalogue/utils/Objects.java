@@ -31,9 +31,22 @@ public final class Objects
         return s1 != null ? s1.equals( s2 ) : s2 == null;
     }
 
-    public static int hash( Object obj )
+    /**
+     * Computes a hashCode given the input objects.
+     *
+     * @param initialNonZeroOddNumber a non-zero, odd number used as the initial value.
+     * @param multiplierNonZeroOddNumber a non-zero, odd number used as the multiplier.
+     * @param objs the objects to compute hash code.
+     * @return the computed hashCode.
+     */
+    public static int hash( int initialNonZeroOddNumber, int multiplierNonZeroOddNumber, Object...objs )
     {
-        return obj != null ? obj.hashCode() : 0;
+        int result = initialNonZeroOddNumber;
+        for ( Object obj : objs )
+        {
+            result = multiplierNonZeroOddNumber * result + ( obj != null ? obj.hashCode() : 0 );
+        }
+        return result;
     }
 
     public static void checkArgument( boolean expression, String errorMessagePattern, Object...args )

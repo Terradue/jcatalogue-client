@@ -186,12 +186,7 @@ public final class Proxy
     @Override
     public int hashCode()
     {
-        int hash = 17;
-        hash = hash * 31 + hash( host );
-        hash = hash * 31 + hash( type );
-        hash = hash * 31 + port;
-        hash = hash * 31 + hash( auth );
-        return hash;
+        return hash( 17, 31, host, type, port, auth );
     }
 
 }
