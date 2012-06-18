@@ -27,7 +27,7 @@
   <artifactId>jcatalogue-feeds</artifactId>
   <packaging>jar</packaging>
 
-  <name>JCatalogue Client :: Atom Feed APIs</name>
+  <name>JCatalogue Client :: Atom/OpenSearch Feeds APIs</name>
 
   <build>
     <plugins>
