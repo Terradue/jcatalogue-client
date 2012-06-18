@@ -16,7 +16,7 @@ package com.terradue.jcatalogue.repository;
  *    limitations under the License.
  */
 
-import static com.terradue.jcatalogue.repository.ChecksumPolicy.IGNORE;
+import static com.terradue.jcatalogue.repository.RemoteRepository.ChecksumPolicy.IGNORE;
 import static com.terradue.jcatalogue.repository.RemoteRepository.UpdatePolicy.ALWAYS;
 import static com.terradue.jcatalogue.utils.Objects.checkArgument;
 import static com.terradue.jcatalogue.utils.Objects.eq;
@@ -31,6 +31,15 @@ import java.net.URI;
 public final class RemoteRepository
     implements ProductRepository
 {
+
+    public static enum ChecksumPolicy
+    {
+
+        FAIL,
+        WARN,
+        IGNORE;
+
+    }
 
     public static enum UpdatePolicy
     {
