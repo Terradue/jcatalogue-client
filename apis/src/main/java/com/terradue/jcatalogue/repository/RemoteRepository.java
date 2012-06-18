@@ -32,6 +32,17 @@ public final class RemoteRepository
     implements ProductRepository
 {
 
+    public static enum UpdatePolicy
+    {
+
+        NEVER,
+        ALWAYS,
+        DAILY,
+        INTERVAL,
+        FAIL;
+
+    }
+
     private final String id;
 
     private final String contentType;
