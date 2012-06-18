@@ -18,7 +18,7 @@ package com.terradue.jcatalogue.repository;
 
 import static java.util.Arrays.asList;
 
-import static com.terradue.jcatalogue.utils.Preconditions.checkArgument;
+import static com.terradue.jcatalogue.lang.Preconditions.checkArgument;
 
 import java.net.URI;
 import java.util.Iterator;

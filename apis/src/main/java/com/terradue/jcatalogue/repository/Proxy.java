@@ -16,8 +16,8 @@ package com.terradue.jcatalogue.repository;
  *    limitations under the License.
  */
 
-import static com.terradue.jcatalogue.utils.Preconditions.eq;
-import static com.terradue.jcatalogue.utils.Preconditions.hash;
+import static com.terradue.jcatalogue.lang.Preconditions.eq;
+import static com.terradue.jcatalogue.lang.Preconditions.hash;
 
 /**
  * A proxy to use for connections to a repository. <em>Note:</em> Instances of this class are immutable and the exposed

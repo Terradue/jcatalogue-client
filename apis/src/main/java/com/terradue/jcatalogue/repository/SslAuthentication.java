@@ -16,7 +16,7 @@ package com.terradue.jcatalogue.repository;
  *    limitations under the License.
  */
 
-import static com.terradue.jcatalogue.utils.Preconditions.checkArgument;
+import static com.terradue.jcatalogue.lang.Preconditions.checkArgument;
 
 import java.io.File;
 
