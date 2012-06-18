@@ -1,4 +1,4 @@
-package com.terradue.jcatalogue.utils;
+package com.terradue.jcatalogue;
 
 /*
  *    Copyright 2011-2012 Terradue srl
