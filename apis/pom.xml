@@ -29,4 +29,12 @@
 
   <name>JCatalogue Client :: APIs</name>
 
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>jcatalogue-feeds</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
 </project>
