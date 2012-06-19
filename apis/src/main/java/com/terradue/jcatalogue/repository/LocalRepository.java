@@ -57,7 +57,7 @@ public final class LocalRepository
     public LocalRepository( File basedir, String type )
     {
         checkArgument( basedir != null, "Argument 'basedir' must be not null" );
-        checkArgument( !basedir.isFile(), "Basedir %s points to a file, while a directory is required" );
+        checkArgument( !basedir.isFile(), "Basedir %s points to a file, while a directory is required", basedir );
         this.basedir = basedir;
         this.type = ( type != null ) ? type : "";
     }
