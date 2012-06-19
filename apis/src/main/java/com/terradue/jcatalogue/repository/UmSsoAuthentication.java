@@ -24,11 +24,23 @@ import java.net.URI;
 import java.util.Iterator;
 import java.util.List;
 
-import com.terradue.jcatalogue.HttpMethod;
-
 public final class UmSsoAuthentication
     implements Authentication
 {
+
+    public static enum HttpMethod
+    {
+
+        OPTIONS,
+        GET,
+        HEAD,
+        POST,
+        PUT,
+        DELETE,
+        TRACE,
+        CONNECT;
+
+    }
 
     private final URI loginFormUrl;
 
