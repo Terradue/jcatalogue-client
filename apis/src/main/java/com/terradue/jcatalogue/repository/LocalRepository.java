@@ -17,8 +17,8 @@ package com.terradue.jcatalogue.repository;
  */
 
 import static com.terradue.jcatalogue.lang.Preconditions.checkArgument;
-import static com.terradue.jcatalogue.lang.Preconditions.eq;
-import static com.terradue.jcatalogue.lang.Preconditions.hash;
+import static com.terradue.jcatalogue.lang.Objects.eq;
+import static com.terradue.jcatalogue.lang.Objects.hash;
 
 import java.io.File;
 
