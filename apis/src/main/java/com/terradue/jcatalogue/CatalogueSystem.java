@@ -16,7 +16,17 @@ package com.terradue.jcatalogue;
  *    limitations under the License.
  */
 
+import java.net.URI;
+
+import com.terradue.jcatalogue.repository.RemoteRepository;
+
 public interface CatalogueSystem
 {
+
+    RemoteRepository getRepositoryfromDescription( String uri )
+        throws CatalogueException;
+
+    RemoteRepository getRepositoryfromDescription( URI uri )
+        throws CatalogueException;
 
 }
