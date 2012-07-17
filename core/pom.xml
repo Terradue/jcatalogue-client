@@ -91,11 +91,6 @@
   </dependencies>
 
   <build>
-    <resources>
-      <resource>
-        <directory>${basedir}/src/main/resources</directory>
-      </resource>
-    </resources>
     <testResources>
       <testResource>
         <directory>${basedir}/src/test/resources</directory>
