@@ -50,30 +50,22 @@ public final class SingleDataSetRulesModule
         forPattern( "feed/entry/published" ).setBeanProperty();
         forPattern( "feed/entry/updated" ).setBeanProperty();
 
-        forPattern( "feed/entry/validTime/TimePeriod/beginPosition" )
-            .withNamespaceURI( GML )
+        forPattern( "feed/entry/gml:validTime/gml:TimePeriod/gml:beginPosition" )
             .setBeanProperty().withName( "beginPosition" );
-        forPattern( "feed/entry/validTime/TimePeriod/endPosition" )
-            .withNamespaceURI( GML )
+        forPattern( "feed/entry/gml:validTime/gml:TimePeriod/gml:endPosition" )
             .setBeanProperty().withName( "endPosition" );
 
-        forPattern( "feed/where/Envelope" )
-            .withNamespaceURI( GML )
+        forPattern( "feed/georss:where/Envelope" )
             .createObject().ofType( Box.class );
-        forPattern( "feed/where/Envelope/lowerCorner" )
-            .withNamespaceURI( GML )
+        forPattern( "feed/georss:where/gml:Envelope/gml:lowerCorner" )
             .setBeanProperty().withName( "lowerCorner" );
-        forPattern( "feed/where/Envelope/upperCorner" )
-            .withNamespaceURI( GML )
+        forPattern( "feed/georss:where/gml:Envelope/gml:upperCorner" )
             .setBeanProperty().withName( "upperCorner" );
-        forPattern( "feed/where/LineString/posList" )
-            .withNamespaceURI( GML )
+        forPattern( "feed/georss:where/gml:LineString/gml:posList" )
             .addRuleCreatedBy( new SetGeoDataLocationRule.Factory( Line.class ) );
-        forPattern( "feed/where/Polygon/exterior/LinearRing/posList" )
-            .withNamespaceURI( GML )
+        forPattern( "feed/entry/georss:where/gml:Polygon/gml:exterior/gml:LinearRing/gml:posList" )
             .addRuleCreatedBy( new SetGeoDataLocationRule.Factory( Polygon.class ) );
-        forPattern( "feed/where/Point/pos" )
-            .withNamespaceURI( GML )
+        forPattern( "feed/georss:where/gml:Point/gml:pos" )
             .addRuleCreatedBy( new SetGeoDataLocationRule.Factory( Point.class ) );
 
         forPattern( "feed/entry/link" ).callMethod( "addLink" )

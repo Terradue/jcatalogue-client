@@ -104,8 +104,8 @@ public final class CatalogueClient
         catalogueDigesterLoader = newLoader( new AtomRulesModule( Catalogue.class ), new LinkedAtomEntityModule() )
             .setNamespaceAware( true );
         serieDigesterLoader = newLoader( new AtomRulesModule( Series.class ), new DataSetRulesModule() )
-                              .setNamespaceAware( true );
-        singleDataSetDigesterLoader = newLoader( new SingleDataSetRulesModule() ).setNamespaceAware( true );
+                              .setNamespaceAware( false );
+        singleDataSetDigesterLoader = newLoader( new SingleDataSetRulesModule() ).setNamespaceAware( false );
     }
 
     public <D extends Downloader> D lookupDownloader( String protocol )
