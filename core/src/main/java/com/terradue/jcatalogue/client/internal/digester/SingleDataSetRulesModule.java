@@ -49,12 +49,16 @@ public final class SingleDataSetRulesModule
 
         forPattern( "feed/entry/published" ).setBeanProperty();
         forPattern( "feed/entry/updated" ).setBeanProperty();
-
-        forPattern( "feed/entry/gml:validTime/gml:TimePeriod/gml:beginPosition" )
+        
+        forPattern( "feed/entry/date" )
+        .withNamespaceURI( "http://purl.org/dc/elements/1.1/" )
+        	.setBeanProperty().withName( "datePosition" );
+        
+      /*  forPattern( "feed/entry/gml:validTime/gml:TimePeriod/gml:beginPosition" )
             .setBeanProperty().withName( "beginPosition" );
         forPattern( "feed/entry/gml:validTime/gml:TimePeriod/gml:endPosition" )
             .setBeanProperty().withName( "endPosition" );
-
+*/
         forPattern( "feed/georss:where/Envelope" )
             .createObject().ofType( Box.class );
         forPattern( "feed/georss:where/gml:Envelope/gml:lowerCorner" )

@@ -103,9 +103,8 @@ public final class CatalogueClient
         descriptionDigesterLoader = newLoader( new OpenSearchModule() ).setNamespaceAware( true );
         catalogueDigesterLoader = newLoader( new AtomRulesModule( Catalogue.class ), new LinkedAtomEntityModule() )
             .setNamespaceAware( true );
-        serieDigesterLoader = newLoader( new AtomRulesModule( Series.class ), new DataSetRulesModule() )
-                              .setNamespaceAware( false );
-        singleDataSetDigesterLoader = newLoader( new SingleDataSetRulesModule() ).setNamespaceAware( false );
+        serieDigesterLoader = newLoader( new AtomRulesModule( Series.class ), new DataSetRulesModule() );//.setNamespaceAware( false );
+        singleDataSetDigesterLoader = newLoader( new SingleDataSetRulesModule() );//.setNamespaceAware( false );
     }
 
     public <D extends Downloader> D lookupDownloader( String protocol )

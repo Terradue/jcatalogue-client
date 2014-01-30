@@ -40,6 +40,8 @@ public final class DataSet
 
     private Date endPosition;
 
+    private String datePosition;
+    
     private GeoLocation geoLocation;
 
     public <T> T download( File targetDir, DownloadHandler<T> handler )

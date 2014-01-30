@@ -52,6 +52,8 @@ abstract class AtomEntity
     private Date published;
 
     private Date updated;
+    
+    private String datePosition;
 
     private String id;
 
