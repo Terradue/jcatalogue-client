@@ -38,6 +38,16 @@
     <url>https://github.com/Terradue/jcatalogue-client</url>
   </scm>
   <distributionManagement>
+    <repository>
+      <id>repository.terradue.com</id>
+      <name>repository.terradue.com-releases</name>
+      <url>http://repository.terradue.com/artifactory/libs-release-local</url>
+    </repository>
+    <snapshotRepository>
+      <id>repository.terradue.com</id>
+      <name>repository.terradue.com-snapshots</name>
+      <url>http://repository.terradue.com/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
     <site>
       <id>github</id>
       <url>gitsite:git@github.com/Terradue/jcatalogue-client.git</url>
