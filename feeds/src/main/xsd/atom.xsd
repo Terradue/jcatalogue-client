@@ -29,7 +29,7 @@
 
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd" />
   <xs:import namespace="http://a9.com/-/spec/opensearch/1.1/" schemaLocation="opensearch-description.xsd" />
-  <xs:import namespace="http://www.georss.org/georss/11" schemaLocation="http://www.georss.org/xml/1.1/georss.xsd" />
+  <!-- xs:import namespace="http://www.georss.org/georss/11" schemaLocation="http://www.georss.org/xml/1.1/georss.xsd" /-->
   <!-- xs:import namespace="urn:ietf:params:xml:ns:metalink" schemaLocation="" /-->
 
   <xs:annotation>
