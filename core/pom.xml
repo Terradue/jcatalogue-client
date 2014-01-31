@@ -20,14 +20,14 @@
   <parent>
     <groupId>com.terradue</groupId>
     <artifactId>jcatalogue-client-parent</artifactId>
-    <version>0.8</version>
+    <version>0.9</version>
     <relativePath>../</relativePath>
   </parent>
   <properties>
     <skipTests>true</skipTests>
   </properties>
   <artifactId>jcatalogue-client</artifactId>
-  <version>0.8.4-SNAPSHOT</version>
+  <version>0.9-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>JCatalogue Client :: Core APIs</name>
@@ -107,4 +107,5 @@
     </plugins>
   </build>
 
+  <groupId>com.terradue</groupId>
 </project>
