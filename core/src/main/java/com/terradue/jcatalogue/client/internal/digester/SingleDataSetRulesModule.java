@@ -49,14 +49,16 @@ public final class SingleDataSetRulesModule
 
         forPattern( "feed/entry/published" ).setBeanProperty();
         forPattern( "feed/entry/updated" ).setBeanProperty();
-        /*
+        
         forPattern( "feed/entry/date" )
         .withNamespaceURI( "http://purl.org/dc/elements/1.1/" )
-        	.setBeanProperty().withName( "datePosition" );
-        */
-        forPattern( "feed/entry/gml:validTime/gml:TimePeriod/gml:beginPosition" )
+        	.setBeanProperty().withName( "datePosition" );        
+        
+        forPattern( "feed/entry/validTime/TimePeriod/beginPosition" )
+        .withNamespaceURI( "http://www.opengis.net/gml" )
             .setBeanProperty().withName( "beginPosition" );
-        forPattern( "feed/entry/gml:validTime/gml:TimePeriod/gml:endPosition" )
+        forPattern( "feed/entry/validTime/TimePeriod/endPosition" )
+        .withNamespaceURI( "http://www.opengis.net/gml" )
             .setBeanProperty().withName( "endPosition" );
 
         forPattern( "feed/georss:where/Envelope" )
