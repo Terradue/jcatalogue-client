@@ -59,6 +59,7 @@
     <module>apis</module>
     <!-- module>impl</module-->
     <module>cli</module>
+    <module>core</module>
   </modules>
 
   <properties>

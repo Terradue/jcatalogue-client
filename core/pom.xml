@@ -18,7 +18,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.terradue</groupId>
+    <groupId>com.terradue.jcatalogue</groupId>
     <artifactId>jcatalogue-client-parent</artifactId>
     <version>0.9-SNAPSHOT</version>
     <relativePath>../</relativePath>
@@ -26,8 +26,7 @@
   <properties>
     <skipTests>true</skipTests>
   </properties>
-  <artifactId>jcatalogue-client</artifactId>
-  <version>0.9-SNAPSHOT</version>
+  <artifactId>jcatalogue-client-core</artifactId>
   <packaging>jar</packaging>
 
   <name>JCatalogue Client :: Core APIs</name>
