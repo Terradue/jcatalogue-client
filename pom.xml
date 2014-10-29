@@ -23,7 +23,7 @@
     <version>4</version>
   </parent>
 
-  <groupId>com.terradue</groupId>
+  <groupId>com.terradue.jcatalogue</groupId>
   <artifactId>jcatalogue-client-parent</artifactId>
   <version>0.9-SNAPSHOT</version>
   <packaging>pom</packaging>
