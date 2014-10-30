@@ -106,5 +106,5 @@
     </plugins>
   </build>
 
-  <groupId>com.terradue</groupId>
+  <groupId>com.terradue.jcatalogue</groupId>
 </project>
