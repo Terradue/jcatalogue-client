@@ -26,7 +26,7 @@
   <properties>
     <skipTests>true</skipTests>
   </properties>
-  <artifactId>jcatalogue-client-core</artifactId>
+  <artifactId>jcatalogue-client</artifactId>
   <packaging>jar</packaging>
 
   <name>JCatalogue Client :: Core APIs</name>
