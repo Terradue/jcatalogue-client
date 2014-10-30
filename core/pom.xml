@@ -48,8 +48,7 @@
     <dependency>
       <groupId>com.ning</groupId>
       <artifactId>async-http-client</artifactId>
-      <version>1.8.0</version>
-      <classifier>imarine</classifier>
+      <version>1.7.2</version>
       <exclusions>
         <exclusion>
           <groupId>org.slf4j</groupId>
