@@ -19,14 +19,14 @@
 
   <parent>
     <groupId>com.terradue.jcatalogue</groupId>
-    <artifactId>jcatalogue-client-parent</artifactId>
+    <artifactId>parent</artifactId>
     <version>0.9-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
   <properties>
     <skipTests>true</skipTests>
   </properties>
-  <artifactId>jcatalogue-client</artifactId>
+  <artifactId>jcatalogue-client-core</artifactId>
   <packaging>jar</packaging>
 
   <name>JCatalogue Client :: Core APIs</name>
