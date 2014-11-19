@@ -26,7 +26,7 @@
 
   <artifactId>jcatalogue-client-api</artifactId>
   <packaging>jar</packaging>
-  <version>0.10-SNAPSHOT</version>
+  <version>0.9</version>
   <name>JCatalogue Client :: APIs</name>
 
   <dependencies>
