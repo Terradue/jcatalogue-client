@@ -27,7 +27,7 @@
   <artifactId>jcatalogue-client</artifactId>
   <packaging>jar</packaging>
   <name>JCatalogue Client :: Core APIs</name>
-  <version>0.9-SNAPSHOT</version>
+  <version>0.10-SNAPSHOT</version>
 
   <properties>
     <skipTests>true</skipTests>

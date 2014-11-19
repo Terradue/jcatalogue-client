@@ -25,7 +25,7 @@
 
   <groupId>com.terradue.jcatalogue</groupId>
   <artifactId>jcatalogue-client-parent</artifactId>
-  <version>0.9-SNAPSHOT</version>
+  <version>0.10-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>JCatalogue Client</name>
