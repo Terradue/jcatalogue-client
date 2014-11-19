@@ -71,6 +71,16 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>external.atlassian.jgitflow</groupId>
+          <artifactId>jgitflow-maven-plugin</artifactId>
+          <version>1.0-m4.3</version>
+          <configuration>
+              <allowSnapshots>true</allowSnapshots>
+              <noDeploy>true</noDeploy>
+              <autoVersionSubmodules>true</autoVersionSubmodules>
+          </configuration>
+        </plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
           <version>2.2.1</version>
