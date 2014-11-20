@@ -26,7 +26,7 @@
 
   <artifactId>jcatalogue-feeds</artifactId>
   <packaging>jar</packaging>
-  <version>0.9</version>
+  <version>0.10-SNAPSHOT</version>
   <name>JCatalogue Client :: Atom/OpenSearch Feeds APIs</name>
 
   <build>
