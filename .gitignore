@@ -2,3 +2,5 @@ apis/target
 core/target
 feeds/target
 target
+.project
+core/.project
