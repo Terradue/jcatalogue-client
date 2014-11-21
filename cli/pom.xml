@@ -19,7 +19,7 @@
 
   <parent>
     <groupId>com.terradue.jcatalogue</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>jcatalogue-client-parent</artifactId>
     <version>0.10-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
