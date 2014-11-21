@@ -20,13 +20,12 @@
   <parent>
     <groupId>com.terradue.jcatalogue</groupId>
     <artifactId>parent</artifactId>
-    <version>0.9-SNAPSHOT</version>
+    <version>0.10-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
   <artifactId>jcatalogue-client-cli</artifactId>
   <packaging>pom</packaging>
   <name>JCatalogue Client :: CLI Tool</name>
-  <version>0.10-SNAPSHOT</version>
 
 </project>
