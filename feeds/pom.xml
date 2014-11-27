@@ -19,14 +19,13 @@
 
   <parent>
     <groupId>com.terradue.jcatalogue</groupId>
-    <artifactId>parent</artifactId>
-    <version>0.9-SNAPSHOT</version>
+    <artifactId>jcatalogue-client-parent</artifactId>
+    <version>0.9</version>
     <relativePath>../</relativePath>
   </parent>
 
   <artifactId>jcatalogue-feeds</artifactId>
   <packaging>jar</packaging>
-  <version>0.10-SNAPSHOT</version>
   <name>JCatalogue Client :: Atom/OpenSearch Feeds APIs</name>
 
   <build>

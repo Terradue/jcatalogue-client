@@ -19,8 +19,8 @@
 
   <parent>
     <groupId>com.terradue.jcatalogue</groupId>
-    <artifactId>parent</artifactId>
-    <version>0.9-SNAPSHOT</version>
+    <artifactId>jcatalogue-client-parent</artifactId>
+    <version>0.9</version>
     <relativePath>../</relativePath>
   </parent>
 
